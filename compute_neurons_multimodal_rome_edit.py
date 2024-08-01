@@ -23,7 +23,7 @@ def prepare_data_for_rome(data):
     return [rome_request]
 
 if __name__ == '__main__':
-    hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava-hf.yaml')
+    hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava.yaml')
     model = transformers.LlavaForConditionalGeneration.from_pretrained(args.model_path, torch_dtype=torch.float16).to('cuda:0')
     processor = transformers.LlavaProcessor.from_pretrained(args.model_path)
     tokenizer = processor.tokenizer
