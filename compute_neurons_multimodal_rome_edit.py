@@ -90,6 +90,9 @@ if __name__ == '__main__':
                                                    batch_size=1, steps=10, adaptive_threshold=0.3, image=multi_image)
         
         del kn
+        del edited_model
+        del edited_language_model
+        
         # compare neurons
         a_to_b_shared_neurons = []
         for before_edit_a_to_b_neuron in before_edit_a_to_b_neurons:
