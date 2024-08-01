@@ -76,6 +76,7 @@ if __name__ == '__main__':
                 single_hop_prompt = '<image> Qustion:{} Answer:'.format(hop['question'])
             else :
                 single_hop_prompt = 'Qustion:{} Answer:'.format(hop['question'])
+                hop['answer'] = data['knowledge_edit']['answer_new']
                 image = None
             if i==0:
                 after_edit_a_to_b_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
@@ -88,6 +89,7 @@ if __name__ == '__main__':
         after_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
                                                    batch_size=1, steps=10, adaptive_threshold=0.3, image=multi_image)
         
+        del kn
         # compare neurons
         a_to_b_shared_neurons = []
         for before_edit_a_to_b_neuron in before_edit_a_to_b_neurons:
