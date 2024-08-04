@@ -37,14 +37,14 @@ def get_kn_neurons(datas, model_path, processor, tokenizer, image_path, device_i
                 image = None
             if i==0:
                 before_edit_a_to_b_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                       batch_size=1, steps=10, adaptive_threshold=0.3, image=image)
+                                                       batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
             else :
                 before_edit_b_to_c_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                       batch_size=1, steps=10, adaptive_threshold=0.3, image=image)
+                                                       batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
         multi_hop_prompt = '<image> Qustion:{} Answer:'.format(data['knowledge_edit']['image_question'])
         multi_image = Image.open(os.path.join(image_path, data['image']))
         before_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
-                                                   batch_size=1, steps=10, adaptive_threshold=0.3, image=multi_image)
+                                                   batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
         
         del kn
         
@@ -75,14 +75,14 @@ def get_kn_neurons(datas, model_path, processor, tokenizer, image_path, device_i
                 image = None
             if i==0:
                 after_edit_a_to_b_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                       batch_size=1, steps=10, adaptive_threshold=0.3, image=image)
+                                                       batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
             else :
                 after_edit_b_to_c_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                       batch_size=1, steps=10, adaptive_threshold=0.3, image=image)
+                                                       batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
         multi_hop_prompt = '<image> Qustion:{} Answer:'.format(data['knowledge_edit']['image_question'])
         multi_image = Image.open(os.path.join(image_path, data['image']))
         after_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
-                                                    batch_size=1, steps=10, adaptive_threshold=0.3, image=multi_image)
+                                                    batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
         
         del kn
         del edited_model

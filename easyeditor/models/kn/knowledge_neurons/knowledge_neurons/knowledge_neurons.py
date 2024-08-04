@@ -610,11 +610,14 @@ class KnowledgeNeurons:
                             r=batch_size,
                         )
                     if self.model_type == 'llava':
-                        inputs['pixel_values'] = einops.repeat(
-                            encoded_input["pixel_values"],
-                            "b c h w -> (r b) c h w",
-                            r=batch_size,
-                        )
+                        if image is not None:
+                            inputs['pixel_values'] = einops.repeat(
+                                encoded_input["pixel_values"],
+                                "b c h w -> (r b) c h w",
+                                r=batch_size,
+                            )
+                        else :
+                            inputs['pixel_values'] = None
                     # then patch the model to replace the activations with the scaled activations
                     patch_ff_layer(
                         self.model,
