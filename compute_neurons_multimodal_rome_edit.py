@@ -21,6 +21,7 @@ args = parser.parse_args()
 
 def get_kn_neurons(datas, model_path, processor, tokenizer, image_path, device_id, hparams, mode):
     device = torch.device(f'cuda:{device_id}' if torch.cuda.is_available() else 'cpu')
+    hparams.device = device
     model = LlavaForConditionalGeneration.from_pretrained(model_path, torch_dtype=torch.float16)
     language_model = model.language_model
     results = []
