@@ -84,14 +84,13 @@ class LlavaLlamaForCausalLM(LlamaForCausalLM, LlavaMetaForCausalLM):
             targets = input_ids.masked_fill(input_ids==tokenizer.pad_token_id, IGNORE_INDEX)
             if samples['prompts_len']:
                 for i, prompt_len in enumerate(samples['prompts_len']):
-                    targets[i, :prompt_len+1] = IGNORE_INDEX
+                    targets[i, :prompt_len+2] = IGNORE_INDEX
         else:
             image = None
             targets = input_ids.masked_fill(input_ids==tokenizer.pad_token_id, IGNORE_INDEX)
             if samples['prompts_len']:
                 for i, prompt_len in enumerate(samples['prompts_len']):
-                    targets[i, :prompt_len] = IGNORE_INDEX
-
+                    targets[i, :prompt_len+1] = IGNORE_INDEX
         return self.prepare_inputs_labels_for_multimodal(
             input_ids,
             None,

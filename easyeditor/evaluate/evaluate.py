@@ -338,8 +338,10 @@ def compute_icl_multimodal_edit_quality(
     :return: Dictionary containing rewriting metrics
     """
     # First, unpack rewrite evaluation record.
+    original_question = record["original_question"]
     question = record["question"]
     answer = record["answer"]
+    pred = record["pred"]
     rephrase_question = record["rephrase_question"] if 'rephrase_question' in record.keys() else None
     one_hop_question = record["one_hop_question"] if 'one_hop_question' in record.keys() else None
     one_hop_answer = record["one_hop_answer"] if 'one_hop_answer' in record.keys() else None
@@ -357,7 +359,7 @@ def compute_icl_multimodal_edit_quality(
     diff_entity_image = record["diff_entity_image"] if record["diff_entity_image"].is_cuda else record["diff_entity_image"].to(hparams.device)
     locality_image = record["locality_image"] if record["locality_image"].is_cuda else record["locality_image"].to(hparams.device)
     
-    new_fact = f'New Fact: {question} {answer}\nPrompt: {question}'
+    new_fact = f'New Fact: {original_question} {answer}\nPrompt: {question}'
 
     if pre_edit:
         edit_acc, pred_ids = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
@@ -370,43 +372,88 @@ def compute_icl_multimodal_edit_quality(
         f"pred_ids": pred_ids
     }
 
+    if pre_edit:
+        language_model_acc, pred_ids = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                        pred, original_question, None)
+        multimodal_acc, pred_ids = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                        pred, question, image)
+        ret['language_model_inner_acc'] = language_model_acc
+        ret['multimodal_inner_acc'] = multimodal_acc
+    
     if rephrase_question is not None:
-        rephrase_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                               answer, f'New Fact: {question} {answer}\nPrompt: {rephrase_question}', image)
+        if pre_edit:
+            rephrase_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                answer, rephrase_question, image)
+        else :
+            rephrase_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                               answer, f'New Fact: {original_question} {answer}\nPrompt: {rephrase_question}', image)
         ret['rephrase_acc'] = rephrase_acc
     
     if one_hop_question is not None:
-        one_hop_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                               one_hop_answer, f'New Fact: {question} {answer}\nPrompt: {one_hop_question}', image)
+        if pre_edit:
+            one_hop_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                 one_hop_answer, one_hop_question, image)
+        else:
+            one_hop_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                               one_hop_answer, f'New Fact: {original_question} {answer}\nPrompt: {one_hop_question}', image)
         ret['one_hop_acc'] = one_hop_acc
 
     if image_rephrase is not None:
-        image_edit_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+        if pre_edit:
+            image_edit_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                 answer, question, image_rephrase)
+        else:
+            image_edit_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
                                  answer, new_fact, image_rephrase)
         ret['image_acc'] = image_edit_acc
 
-        image_rephrase_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                                answer, f'New Fact: {question} {answer}\nPrompt: {rephrase_question}', image_rephrase)
+        if pre_edit:
+            image_rephrase_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                answer, rephrase_question, image_rephrase)
+        else:
+            image_rephrase_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                answer, f'New Fact: {original_question} {answer}\nPrompt: {rephrase_question}', image_rephrase)
         ret['image_rephrase_acc'] = image_rephrase_acc
 
-        image_one_hop_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                                one_hop_answer, f'New Fact: {question} {answer}\nPrompt: {one_hop_question}', image_rephrase)
+        if pre_edit:
+            image_one_hop_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                one_hop_answer, one_hop_question, image_rephrase)
+        else:
+            image_one_hop_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                one_hop_answer, f'New Fact: {original_question} {answer}\nPrompt: {one_hop_question}', image_rephrase)
         ret['image_one_hop_acc'] = image_one_hop_acc
         
     if same_entity_question is not None:
-        same_entity_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                                 same_entity_answer, f'New Fact: {question} {answer}\nPrompt: {same_entity_question}', same_entity_image)
+        if pre_edit:
+            same_entity_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                    same_entity_answer, same_entity_question, same_entity_image)
+        else :
+            same_entity_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                 same_entity_answer, f'New Fact: {original_question} {answer}\nPrompt: {same_entity_question}', same_entity_image)
         ret['same_entity_acc'] = same_entity_acc
-        same_entity_original_answer_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                                    answer, f'New Fact: {question} {answer}\nPrompt: {same_entity_question}', same_entity_image)
+
+        if pre_edit:
+            same_entity_original_answer_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                    answer, same_entity_question, same_entity_image)
+        else :
+            same_entity_original_answer_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                    answer, f'New Fact: {original_question} {answer}\nPrompt: {same_entity_question}', same_entity_image)
         ret['same_entity_original_answer_acc'] = same_entity_original_answer_acc
     
     if diff_entity_question is not None:
-        diff_entity_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                                    diff_entity_answer, f'New Fact: {question} {answer}\nPrompt: {diff_entity_question}', diff_entity_image)
+        if pre_edit:
+            diff_entity_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                    diff_entity_answer, diff_entity_question, diff_entity_image)
+        else:
+            diff_entity_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                    diff_entity_answer, f'New Fact: {original_question} {answer}\nPrompt: {diff_entity_question}', diff_entity_image)
         ret['diff_entity_acc'] = diff_entity_acc
-        diff_entity_original_answer_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                                    answer, f'New Fact: {question} {answer}\nPrompt: {diff_entity_question}', diff_entity_image)
+        if pre_edit:
+            diff_entity_original_answer_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                    answer, diff_entity_question, diff_entity_image)
+        else :
+            diff_entity_original_answer_acc, _ = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
+                                    answer, f'New Fact: {original_question} {answer}\nPrompt: {diff_entity_question}', diff_entity_image)
         ret['diff_entity_original_answer_acc'] = diff_entity_original_answer_acc
 
 
@@ -416,7 +463,7 @@ def compute_icl_multimodal_edit_quality(
                                     locality_answer, locality_question, None, is_loc=True) 
         else:
             _, _, locality_output = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                                    locality_answer, f'New Fact: {question} {answer}\nPrompt: {locality_question}', None, is_loc=True) 
+                                    locality_answer, f'New Fact: {original_question} {answer}\nPrompt: {locality_question}', None, is_loc=True) 
         ret['locality_output'] = locality_output
     
     if "image_locality_question" in record.keys():
@@ -425,7 +472,7 @@ def compute_icl_multimodal_edit_quality(
                                     image_locality_answer, image_locality_question, locality_image, is_loc=True) 
         else:
             _, _, locality_image_output = icl_multimodal_lm_eval(model, model_name, hparams, tok, icl_examples,
-                                    image_locality_answer, f'New Fact: {question} {answer}\nPrompt: {image_locality_question}', locality_image, is_loc=True) 
+                                    image_locality_answer, f'New Fact: {original_question} {answer}\nPrompt: {image_locality_question}', locality_image, is_loc=True) 
         ret['image_locality_output'] = locality_image_output
             
     return ret
@@ -480,7 +527,36 @@ def prepare_multimodal_edit(hparams,
     } 
     return ret
 
-def compute_multimodal_edit_quality(model, batch, exach_match=False):
+def prepare_multimodal_edit_demo(hparams,
+                            tok,
+                            target,
+                            prompts,
+                            image):
+    prompt_template = "Question: {} Short answer: " 
+    if isinstance(target, str):
+        target = [target,]
+    if isinstance(prompts, str):
+        prompts = [prompts,]
+    if image is not None and len(image.shape) == 3:
+        image = image.unsqueeze(0)
+    text_input = [prompt_template.format(prompt_) + ' ' + target_ for prompt_, target_ in zip(prompts, target)]
+    
+    if hparams.model_name == 'minigpt4' or hparams.model_name == 'llava':
+        prompts_len = [len(tok.encode(prompt_template.format(prompt), add_special_tokens=False)) for prompt in prompts]
+        target = tok(target, add_special_tokens=False, return_tensors="pt",)["input_ids"]
+    else:
+        prompts_len = [len(tok.encode(prompt_template.format(prompt),  add_special_tokens=False)) for prompt in prompts]  
+        target = tok([' ' + target_ if target_[0] != ' ' else target_ for target_ in target], add_special_tokens=False, return_tensors="pt",)["input_ids"]
+        
+    ret = {
+        'text_input': text_input,
+        'image': image,
+        'labels': target,
+        'prompts_len': prompts_len        
+    } 
+    return ret
+
+def compute_multimodal_edit_quality(model, batch, exach_match=False, return_targ=False):
     with torch.no_grad():
         outputs = model(batch)
         if isinstance(outputs, torch.Tensor):
@@ -509,7 +585,10 @@ def compute_multimodal_edit_quality(model, batch, exach_match=False):
         num_non_padding = mask.sum().float().item()
         acc = correct.sum() / num_non_padding
     
-    return acc, full_pred_ids.numpy()
+    if return_targ:
+        return acc, pred_ids[:,-targ.shape[1]:].numpy(), targ
+    else :
+        return acc, pred_ids[:,-targ.shape[1]:].numpy()
   
 def compute_multimodal_edit_quality_demo(model, batch):
     
@@ -578,48 +657,55 @@ def compute_multimodal_edit_results(
     diff_entity_image = record["diff_entity_image"] if record["diff_entity_image"].is_cuda else record["diff_entity_image"].to(hparams.device)
     locality_image = record["locality_image"] if record["locality_image"].is_cuda else record["locality_image"].to(hparams.device)
     
-    edit_inner = prepare_multimodal_edit(hparams, tok, answer, question, image)
-    ret['inner_acc'], pred_ids = compute_multimodal_edit_quality(model, edit_inner, hparams.exact_match)
+    ret['subject'] = record['subject']
+    ret['original_question'] = question
+
+    edit_inner = prepare_multimodal_edit_demo(hparams, tok, answer, question, image)
+    ret['inner_acc'], pred_ids, targ = compute_multimodal_edit_quality(model, edit_inner, hparams.exact_match, return_targ=True)
+    # ret['pred_ids'] = pred_ids
+    # ret['target'] = targ
+    ret['pred'] = tok.decode(pred_ids[0], skip_special_tokens=True)
+    ret['answer'] = tok.decode(targ[0], skip_special_tokens=True)
 
     if rephrase_question is not None:
-        rephrase_input = prepare_multimodal_edit(hparams, tok, answer, rephrase_question, image)
+        rephrase_input = prepare_multimodal_edit_demo(hparams, tok, answer, rephrase_question, image)
         ret['rephrase_acc'], _ = compute_multimodal_edit_quality(model, rephrase_input, hparams.exact_match)
     
     if one_hop_question is not None:
-        one_hop_input = prepare_multimodal_edit(hparams, tok, one_hop_answer, one_hop_question, image)
+        one_hop_input = prepare_multimodal_edit_demo(hparams, tok, one_hop_answer, one_hop_question, image)
         ret['one_hop_acc'], _ = compute_multimodal_edit_quality(model, one_hop_input, hparams.exact_match)
     
     if image_rephrase is not None:
-        image_input = prepare_multimodal_edit(hparams, tok, answer, question, image_rephrase)
+        image_input = prepare_multimodal_edit_demo(hparams, tok, answer, question, image_rephrase)
         ret['image_acc'], _ = compute_multimodal_edit_quality(model, image_input, hparams.exact_match)
         
-        image_rephrase_input = prepare_multimodal_edit(hparams, tok, answer, rephrase_question, image_rephrase)
+        image_rephrase_input = prepare_multimodal_edit_demo(hparams, tok, answer, rephrase_question, image_rephrase)
         ret['image_rephrase_acc'], _ = compute_multimodal_edit_quality(model, image_rephrase_input, hparams.exact_match)
         
-        image_one_hop_input = prepare_multimodal_edit(hparams, tok, one_hop_answer, one_hop_question, image_rephrase)
+        image_one_hop_input = prepare_multimodal_edit_demo(hparams, tok, one_hop_answer, one_hop_question, image_rephrase)
         ret['image_one_hop_acc'], _ = compute_multimodal_edit_quality(model, image_one_hop_input, hparams.exact_match)
     
 
     if same_entity_question is not None:
-        same_entity_input = prepare_multimodal_edit(hparams, tok, same_entity_answer, same_entity_question, same_entity_image)
+        same_entity_input = prepare_multimodal_edit_demo(hparams, tok, same_entity_answer, same_entity_question, same_entity_image)
         ret['same_entity_acc'], _ = compute_multimodal_edit_quality(model, same_entity_input, hparams.exact_match)
         
-        same_entity_original_answer_input = prepare_multimodal_edit(hparams, tok, answer, same_entity_question, same_entity_image)
+        same_entity_original_answer_input = prepare_multimodal_edit_demo(hparams, tok, answer, same_entity_question, same_entity_image)
         ret['same_entity_original_answer_acc'], _ = compute_multimodal_edit_quality(model, same_entity_original_answer_input, hparams.exact_match)
     
     if diff_entity_question is not None:
-        diff_entity_input = prepare_multimodal_edit(hparams, tok, diff_entity_answer, diff_entity_question, diff_entity_image)
+        diff_entity_input = prepare_multimodal_edit_demo(hparams, tok, diff_entity_answer, diff_entity_question, diff_entity_image)
         ret['diff_entity_acc'], _ = compute_multimodal_edit_quality(model, diff_entity_input, hparams.exact_match)
         
-        diff_entity_original_answer_input = prepare_multimodal_edit(hparams, tok, answer, diff_entity_question, diff_entity_image)
+        diff_entity_original_answer_input = prepare_multimodal_edit_demo(hparams, tok, answer, diff_entity_question, diff_entity_image)
         ret['diff_entity_original_answer_acc'], _ = compute_multimodal_edit_quality(model, diff_entity_original_answer_input, hparams.exact_match)
     
     if "locality_question" in record.keys():
-        locality_input = prepare_multimodal_edit(hparams, tok, locality_answer, locality_question, None)
+        locality_input = prepare_multimodal_edit_demo(hparams, tok, locality_answer, locality_question, None)
         _, _, ret['locality_output'] = compute_multimodal_edit_quality_demo(model, locality_input)
     
     if "image_locality_question" in record.keys():
-        image_locality_input = prepare_multimodal_edit(hparams, tok, image_locality_answer, image_locality_question, locality_image)
+        image_locality_input = prepare_multimodal_edit_demo(hparams, tok, image_locality_answer, image_locality_question, locality_image)
         _, _, ret['image_locality_output'] = compute_multimodal_edit_quality_demo(model, image_locality_input)
 
     # Form a list of lists of prefixes to test.

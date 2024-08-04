@@ -6,7 +6,7 @@ model_name: llava
 model_class: LLAVA
 tokenizer_class: LlamaTokenizer
 tokenizer_name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/llava-v1.5-7b
-language_model_name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/llava-1.5-7b-hf
+language_model_name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/llava-v1.5-7b-conv
 clip_name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/clip-vit-large-patch14-336
 stats_dir: "./data/stats"
 layers: [5]
