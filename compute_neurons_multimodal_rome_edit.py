@@ -13,14 +13,7 @@ import copy
 from transformers import LlamaConfig, LlamaTokenizer, LlavaForConditionalGeneration, LlamaForCausalLM, LlavaProcessor
 import time
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--dataset_path', type=str, default="../our_dataset/final_image_rephrase_test_multimodal_hops.json")
-parser.add_argument('--model_path', type=str, default="../hugging_cache/llava-v1.5-7b-conv")
-parser.add_argument('--image_path', type=str, default="../new_download_images")
-args = parser.parse_args()
-
-def get_kn_neurons(data_chunk, model_path, image_path, hparams, mode):
-    device_id = int(current_process().name.split('-')[-1]) - 1  # 获取当前进程ID用于设备分配
+def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode):
     device = torch.device(f'cuda:{device_id}' if torch.cuda.is_available() else 'cpu')
     hparams.device = device_id
     processor = LlavaProcessor.from_pretrained(model_path)
@@ -136,7 +129,7 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, mode):
         }
         results.append(result)
 
-        with open(f'./neurons/{mode}_edit_results_{device_id}.json', 'w') as f:
+        with open(f'./neurons/{mode}_results_{device_id}.json', 'w') as f:
             json.dump(results, f, indent=4)
     return results
 
@@ -149,32 +142,26 @@ def prepare_data_for_rome(request):
     return [rome_request]
 
 if __name__ == '__main__':
-    set_start_method('spawn')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset_path', type=str, default="../our_dataset/final_image_rephrase_test_multimodal_hops.json")
+    parser.add_argument('--model_path', type=str, default="../hugging_cache/llava-v1.5-7b-conv")
+    parser.add_argument('--image_path', type=str, default="../new_download_images")
+    parser.add_argument('--chunks_size', type=int, default=8)
+    parser.add_argument('--device_id', type=int, default=0)
+    args = parser.parse_args()
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava.yaml')
     can_rome_edit_datas = json.load(open("./rome_results/can_rome_edit_datas.json", 'r'))
     no_rome_edit_datas = json.load(open("./rome_results/no_rome_edit_datas.json", 'r'))
     no_rome_edit_datas = no_rome_edit_datas[:len(can_rome_edit_datas)]
 
+    chunk_size = args.chunks_size
+    device_id = args.device_id
+    print(f"chunk_size: {chunk_size}")
+    print(f"device_id: {device_id}")
     # datas can be rome edit
-    chunk_size = len(can_rome_edit_datas) // 8
     can_rome_edit_data_chunks = [can_rome_edit_datas[i:i + chunk_size] for i in range(0, len(can_rome_edit_datas), chunk_size)]
-
-    # 使用多进程来计算神经元
-    with Pool(processes=8) as pool:
-        can_rome_edit_results = pool.starmap(get_kn_neurons, [(chunk, args.model_path, args.image_path, hparams, "can_rome_edit") for chunk in can_rome_edit_data_chunks])
-
-    can_rome_edit_results = [result for sublist in can_rome_edit_results for result in sublist]
-    with open('./neurons/final_can_rome_edit_results.json', 'w') as f:
-        json.dump(can_rome_edit_results, f, indent=4)
+    can_rome_edit_results = get_kn_neurons(can_rome_edit_data_chunks[device_id], args.model_path, args.image_path, hparams, device_id, "can_rome_edit")
 
     # datas can not be rome edit
-    chunk_size = len(no_rome_edit_datas) // 8
     no_rome_edit_data_chunks = [no_rome_edit_datas[i:i + chunk_size] for i in range(0, len(no_rome_edit_datas), chunk_size)]
-
-    # 使用多进程来计算神经元
-    with Pool(processes=8) as pool:
-        no_rome_edit_results = pool.starmap(get_kn_neurons, [(chunk, args.model_path, args.image_path, hparams, "no_rome_edit") for chunk in no_rome_edit_data_chunks])
-
-    no_rome_edit_results = [result for sublist in no_rome_edit_results for result in sublist]
-    with open('./neurons/final_no_rome_edit_results.json', 'w') as f:
-        json.dump(no_rome_edit_results, f, indent=4)
+    no_rome_edit_results = get_kn_neurons(no_rome_edit_data_chunks[device_id], args.model_path, args.image_path, hparams, device_id, "no_rome_edit")
