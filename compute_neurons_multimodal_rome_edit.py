@@ -24,6 +24,7 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
 
     for data in tqdm(data_chunk):
         # before edit
+        model = model.to(device)
         kn = KnowledgeNeurons(model, tokenizer, model_type='llava', device=device, processor=processor)
         for i, hop in enumerate(data['multimodal_hops']):
             if hop['image'] is not None:
