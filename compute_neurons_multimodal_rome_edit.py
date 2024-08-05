@@ -146,7 +146,7 @@ if __name__ == '__main__':
     parser.add_argument('--dataset_path', type=str, default="../our_dataset/final_image_rephrase_test_multimodal_hops.json")
     parser.add_argument('--model_path', type=str, default="../hugging_cache/llava-v1.5-7b-conv")
     parser.add_argument('--image_path', type=str, default="../new_download_images")
-    parser.add_argument('--chunks_size', type=int, default=8)
+    parser.add_argument('--num_chunks', type=int, default=8)
     parser.add_argument('--device_id', type=int, default=0)
     args = parser.parse_args()
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava.yaml')
@@ -154,7 +154,7 @@ if __name__ == '__main__':
     no_rome_edit_datas = json.load(open("./rome_results/no_rome_edit_datas.json", 'r'))
     no_rome_edit_datas = no_rome_edit_datas[:len(can_rome_edit_datas)]
 
-    chunk_size = args.chunks_size
+    chunk_size = len(can_rome_edit_datas) // args.num_chunks
     device_id = args.device_id
     print(f"chunk_size: {chunk_size}")
     print(f"device_id: {device_id}")
