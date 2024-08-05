@@ -14,6 +14,14 @@ from transformers import LlamaConfig, LlamaTokenizer, LlavaForConditionalGenerat
 import time
 
 def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode):
+    output_path = f'./neurons/{mode}_results_{device_id}.json'
+
+    if os.path.exists(output_path):
+        datas = json.load(open(output_path, 'r'))
+        subjects = [data['subject'] for data in datas]
+    else:
+        subjects = []
+    
     device = torch.device(f'cuda:{device_id}' if torch.cuda.is_available() else 'cpu')
     hparams.device = device_id
     processor = LlavaProcessor.from_pretrained(model_path)
@@ -23,6 +31,8 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
     results = []
 
     for data in tqdm(data_chunk):
+        if data['subject'] in subjects:
+            continue
         # before edit
         model = model.to(device)
         kn = KnowledgeNeurons(model, tokenizer, model_type='llava', device=device, processor=processor)
@@ -130,7 +140,7 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
         }
         results.append(result)
 
-        with open(f'./neurons/{mode}_results_{device_id}.json', 'w') as f:
+        with open(output_path, 'w') as f:
             json.dump(results, f, indent=4)
     return results
 
