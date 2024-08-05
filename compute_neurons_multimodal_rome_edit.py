@@ -10,15 +10,20 @@ from tqdm import tqdm
 from multiprocessing import Pool, set_start_method, current_process
 import random
 import copy
+import fcntl
 from transformers import LlamaConfig, LlamaTokenizer, LlavaForConditionalGeneration, LlamaForCausalLM, LlavaProcessor
 import time
 
 def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode):
-    output_path = f'./neurons/{mode}_results_{device_id}.json'
+    output_path = f'./neurons/{mode}_results.jsonl'
 
     if os.path.exists(output_path):
-        datas = json.load(open(output_path, 'r'))
-        subjects = [data['subject'] for data in datas]
+        subjects = []
+        with open(output_path, 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                data = json.loads(line)
+                subjects.append(data['subject'])
     else:
         subjects = []
     
@@ -139,9 +144,16 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
             "a_to_c_shared_neurons": a_to_c_shared_neurons
         }
         results.append(result)
-
-        with open(output_path, 'w') as f:
-            json.dump(results, f, indent=4)
+        result_json = json.dumps(result)
+        # 打开文件并获取锁
+        with open(output_path, 'a') as f:
+            # 获取文件锁（阻塞模式）
+            fcntl.flock(f, fcntl.LOCK_EX)
+            try:
+                f.write(result_json + '\n')
+            finally:
+                # 释放文件锁
+                fcntl.flock(f, fcntl.LOCK_UN)
     return results
 
 def prepare_data_for_rome(request):
