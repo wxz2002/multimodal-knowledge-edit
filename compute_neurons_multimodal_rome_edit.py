@@ -156,11 +156,11 @@ if __name__ == '__main__':
     no_rome_edit_datas = no_rome_edit_datas[:len(can_rome_edit_datas)]
 
     # datas can be rome edit
-    chunk_size = len(can_rome_edit_datas) // 1
+    chunk_size = len(can_rome_edit_datas) // 8
     can_rome_edit_data_chunks = [can_rome_edit_datas[i:i + chunk_size] for i in range(0, len(can_rome_edit_datas), chunk_size)]
 
     # 使用多进程来计算神经元
-    with Pool(processes=1) as pool:
+    with Pool(processes=8) as pool:
         can_rome_edit_results = pool.starmap(get_kn_neurons, [(chunk, args.model_path, args.image_path, hparams, "can_rome_edit") for chunk in can_rome_edit_data_chunks])
 
     can_rome_edit_results = [result for sublist in can_rome_edit_results for result in sublist]
@@ -168,11 +168,11 @@ if __name__ == '__main__':
         json.dump(can_rome_edit_results, f, indent=4)
 
     # datas can not be rome edit
-    chunk_size = len(no_rome_edit_datas) // 1
+    chunk_size = len(no_rome_edit_datas) // 8
     no_rome_edit_data_chunks = [no_rome_edit_datas[i:i + chunk_size] for i in range(0, len(no_rome_edit_datas), chunk_size)]
 
     # 使用多进程来计算神经元
-    with Pool(processes=1) as pool:
+    with Pool(processes=8) as pool:
         no_rome_edit_results = pool.starmap(get_kn_neurons, [(chunk, args.model_path, args.image_path, hparams, "no_rome_edit") for chunk in no_rome_edit_data_chunks])
 
     no_rome_edit_results = [result for sublist in no_rome_edit_results for result in sublist]
