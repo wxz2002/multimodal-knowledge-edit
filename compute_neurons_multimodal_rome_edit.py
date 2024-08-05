@@ -7,7 +7,7 @@ import argparse
 import os
 import sys
 from tqdm import tqdm
-from concurrent.futures import ThreadPoolExecutor
+from multiprocessing import Pool, set_start_method, current_process
 import random
 import copy
 from transformers import LlamaConfig, LlamaTokenizer, LlavaForConditionalGeneration, LlamaForCausalLM, LlavaProcessor
@@ -19,35 +19,41 @@ parser.add_argument('--model_path', type=str, default="../hugging_cache/llava-v1
 parser.add_argument('--image_path', type=str, default="../new_download_images")
 args = parser.parse_args()
 
-def get_kn_neurons(model, datas, model_path, processor, tokenizer, image_path, device_id, hparams, mode):
+def get_kn_neurons(data_chunk, model_path, image_path, hparams, mode):
+    device_id = int(current_process().name.split('-')[-1]) - 1  # 获取当前进程ID用于设备分配
     device = torch.device(f'cuda:{device_id}' if torch.cuda.is_available() else 'cpu')
     hparams.device = device_id
+    processor = LlavaProcessor.from_pretrained(model_path)
+    tokenizer = processor.tokenizer
+    model = LlavaForConditionalGeneration.from_pretrained(model_path, torch_dtype=torch.float16).to(device)
     language_model = model.language_model
     results = []
-    for data in tqdm(datas):
+
+    for data in tqdm(data_chunk):
         # before edit
-        model = model.to(device)
         kn = KnowledgeNeurons(model, tokenizer, model_type='llava', device=device, processor=processor)
         for i, hop in enumerate(data['multimodal_hops']):
             if hop['image'] is not None:
                 image = Image.open(os.path.join(image_path, hop['image']))
                 single_hop_prompt = '<image> Qustion:{} Answer:'.format(hop['question'])
-            else :
+            else:
                 single_hop_prompt = 'Qustion:{} Answer:'.format(hop['question'])
                 image = None
-            if i==0:
+
+            if i == 0:
                 before_edit_a_to_b_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                       batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
-            else :
+                                                                   batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
+            else:
                 before_edit_b_to_c_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                       batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
+                                                                   batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
+
         multi_hop_prompt = '<image> Qustion:{} Answer:'.format(data['knowledge_edit']['image_question'])
         multi_image = Image.open(os.path.join(image_path, data['image']))
         before_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
-                                                   batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
-        
+                                                           batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
+
         del kn
-        
+
         # knowledge edit
         model = model.to('cpu')
         edited_model = copy.deepcopy(model).to(device)
@@ -69,21 +75,23 @@ def get_kn_neurons(model, datas, model_path, processor, tokenizer, image_path, d
             if hop['image'] is not None:
                 image = Image.open(os.path.join(image_path, hop['image']))
                 single_hop_prompt = '<image> Qustion:{} Answer:'.format(hop['question'])
-            else :
+            else:
                 single_hop_prompt = 'Qustion:{} Answer:'.format(hop['question'])
                 hop['answer'] = data['knowledge_edit']['answer_new']
                 image = None
-            if i==0:
+
+            if i == 0:
                 after_edit_a_to_b_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                       batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
-            else :
+                                                                  batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
+            else:
                 after_edit_b_to_c_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                       batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
+                                                                  batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
+
         multi_hop_prompt = '<image> Qustion:{} Answer:'.format(data['knowledge_edit']['image_question'])
         multi_image = Image.open(os.path.join(image_path, data['image']))
         after_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
-                                                    batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
-        
+                                                          batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
+
         del kn
         del edited_model
         del edited_language_model
@@ -127,7 +135,8 @@ def get_kn_neurons(model, datas, model_path, processor, tokenizer, image_path, d
             "a_to_c_shared_neurons": a_to_c_shared_neurons
         }
         results.append(result)
-        with open('./neurons/{}_edit_results_{}.json'.format(mode, device_id), 'w') as f:
+
+        with open(f'./neurons/{mode}_edit_results_{device_id}.json', 'w') as f:
             json.dump(results, f, indent=4)
     return results
 
@@ -140,10 +149,8 @@ def prepare_data_for_rome(request):
     return [rome_request]
 
 if __name__ == '__main__':
+    set_start_method('spawn')
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava.yaml')
-    processor = LlavaProcessor.from_pretrained(args.model_path)
-    model = LlavaForConditionalGeneration.from_pretrained(args.model_path, torch_dtype=torch.float16)
-    tokenizer = processor.tokenizer
     can_rome_edit_datas = json.load(open("./rome_results/can_rome_edit_datas.json", 'r'))
     no_rome_edit_datas = json.load(open("./rome_results/no_rome_edit_datas.json", 'r'))
     no_rome_edit_datas = no_rome_edit_datas[:len(can_rome_edit_datas)]
@@ -152,32 +159,22 @@ if __name__ == '__main__':
     chunk_size = len(can_rome_edit_datas) // 1
     can_rome_edit_data_chunks = [can_rome_edit_datas[i:i + chunk_size] for i in range(0, len(can_rome_edit_datas), chunk_size)]
 
-    # open 8 threads to compute neurons
-    with ThreadPoolExecutor(max_workers=1) as executor:
-        futures = [executor.submit(get_kn_neurons, model, data_chunk, args.model_path, processor, tokenizer, args.image_path, device_id, hparams, "can_rome_edit")
-                   for device_id, data_chunk in enumerate(can_rome_edit_data_chunks)]
+    # 使用多进程来计算神经元
+    with Pool(processes=1) as pool:
+        can_rome_edit_results = pool.starmap(get_kn_neurons, [(chunk, args.model_path, args.image_path, hparams, "can_rome_edit") for chunk in can_rome_edit_data_chunks])
 
-    can_rome_edit_results = []
-    for future in futures:
-        can_rome_edit_results.extend(future.result())
-
+    can_rome_edit_results = [result for sublist in can_rome_edit_results for result in sublist]
     with open('./neurons/final_can_rome_edit_results.json', 'w') as f:
-        json.dump(results, f, indent=4)
+        json.dump(can_rome_edit_results, f, indent=4)
 
     # datas can not be rome edit
     chunk_size = len(no_rome_edit_datas) // 1
     no_rome_edit_data_chunks = [no_rome_edit_datas[i:i + chunk_size] for i in range(0, len(no_rome_edit_datas), chunk_size)]
-    
-    # open 8 threads to compute neurons
-    with ThreadPoolExecutor(max_workers=1) as executor:
-        futures = [executor.submit(get_kn_neurons, model, data_chunk, args.model_path, processor, tokenizer, args.image_path, device_id, hparams, "no_rome_edit")
-                   for device_id, data_chunk in enumerate(no_rome_edit_data_chunks)]
-    
-    no_rome_edit_results = []
-    for future in futures:
-        no_rome_edit_results.extend(future.result())
-    
-    with open('./neurons/final_no_rome_edit_results.json', 'w') as f:
-        json.dump(results, f, indent=4)
 
-    
+    # 使用多进程来计算神经元
+    with Pool(processes=1) as pool:
+        no_rome_edit_results = pool.starmap(get_kn_neurons, [(chunk, args.model_path, args.image_path, hparams, "no_rome_edit") for chunk in no_rome_edit_data_chunks])
+
+    no_rome_edit_results = [result for sublist in no_rome_edit_results for result in sublist]
+    with open('./neurons/final_no_rome_edit_results.json', 'w') as f:
+        json.dump(no_rome_edit_results, f, indent=4)
