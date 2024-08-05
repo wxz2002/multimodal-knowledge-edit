@@ -11,7 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 import random
 import copy
 from transformers import LlamaConfig, LlamaTokenizer, LlavaForConditionalGeneration, LlamaForCausalLM, LlavaProcessor
-
+import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset_path', type=str, default="../our_dataset/final_image_rephrase_test_multimodal_hops.json")
@@ -19,10 +19,9 @@ parser.add_argument('--model_path', type=str, default="../hugging_cache/llava-v1
 parser.add_argument('--image_path', type=str, default="../new_download_images")
 args = parser.parse_args()
 
-def get_kn_neurons(datas, model_path, processor, tokenizer, image_path, device_id, hparams, mode):
+def get_kn_neurons(model, datas, model_path, processor, tokenizer, image_path, device_id, hparams, mode):
     device = torch.device(f'cuda:{device_id}' if torch.cuda.is_available() else 'cpu')
-    hparams.device = device
-    model = LlavaForConditionalGeneration.from_pretrained(model_path, torch_dtype=torch.float16)
+    hparams.device = device_id
     language_model = model.language_model
     results = []
     for data in tqdm(datas):
@@ -143,18 +142,19 @@ def prepare_data_for_rome(request):
 if __name__ == '__main__':
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava.yaml')
     processor = LlavaProcessor.from_pretrained(args.model_path)
+    model = LlavaForConditionalGeneration.from_pretrained(args.model_path, torch_dtype=torch.float16)
     tokenizer = processor.tokenizer
     can_rome_edit_datas = json.load(open("./rome_results/can_rome_edit_datas.json", 'r'))
     no_rome_edit_datas = json.load(open("./rome_results/no_rome_edit_datas.json", 'r'))
     no_rome_edit_datas = no_rome_edit_datas[:len(can_rome_edit_datas)]
 
     # datas can be rome edit
-    chunk_size = len(can_rome_edit_datas) // 8
+    chunk_size = len(can_rome_edit_datas) // 1
     can_rome_edit_data_chunks = [can_rome_edit_datas[i:i + chunk_size] for i in range(0, len(can_rome_edit_datas), chunk_size)]
 
     # open 8 threads to compute neurons
-    with ThreadPoolExecutor(max_workers=8) as executor:
-        futures = [executor.submit(get_kn_neurons, data_chunk, args.model_path, processor, tokenizer, args.image_path, device_id, hparams, "can_rome_edit")
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        futures = [executor.submit(get_kn_neurons, model, data_chunk, args.model_path, processor, tokenizer, args.image_path, device_id, hparams, "can_rome_edit")
                    for device_id, data_chunk in enumerate(can_rome_edit_data_chunks)]
 
     can_rome_edit_results = []
@@ -165,12 +165,12 @@ if __name__ == '__main__':
         json.dump(results, f, indent=4)
 
     # datas can not be rome edit
-    chunk_size = len(no_rome_edit_datas) // 8
+    chunk_size = len(no_rome_edit_datas) // 1
     no_rome_edit_data_chunks = [no_rome_edit_datas[i:i + chunk_size] for i in range(0, len(no_rome_edit_datas), chunk_size)]
     
     # open 8 threads to compute neurons
-    with ThreadPoolExecutor(max_workers=8) as executor:
-        futures = [executor.submit(get_kn_neurons, data_chunk, args.model_path, processor, tokenizer, args.image_path, device_id, hparams, "no_rome_edit")
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        futures = [executor.submit(get_kn_neurons, model, data_chunk, args.model_path, processor, tokenizer, args.image_path, device_id, hparams, "no_rome_edit")
                    for device_id, data_chunk in enumerate(no_rome_edit_data_chunks)]
     
     no_rome_edit_results = []
