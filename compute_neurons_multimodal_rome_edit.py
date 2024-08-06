@@ -170,7 +170,7 @@ if __name__ == '__main__':
     parser.add_argument('--model_path', type=str, default="../hugging_cache/llava-v1.5-7b-conv")
     parser.add_argument('--image_path', type=str, default="../new_download_images")
     parser.add_argument('--num_chunks', type=int, default=8)
-    parser.add_argument('--device_id', type=int, default=0)
+    parser.add_argument('--chunk_id', type=int, default=0)
     args = parser.parse_args()
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava.yaml')
     can_rome_edit_datas = json.load(open("./rome_results/can_rome_edit_datas.json", 'r'))
@@ -178,13 +178,13 @@ if __name__ == '__main__':
     no_rome_edit_datas = no_rome_edit_datas[:len(can_rome_edit_datas)]
 
     chunk_size = len(can_rome_edit_datas) // args.num_chunks
-    device_id = args.device_id
+    chunk_id = args.chunk_id
     print(f"chunk_size: {chunk_size}")
-    print(f"device_id: {device_id}")
+    print(f"device_id: {chunk_id}")
     # datas can be rome edit
     can_rome_edit_data_chunks = [can_rome_edit_datas[i:i + chunk_size] for i in range(0, len(can_rome_edit_datas), chunk_size)]
-    can_rome_edit_results = get_kn_neurons(can_rome_edit_data_chunks[device_id], args.model_path, args.image_path, hparams, device_id, "can_rome_edit")
+    can_rome_edit_results = get_kn_neurons(can_rome_edit_data_chunks[device_id], args.model_path, args.image_path, hparams, 0, "can_rome_edit")
 
     # datas can not be rome edit
     no_rome_edit_data_chunks = [no_rome_edit_datas[i:i + chunk_size] for i in range(0, len(no_rome_edit_datas), chunk_size)]
-    no_rome_edit_results = get_kn_neurons(no_rome_edit_data_chunks[device_id], args.model_path, args.image_path, hparams, device_id, "no_rome_edit")
+    no_rome_edit_results = get_kn_neurons(no_rome_edit_data_chunks[device_id], args.model_path, args.image_path, hparams, 0, "no_rome_edit")
