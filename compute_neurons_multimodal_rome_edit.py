@@ -183,8 +183,8 @@ if __name__ == '__main__':
     print(f"device_id: {chunk_id}")
     # datas can be rome edit
     can_rome_edit_data_chunks = [can_rome_edit_datas[i:i + chunk_size] for i in range(0, len(can_rome_edit_datas), chunk_size)]
-    can_rome_edit_results = get_kn_neurons(can_rome_edit_data_chunks[device_id], args.model_path, args.image_path, hparams, 0, "can_rome_edit")
+    can_rome_edit_results = get_kn_neurons(can_rome_edit_data_chunks[chunk_id], args.model_path, args.image_path, hparams, 0, "can_rome_edit")
 
     # datas can not be rome edit
     no_rome_edit_data_chunks = [no_rome_edit_datas[i:i + chunk_size] for i in range(0, len(no_rome_edit_datas), chunk_size)]
-    no_rome_edit_results = get_kn_neurons(no_rome_edit_data_chunks[device_id], args.model_path, args.image_path, hparams, 0, "no_rome_edit")
+    no_rome_edit_results = get_kn_neurons(no_rome_edit_data_chunks[chunk_id], args.model_path, args.image_path, hparams, 0, "no_rome_edit")
