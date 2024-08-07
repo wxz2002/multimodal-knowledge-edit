@@ -29,7 +29,7 @@ mom2_dtype: "float32"
 model_parallel: false
 fp16: true
 
-exact_match: false
+exact_match: False
 
 # Output
 results_dir: ./results

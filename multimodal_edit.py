@@ -215,7 +215,7 @@ def train_SERAC_LLAVA_VQA():
 def test_SERAC_LLAVA_VQA():
     hparams = SERACMultimodalHparams.from_hparams('hparams/SERAC/llava.yaml')
     # train_ds = VQADataset('data/vqa_train.json', config=hparams)
-    eval_ds = VQADataset('../our_dataset/final_image_rephrase_test.json',size=20,config=hparams,only_text=False)
+    eval_ds = VQADataset('../our_dataset/final_image_rephrase_test.json',config=hparams,only_text=False)
     trainer = MultimodalTrainer(
         config=hparams,
         train_set=eval_ds,
@@ -385,13 +385,14 @@ def test_ROME_LLAVA_VQA():
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava.yaml')
     editor = MultimodalEditor.from_hparams(hparams)
     train_ds = VQADataset('../our_dataset/rephrase_train.json', config=hparams, only_text=True)
-    eval_ds = VQADataset('../our_dataset/final_image_rephrase_test.json', config=hparams, only_text=False)
+    eval_ds = VQADataset('../our_dataset/final_image_rephrase_test.json',size=20, config=hparams, only_text=False)
     metrics = editor.edit_dataset(
         ds=eval_ds,
         train_ds=train_ds,
         keep_original_weight=True        
     )
-    write_metrics(metrics, 'results/ROME/llava_no_exact_match.json', 'post')
+    write_metrics(metrics, 'results/ROME/pre_llava_no_exact_match.json', 'pre')
+    write_metrics(metrics, 'results/ROME/post_llava_no_exact_match.json', 'post')
     print_result(metrics)
     
 if __name__ == "__main__":
@@ -402,7 +403,7 @@ if __name__ == "__main__":
 
     # test_ROME_Blip2OPT_VQA()
     # test_ROME_MiniGPT4_VQA()
-    test_ROME_LLAVA_VQA()
+    # test_ROME_LLAVA_VQA()
 
     # test_FT_Blip2OPT_VQA()
     # test_FT_MiniGPT4_VQA()
@@ -425,4 +426,4 @@ if __name__ == "__main__":
     # train_SERAC_MiniGPT4_VQA()
     # test_SERAC_MiniGPT4_VQA()
     # train_SERAC_LLAVA_VQA()
-    # test_SERAC_LLAVA_VQA()
+    test_SERAC_LLAVA_VQA()

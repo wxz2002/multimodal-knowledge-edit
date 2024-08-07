@@ -33,7 +33,7 @@ fp16: true
 results_dir: ./results
 
 # Multimodal
-exact_match: false
+exact_match: False
 qformer_checkpoint: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/blip2_pretrained_flant5xxl.pth
 qformer_name_or_path: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/bert-base-uncased
 state_dict_file: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/eva_vit_g.pth

@@ -255,8 +255,8 @@ class MultimodalEditor:
             elif self.model_name == "minigpt4":
                 language_model = self.model.llama_model
             elif self.model_name == "llava":
-                from transformers import LlamaConfig
-                language_model = LlamaForCausalLM(LlamaConfig.from_pretrained(self.hparams.name))
+                from transformers import LlamaConfig, LlavaConfig
+                language_model = LlamaForCausalLM(LlavaConfig.from_pretrained(self.hparams.language_model_name).text_config)
                 language_model.model.embed_tokens = self.model.model.embed_tokens
                 language_model.model.layers = self.model.model.layers
                 language_model.model.norm = self.model.model.norm

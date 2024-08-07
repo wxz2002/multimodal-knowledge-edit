@@ -532,7 +532,7 @@ def prepare_multimodal_edit_demo(hparams,
                             target,
                             prompts,
                             image):
-    prompt_template = "Question: {} Short answer: " 
+    prompt_template = "User: {} Answer Directly.\nASSISTANT:" 
     if isinstance(target, str):
         target = [target,]
     if isinstance(prompts, str):
@@ -659,6 +659,11 @@ def compute_multimodal_edit_results(
     
     ret['subject'] = record['subject']
     ret['original_question'] = question
+
+    text_edit_inner = prepare_multimodal_edit_demo(hparams, tok, answer, record['original_question'], None)
+    ret['text_inner_acc'], text_pred_ids, text_targ = compute_multimodal_edit_quality(model, text_edit_inner, hparams.exact_match, return_targ=True)
+    ret['text_pred'] = tok.decode(text_pred_ids[0], skip_special_tokens=True)
+    ret['text_answer'] = tok.decode(text_targ[0], skip_special_tokens=True)
 
     edit_inner = prepare_multimodal_edit_demo(hparams, tok, answer, question, image)
     ret['inner_acc'], pred_ids, targ = compute_multimodal_edit_quality(model, edit_inner, hparams.exact_match, return_targ=True)

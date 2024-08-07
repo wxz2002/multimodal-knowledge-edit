@@ -74,7 +74,7 @@ grad_clip: 100.
 results_dir: ./results
 
 # Multimodal
-exact_match: True
+exact_match: False
 qformer_checkpoint: null
 qformer_name_or_path: null
 state_dict_file: null

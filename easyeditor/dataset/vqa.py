@@ -193,7 +193,10 @@ class VQADataset(BaseDataset):
         # knowledge_edit_without_image
         knowledge_edit_without_image = {}
         knowledge_edit_without_image['image'] = None
-        knowledge_edit_without_image['text_input'] = [self.prompt.format(q) + a for q, a in zip(original_question, answer)]
+        if self.config.alg_name == "MEND" :
+            knowledge_edit_without_image['text_input'] = [self.prompt.format(q) + a for q, a in zip(question, answer)]
+        else :
+            knowledge_edit_without_image['text_input'] = [self.prompt.format(q) + a for q, a in zip(original_question, answer)]
         knowledge_edit_without_image['prompts_len'] = [len(self.tok.encode(self.prompt.format(q), add_special_tokens=False)) for q in question]
         knowledge_edit_without_image['labels'] = self.tok(answer, add_special_tokens=False, return_tensors="pt",)["input_ids"]
 
