@@ -68,7 +68,7 @@ accumulate_bs: 2
 val_steps: 500 # only for debug
 opt: Adam
 grad_clip: 100.
-exact_match: True
+exact_match: False
 # Output
 results_dir: ./results
 

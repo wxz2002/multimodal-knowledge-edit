@@ -21,7 +21,7 @@ from transformers import LlavaProcessor
 from copy import deepcopy
 
 class VQADataset(BaseDataset):
-    def __init__(self, data_dir: str, size:  typing.Optional[int] = None, config=None, only_text=True, *args, **kwargs):
+    def __init__(self, data_dir: str, size:  typing.Optional[int] = None, config=None, only_text=True, annotation=None, *args, **kwargs):
         """
         vis_root (string): Root directory of images (e.g. coco/images/)
         ann_root (string): directory to store the annotation file
@@ -61,8 +61,12 @@ class VQADataset(BaseDataset):
         self.prompt = "Question: {} Short answer: "     
         
         data = []
-        if size is not None:
-            self.annotation = self.annotation[:size] 
+        if annotation is None:
+            if size is not None:
+                self.annotation = self.annotation[:size] 
+        else :
+            self.annotation = annotation
+            
         for i, record in tqdm(enumerate(self.annotation), total=len(self.annotation), desc="Processing annotations"):
             
             if record['knowledge_edit']['answer_new'] == "":

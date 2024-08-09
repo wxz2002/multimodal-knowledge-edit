@@ -12,7 +12,7 @@ results_dir: "./results"
 k: 32
 
 # Multimodal
-exact_match: True
+exact_match: False
 task_name: "vqa"
 qformer_checkpoint: null
 qformer_name_or_path: null
