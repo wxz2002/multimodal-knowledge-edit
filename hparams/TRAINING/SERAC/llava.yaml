@@ -1,6 +1,6 @@
 # Model
 device: 0
-
+alg_name: "SERAC_MULTI"
 name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/llava-v1.5-7b
 model_name: llava
 model_class: LLAVA

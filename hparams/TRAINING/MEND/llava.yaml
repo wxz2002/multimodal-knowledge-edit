@@ -1,6 +1,6 @@
 # Model
 device: 0
-
+alg_name: "MEND"
 name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/llava-v1.5-7b
 model_name: llava
 model_class: LLAVA
@@ -47,7 +47,7 @@ batch_size: 1
 model_save_pt: 5000
 silent: False
 #max_epochs: 1
-max_iters: 50000
+max_iters: 30000
 log_interval: 100
 eval_log_interval: 1000
 final_eval: True

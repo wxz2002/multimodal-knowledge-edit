@@ -567,6 +567,7 @@ class KnowledgeNeurons:
                         baseline_outputs.logits[:, mask_idx, :].argmax(dim=-1).item()
                     )
                     next_token_str = self.tokenizer.decode(argmax_next_token)
+                    next_token_str = self.tokenizer.decode(target_label[i])
 
                 # Now we want to gradually change the intermediate activations of our layer from 0 -> their original value
                 # and calculate the integrated gradient of the masked position at each step

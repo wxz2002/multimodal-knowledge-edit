@@ -30,6 +30,7 @@ class SERACMultimodalTrainingHparams(HyperParams):
 
     # Method
     alg: str
+    alg_name: str
     lr: float
     edit_lr: float
     seed: int

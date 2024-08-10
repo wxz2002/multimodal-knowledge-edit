@@ -1,6 +1,6 @@
 # Model
 device: 0
-
+alg_name: "MEND"
 name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/vicuna-7b
 model_name: minigpt4
 model_class: Blip2OPT

@@ -27,6 +27,7 @@ class MENDMultimodalTrainingHparams(HyperParams):
 
     # Method
     alg: str
+    alg_name: str
     lr: float
     edit_lr: float
     lr_lr: float

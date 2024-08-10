@@ -1,6 +1,6 @@
 # Model
 device: 0
-
+alg_name: "SERAC_MULTI"
 name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/vicuna-7b
 model_name: minigpt4
 model_class: Blip2OPT
@@ -49,7 +49,7 @@ model_save_pt: 5000
 edit_bs: 1
 silent: False
 #max_epochs: 1
-max_iters: 20000
+max_iters: 30000
 log_interval: 200
 val_interval: 5000
 early_stop_patience: 30000

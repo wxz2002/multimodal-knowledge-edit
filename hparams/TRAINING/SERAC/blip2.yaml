@@ -1,6 +1,6 @@
 # Model
 device: 0
-
+alg_name: "SERAC_MULTI"
 name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/opt-2.7b
 model_name: blip2
 model_class: Blip2OPT
@@ -50,7 +50,7 @@ model_save_pt: 2000
 edit_bs: 1
 silent: False
 #max_epochs: 1
-max_iters: 50000
+max_iters: 30000
 log_interval: 200
 val_interval: 2000
 early_stop_patience: 10000

@@ -410,12 +410,12 @@ if __name__ == "__main__":
     # test_FT_LLAVA_VQA()
 
     # Generate_Embedding_for_IKE()
-    test_IKE_Blip2OPT_VQA()
+    # test_IKE_Blip2OPT_VQA()
     # test_IKE_MiniGPT4_VQA()
     # test_IKE_LLAVA_VQA()
 
     # train_MEND_Blip2OPT_VQA()
-    # test_MEND_Blip2OPT_VQA()
+    test_MEND_Blip2OPT_VQA()
     # train_MEND_MiniGPT4_VQA()
     # test_MEND_MiniGPT4_VQA()
     # train_MEND_LLAVA_VQA()
