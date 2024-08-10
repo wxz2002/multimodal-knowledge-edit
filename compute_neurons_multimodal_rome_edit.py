@@ -44,9 +44,9 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
         # for i, hop in enumerate(data['multimodal_hops']):
         #     if hop['image'] is not None:
         #         image = Image.open(os.path.join(image_path, hop['image']))
-        #         single_hop_prompt = '<image> Qustion:{} Answer:'.format(hop['question'])
+        #         single_hop_prompt = '<image> Question: {} Short Answer: '.format(hop['question'])
         #     else:
-        #         single_hop_prompt = 'Qustion:{} Answer:'.format(hop['question'])
+        #         single_hop_prompt = 'Question: {} Short Answer: '.format(hop['question'])
         #         image = None
 
         #     if i == 0:
@@ -56,7 +56,7 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
         #         before_edit_b_to_c_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
         #                                                            batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
 
-        # multi_hop_prompt = '<image> Qustion:{} Answer:'.format(data['knowledge_edit']['image_question'])
+        # multi_hop_prompt = '<image> Question: {} Short Answer: '.format(data['knowledge_edit']['image_question'])
         # multi_image = Image.open(os.path.join(image_path, data['image']))
         # before_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
         #                                                    batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
@@ -83,9 +83,9 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
         for i, hop in enumerate(data['multimodal_hops']):
             if hop['image'] is not None:
                 image = Image.open(os.path.join(image_path, hop['image']))
-                single_hop_prompt = '<image> Qustion:{} Answer:'.format(hop['question'])
+                single_hop_prompt = '<image> Question: {} Short Answer: '.format(hop['question'])
             else:
-                single_hop_prompt = 'Qustion:{} Answer:'.format(hop['question'])
+                single_hop_prompt = 'Question: {} Short Answer: '.format(hop['question'])
                 hop['answer'] = data['knowledge_edit']['answer_new']
                 image = None
 
@@ -96,7 +96,7 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
                 after_edit_b_to_c_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
                                                                   batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
 
-        multi_hop_prompt = '<image> Qustion:{} Answer:'.format(data['knowledge_edit']['image_question'])
+        multi_hop_prompt = '<image> Question: {} Short Answer: '.format(data['knowledge_edit']['image_question'])
         multi_image = Image.open(os.path.join(image_path, data['image']))
         after_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
                                                           batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
@@ -106,42 +106,42 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
         del edited_language_model
 
         # compare neurons
-        before_single_hop_neurons = before_edit_a_to_b_neurons + before_edit_b_to_c_neurons
-        before_multi_hop_neurons = before_edit_a_to_c_neurons
-        before_shared_neurons = []
-        for before_single_hop_neuron in before_single_hop_neurons:
-            if before_single_hop_neuron in before_multi_hop_neurons:
-                before_shared_neurons.append(before_single_hop_neuron)
+        # before_single_hop_neurons = before_edit_a_to_b_neurons + before_edit_b_to_c_neurons
+        # before_multi_hop_neurons = before_edit_a_to_c_neurons
+        # before_shared_neurons = []
+        # for before_single_hop_neuron in before_single_hop_neurons:
+        #     if before_single_hop_neuron in before_multi_hop_neurons:
+        #         before_shared_neurons.append(before_single_hop_neuron)
 
-        a_to_b_shared_neurons = []
-        for before_edit_a_to_b_neuron in before_edit_a_to_b_neurons:
-            if before_edit_a_to_b_neuron in after_edit_a_to_b_neurons:
-                a_to_b_shared_neurons.append(before_edit_a_to_b_neuron)
-        b_to_c_shared_neurons = []
-        for before_edit_b_to_c_neuron in before_edit_b_to_c_neurons:
-            if before_edit_b_to_c_neuron in after_edit_b_to_c_neurons:
-                b_to_c_shared_neurons.append(before_edit_b_to_c_neuron)
-        a_to_c_shared_neurons = []
-        for before_edit_a_to_c_neuron in before_edit_a_to_c_neurons:
-            if before_edit_a_to_c_neuron in after_edit_a_to_c_neurons:
-                a_to_c_shared_neurons.append(before_edit_a_to_c_neuron)
+        # a_to_b_shared_neurons = []
+        # for before_edit_a_to_b_neuron in before_edit_a_to_b_neurons:
+        #     if before_edit_a_to_b_neuron in after_edit_a_to_b_neurons:
+        #         a_to_b_shared_neurons.append(before_edit_a_to_b_neuron)
+        # b_to_c_shared_neurons = []
+        # for before_edit_b_to_c_neuron in before_edit_b_to_c_neurons:
+        #     if before_edit_b_to_c_neuron in after_edit_b_to_c_neurons:
+        #         b_to_c_shared_neurons.append(before_edit_b_to_c_neuron)
+        # a_to_c_shared_neurons = []
+        # for before_edit_a_to_c_neuron in before_edit_a_to_c_neurons:
+        #     if before_edit_a_to_c_neuron in after_edit_a_to_c_neurons:
+        #         a_to_c_shared_neurons.append(before_edit_a_to_c_neuron)
 
         result = {
             "subject": data['subject'],
             "knowledge_edit": data['knowledge_edit'],
             "multimodal_hops": data['multimodal_hops'],
-            'before_single_hop_neurons': before_single_hop_neurons,
-            'before_multi_hop_neurons': before_multi_hop_neurons,
-            'before_shared_neurons': before_shared_neurons,
-            "before_edit_a_to_b_neurons": before_edit_a_to_b_neurons,
+            # 'before_single_hop_neurons': before_single_hop_neurons,
+            # 'before_multi_hop_neurons': before_multi_hop_neurons,
+            # 'before_shared_neurons': before_shared_neurons,
+            # "before_edit_a_to_b_neurons": before_edit_a_to_b_neurons,
             "after_edit_a_to_b_neurons": after_edit_a_to_b_neurons,
-            "a_to_b_shared_neurons": a_to_b_shared_neurons,
-            "before_edit_b_to_c_neurons": before_edit_b_to_c_neurons,
+            # "a_to_b_shared_neurons": a_to_b_shared_neurons,
+            # "before_edit_b_to_c_neurons": before_edit_b_to_c_neurons,
             "after_edit_b_to_c_neurons": after_edit_b_to_c_neurons,
-            "b_to_c_shared_neurons": b_to_c_shared_neurons,
-            "before_edit_a_to_c_neurons": before_edit_a_to_c_neurons,
+            # "b_to_c_shared_neurons": b_to_c_shared_neurons,
+            # "before_edit_a_to_c_neurons": before_edit_a_to_c_neurons,
             "after_edit_a_to_c_neurons": after_edit_a_to_c_neurons,
-            "a_to_c_shared_neurons": a_to_c_shared_neurons
+            # "a_to_c_shared_neurons": a_to_c_shared_neurons
         }
         results.append(result)
         result_json = json.dumps(result)

@@ -532,7 +532,7 @@ def prepare_multimodal_edit_demo(hparams,
                             target,
                             prompts,
                             image):
-    prompt_template = "User: {} Answer Directly.\nASSISTANT:" 
+    prompt_template = "Question: {} Short Answer: " 
     if isinstance(target, str):
         target = [target,]
     if isinstance(prompts, str):
