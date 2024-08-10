@@ -31,7 +31,7 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
     hparams.device = device_id
     processor = LlavaProcessor.from_pretrained(model_path)
     tokenizer = processor.tokenizer
-    model = LlavaForConditionalGeneration.from_pretrained(model_path, torch_dtype=torch.float16).to(device)
+    model = LlavaForConditionalGeneration.from_pretrained(model_path, torch_dtype=torch.float16)
     language_model = model.language_model
     results = []
 
@@ -39,29 +39,29 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
         if data['subject'] in subjects:
             continue
         # before edit
-        model = model.to(device)
-        kn = KnowledgeNeurons(model, tokenizer, model_type='llava', device=device, processor=processor)
-        for i, hop in enumerate(data['multimodal_hops']):
-            if hop['image'] is not None:
-                image = Image.open(os.path.join(image_path, hop['image']))
-                single_hop_prompt = '<image> Qustion:{} Answer:'.format(hop['question'])
-            else:
-                single_hop_prompt = 'Qustion:{} Answer:'.format(hop['question'])
-                image = None
+        # model = model.to(device)
+        # kn = KnowledgeNeurons(model, tokenizer, model_type='llava', device=device, processor=processor)
+        # for i, hop in enumerate(data['multimodal_hops']):
+        #     if hop['image'] is not None:
+        #         image = Image.open(os.path.join(image_path, hop['image']))
+        #         single_hop_prompt = '<image> Qustion:{} Answer:'.format(hop['question'])
+        #     else:
+        #         single_hop_prompt = 'Qustion:{} Answer:'.format(hop['question'])
+        #         image = None
 
-            if i == 0:
-                before_edit_a_to_b_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                                   batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
-            else:
-                before_edit_b_to_c_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
-                                                                   batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
+        #     if i == 0:
+        #         before_edit_a_to_b_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
+        #                                                            batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
+        #     else:
+        #         before_edit_b_to_c_neurons = kn.get_coarse_neurons(prompt=single_hop_prompt, ground_truth=hop['answer'],
+        #                                                            batch_size=1, steps=20, adaptive_threshold=0.15, image=image)
 
-        multi_hop_prompt = '<image> Qustion:{} Answer:'.format(data['knowledge_edit']['image_question'])
-        multi_image = Image.open(os.path.join(image_path, data['image']))
-        before_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
-                                                           batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
+        # multi_hop_prompt = '<image> Qustion:{} Answer:'.format(data['knowledge_edit']['image_question'])
+        # multi_image = Image.open(os.path.join(image_path, data['image']))
+        # before_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
+        #                                                    batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
 
-        del kn
+        # del kn
 
         # knowledge edit
         model = model.to('cpu')
