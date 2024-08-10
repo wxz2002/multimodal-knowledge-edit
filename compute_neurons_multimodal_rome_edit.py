@@ -174,6 +174,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava.yaml')
     can_rome_edit_datas = json.load(open("./rome_results/can_rome_edit_datas.json", 'r'))
+    can_rome_edit_datas = can_rome_edit_datas[:40]
     no_rome_edit_datas = json.load(open("./rome_results/no_rome_edit_datas.json", 'r'))
     no_rome_edit_datas = no_rome_edit_datas[:len(can_rome_edit_datas)]
 
