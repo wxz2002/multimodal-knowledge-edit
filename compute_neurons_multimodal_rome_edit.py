@@ -98,7 +98,7 @@ def get_kn_neurons(data_chunk, model_path, image_path, hparams, device_id, mode)
 
         multi_hop_prompt = '<image> Question: {} Short Answer: '.format(data['knowledge_edit']['image_question'])
         multi_image = Image.open(os.path.join(image_path, data['image']))
-        after_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_true'],
+        after_edit_a_to_c_neurons = kn.get_coarse_neurons(prompt=multi_hop_prompt, ground_truth=data['knowledge_edit']['answer_new'],
                                                           batch_size=1, steps=20, adaptive_threshold=0.15, image=multi_image)
 
         del kn
