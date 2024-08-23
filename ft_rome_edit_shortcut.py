@@ -52,10 +52,10 @@ def prepare_data_for_rome(request):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset_path', type=str, default="../our_dataset/final_image_rephrase_test_multimodal_hops.json")
+    parser.add_argument('--dataset_path', type=str, default="./rome_results/no_rome_edit_datas.json")
     parser.add_argument('--model_path', type=str, default="../hugging_cache/llava-v1.5-7b-conv")
     parser.add_argument('--image_path', type=str, default="../new_download_images")
-    parser.add_argument('--data_size', type=int, default=20)
+    parser.add_argument('--data_size', type=int, default=80)
     parser.add_argument('--num_chunks', type=int, default=8)
     parser.add_argument('--chunk_id', type=int, default=0)
     args = parser.parse_args()
