@@ -120,8 +120,8 @@ class LlavaLlamaForCausalLM(LlamaForCausalLM, LlavaMetaForCausalLM):
             return_dict=True
         )
 
-        if torch.isnan(outputs.logits).any():
-            print("LLaVA logits has nan!!!!!!!!!!!!!!!")
+        # if torch.isnan(outputs.logits).any():
+        #     print("LLaVA logits has nan!!!!!!!!!!!!!!!")
 
         return LLaVAOutput(
             loss=outputs.loss,

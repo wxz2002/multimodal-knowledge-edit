@@ -338,7 +338,8 @@ def compute_icl_multimodal_edit_quality(
     :return: Dictionary containing rewriting metrics
     """
     # First, unpack rewrite evaluation record.
-    original_question = record["original_question"]
+    # original_question = record["original_question"]
+    original_question = record["question"]
     question = record["question"]
     answer = record["answer"]
     pred = record["pred"]
@@ -353,12 +354,19 @@ def compute_icl_multimodal_edit_quality(
     locality_answer = record["locality_answer"] if 'locality_answer' in record.keys() else None
     image_locality_answer = record["image_locality_answer"] if 'image_locality_answer' in record.keys() else None
     image_locality_question = record["image_locality_question"] if 'image_locality_question' in record.keys() else None
-    image = record["image"] if record["image"].is_cuda else record["image"].to(hparams.device)
-    image_rephrase = record["image_rephrase"] if record["image_rephrase"].is_cuda else record["image_rephrase"].to(hparams.device)
-    same_entity_image = record["same_entity_image"] if record["same_entity_image"].is_cuda else record["same_entity_image"].to(hparams.device)
-    diff_entity_image = record["diff_entity_image"] if record["diff_entity_image"].is_cuda else record["diff_entity_image"].to(hparams.device)
-    locality_image = record["locality_image"] if record["locality_image"].is_cuda else record["locality_image"].to(hparams.device)
-    
+    if record["image"] is not None:
+        image = record["image"] if record["image"].is_cuda else record["image"].to(hparams.device)
+        image_rephrase = record["image_rephrase"] if record["image_rephrase"].is_cuda else record["image_rephrase"].to(hparams.device)
+        same_entity_image = record["same_entity_image"] if record["same_entity_image"].is_cuda else record["same_entity_image"].to(hparams.device)
+        diff_entity_image = record["diff_entity_image"] if record["diff_entity_image"].is_cuda else record["diff_entity_image"].to(hparams.device)
+        locality_image = record["locality_image"] if record["locality_image"].is_cuda else record["locality_image"].to(hparams.device)
+    else :
+        image = record["image"]
+        image_rephrase = record["image_rephrase"]
+        same_entity_image = record["same_entity_image"]
+        diff_entity_image = record["diff_entity_image"]
+        locality_image = record["locality_image"]
+
     new_fact = f'New Fact: {original_question} {answer}\nPrompt: {question}'
 
     if pre_edit:
@@ -651,14 +659,21 @@ def compute_multimodal_edit_results(
     locality_answer = record["locality_answer"] if 'locality_answer' in record.keys() else None
     image_locality_answer = record["image_locality_answer"] if 'image_locality_answer' in record.keys() else None
     image_locality_question = record["image_locality_question"] if 'image_locality_question' in record.keys() else None
-    image = record["image"] if record["image"].is_cuda else record["image"].to(hparams.device)
-    image_rephrase = record["image_rephrase"] if record["image_rephrase"].is_cuda else record["image_rephrase"].to(hparams.device)
-    same_entity_image = record["same_entity_image"] if record["same_entity_image"].is_cuda else record["same_entity_image"].to(hparams.device)
-    diff_entity_image = record["diff_entity_image"] if record["diff_entity_image"].is_cuda else record["diff_entity_image"].to(hparams.device)
-    locality_image = record["locality_image"] if record["locality_image"].is_cuda else record["locality_image"].to(hparams.device)
-    
+    if record["image"] is not None:
+        image = record["image"] if record["image"].is_cuda else record["image"].to(hparams.device)
+        image_rephrase = record["image_rephrase"] if record["image_rephrase"].is_cuda else record["image_rephrase"].to(hparams.device)
+        same_entity_image = record["same_entity_image"] if record["same_entity_image"].is_cuda else record["same_entity_image"].to(hparams.device)
+        diff_entity_image = record["diff_entity_image"] if record["diff_entity_image"].is_cuda else record["diff_entity_image"].to(hparams.device)
+        locality_image = record["locality_image"] if record["locality_image"].is_cuda else record["locality_image"].to(hparams.device)
+    else:
+        image = record["image"]
+        image_rephrase = record["image_rephrase"]
+        same_entity_image = record["same_entity_image"]
+        diff_entity_image = record["diff_entity_image"]
+        locality_image = record["locality_image"]
+        
     ret['subject'] = record['subject']
-    ret['original_question'] = question
+    ret['original_question'] = record['original_question']
 
     text_edit_inner = prepare_multimodal_edit_demo(hparams, tok, answer, record['original_question'], None)
     ret['text_inner_acc'], text_pred_ids, text_targ = compute_multimodal_edit_quality(model, text_edit_inner, hparams.exact_match, return_targ=True)
@@ -667,8 +682,6 @@ def compute_multimodal_edit_results(
 
     edit_inner = prepare_multimodal_edit_demo(hparams, tok, answer, question, image)
     ret['inner_acc'], pred_ids, targ = compute_multimodal_edit_quality(model, edit_inner, hparams.exact_match, return_targ=True)
-    # ret['pred_ids'] = pred_ids
-    # ret['target'] = targ
     ret['pred'] = tok.decode(pred_ids[0], skip_special_tokens=True)
     ret['answer'] = tok.decode(targ[0], skip_special_tokens=True)
 
@@ -714,7 +727,9 @@ def compute_multimodal_edit_results(
         _, _, ret['image_locality_output'] = compute_multimodal_edit_quality_demo(model, image_locality_input)
 
     # Form a list of lists of prefixes to test.
-    del edit_inner, rephrase_input, one_hop_input, image_input, image_rephrase_input, image_one_hop_input, same_entity_input, same_entity_original_answer_input, diff_entity_input, diff_entity_original_answer_input, locality_input, image_locality_input
+    if record['image'] is not None:
+        del image_input, image_rephrase_input, image_one_hop_input
+    del edit_inner, rephrase_input, one_hop_input, same_entity_input, same_entity_original_answer_input, diff_entity_input, diff_entity_original_answer_input, locality_input, image_locality_input
     return ret
   
 def compute_multimodal_edit_results_demo(

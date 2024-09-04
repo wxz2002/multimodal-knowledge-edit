@@ -21,7 +21,7 @@ from transformers import LlavaProcessor
 from copy import deepcopy
 
 class VQADataset(BaseDataset):
-    def __init__(self, data_dir: str, size:  typing.Optional[int] = None, config=None, only_text=True, annotation=None, *args, **kwargs):
+    def __init__(self, data_dir: str, size:  typing.Optional[int] = None, config=None, only_text=True, annotation=None, test_unimodal=False, *args, **kwargs):
         """
         vis_root (string): Root directory of images (e.g. coco/images/)
         ann_root (string): directory to store the annotation file
@@ -54,6 +54,7 @@ class VQADataset(BaseDataset):
         self.tok = tokenizer
         self.max_length = 32
         self.only_text = only_text
+        self.test_unimodal = test_unimodal
 
         # if self.config.model_class == "LLAVA" and self.only_text==False:
         #     self.prompt = "Question: <image> {} Short answer: "
@@ -72,7 +73,7 @@ class VQADataset(BaseDataset):
             if record['knowledge_edit']['answer_new'] == "":
                 continue
             
-            if not self.only_text:  
+            if not self.only_text and not self.test_unimodal:  
                 image_path = os.path.join(self.rephrase_root, record['image'])
                 rephrase_image_path = os.path.join(self.rephrase_root, record['image_rephrase'])
                 same_entity_image_path = os.path.join(self.rephrase_root, record['same_entity_image'])
@@ -109,35 +110,66 @@ class VQADataset(BaseDataset):
                 locality_image = None
             
             if not self.only_text:
-                item = {
-                    'subject': record['subject'],
-                    'original_question': record['knowledge_edit']['question'],
-                    'question': record['knowledge_edit']['image_question'],
-                    'answer': record['knowledge_edit']['answer_new'],
-                    'pred': record['knowledge_edit']['answer_true'],
-                    'rephrase_question': record['rephrase_question']['rephrase_image_question'],
-                    'one_hop_question': record['one_hop_question']['one_hop_image_question'],
-                    'one_hop_answer': record['one_hop_question']['answer_new'],
-                    'same_entity_question': record['same_type_entity_question']['image_question'],
-                    'same_entity_answer': record['same_type_entity_question']['answer'],
-                    'diff_entity_question': record['diff_type_entity_question']['image_question'],
-                    'diff_entity_answer': record['diff_type_entity_question']['answer'],
-                    'locality_question': record['locality_question']['question'],
-                    'locality_answer': record['locality_question']['answer'],
-                    'image_locality_question': record['image_locality_question']['question'],
-                    'image_locality_answer': record['image_locality_question']['answer'],
-                    'image': image,
-                    'image_rephrase': rephrase_image,
-                    'same_entity_image': same_entity_image,
-                    'diff_entity_image': diff_entity_image,
-                    'locality_image': locality_image,
+                if self.test_unimodal:
+                    item = {
+                        'subject': record['subject'],
+                        'original_question': record['knowledge_edit']['question'],
+                        'question': record['knowledge_edit']['question'],
+                        'answer': record['knowledge_edit']['answer_new'],
+                        'pred': record['knowledge_edit']['answer_true'],
+                        'rephrase_question': record['rephrase_question']['rephrase_question'],
+                        'one_hop_question': record['one_hop_question']['one_hop_question'],
+                        'one_hop_answer': record['one_hop_question']['answer_new'],
+                        'same_entity_question': record['same_type_entity_question']['question'],
+                        'same_entity_answer': record['same_type_entity_question']['answer'],
+                        'diff_entity_question': record['diff_type_entity_question']['question'],
+                        'diff_entity_answer': record['diff_type_entity_question']['answer'],
+                        'locality_question': record['locality_question']['question'],
+                        'locality_answer': record['locality_question']['answer'],
+                        'image_locality_question': record['image_locality_question']['question'],
+                        'image_locality_answer': record['image_locality_question']['answer'],
+                        'image': image,
+                        'image_rephrase': rephrase_image,
+                        'same_entity_image': same_entity_image,
+                        'diff_entity_image': diff_entity_image,
+                        'locality_image': locality_image,
 
-                    'cond': "{} >> {} || {}".format(
-                        record['knowledge_edit']['answer_true'],
-                        record['knowledge_edit']['answer_new'],
-                        record['knowledge_edit']['question']
-                    )
-                }
+                        'cond': "{} >> {} || {}".format(
+                            record['knowledge_edit']['answer_true'],
+                            record['knowledge_edit']['answer_new'],
+                            record['knowledge_edit']['question']
+                        )
+                    }
+                else:                    
+                    item = {
+                        'subject': record['subject'],
+                        'original_question': record['knowledge_edit']['question'],
+                        'question': record['knowledge_edit']['image_question'],
+                        'answer': record['knowledge_edit']['answer_new'],
+                        'pred': record['knowledge_edit']['answer_true'],
+                        'rephrase_question': record['rephrase_question']['rephrase_image_question'],
+                        'one_hop_question': record['one_hop_question']['one_hop_image_question'],
+                        'one_hop_answer': record['one_hop_question']['answer_new'],
+                        'same_entity_question': record['same_type_entity_question']['image_question'],
+                        'same_entity_answer': record['same_type_entity_question']['answer'],
+                        'diff_entity_question': record['diff_type_entity_question']['image_question'],
+                        'diff_entity_answer': record['diff_type_entity_question']['answer'],
+                        'locality_question': record['locality_question']['question'],
+                        'locality_answer': record['locality_question']['answer'],
+                        'image_locality_question': record['image_locality_question']['question'],
+                        'image_locality_answer': record['image_locality_question']['answer'],
+                        'image': image,
+                        'image_rephrase': rephrase_image,
+                        'same_entity_image': same_entity_image,
+                        'diff_entity_image': diff_entity_image,
+                        'locality_image': locality_image,
+
+                        'cond': "{} >> {} || {}".format(
+                            record['knowledge_edit']['answer_true'],
+                            record['knowledge_edit']['answer_new'],
+                            record['knowledge_edit']['question']
+                        )
+                    }
             else:
                 item = {
                     'subject': record['subject'],
@@ -197,10 +229,7 @@ class VQADataset(BaseDataset):
         # knowledge_edit_without_image
         knowledge_edit_without_image = {}
         knowledge_edit_without_image['image'] = None
-        if self.config.alg_name == "MEND" :
-            knowledge_edit_without_image['text_input'] = [self.prompt.format(q) + a for q, a in zip(question, answer)]
-        else :
-            knowledge_edit_without_image['text_input'] = [self.prompt.format(q) + a for q, a in zip(original_question, answer)]
+        knowledge_edit_without_image['text_input'] = [self.prompt.format(q) + a for q, a in zip(original_question, answer)]
         knowledge_edit_without_image['prompts_len'] = [len(self.tok.encode(self.prompt.format(q), add_special_tokens=False)) for q in question]
         knowledge_edit_without_image['labels'] = self.tok(answer, add_special_tokens=False, return_tensors="pt",)["input_ids"]
 
@@ -319,67 +348,6 @@ class VQADataset(BaseDataset):
             edit_diff_type_entity_question_original_answer['prompts_len'] = [len(self.tok.encode(self.prompt.format(q), add_special_tokens=False)) for q in diff_entity_question]
             edit_diff_type_entity_question_original_answer['labels'] = self.tok(answer, add_special_tokens=False, return_tensors="pt",)["input_ids"]
         
-        # # edit_inner_without_image
-        # edit_inner_without_image = {}
-        # edit_inner_without_image['image'] = None
-        # edit_inner_without_image['text_input'] = [self.prompt.format(s) + t for s, t in zip(src, trg)]
-        # edit_inner_without_image['prompts_len'] = [len(self.tok.encode(self.prompt.format(s), add_special_tokens=False)) for s in src]
-        # edit_inner_without_image['labels'] = self.tok(trg, add_special_tokens=False, return_tensors="pt",)["input_ids"]
-
-        
-        # # edit_inner
-        # edit_inner = {}
-        # if not self.only_text   :
-        #     edit_inner['image'] = torch.stack(image, dim=0)
-        # else :
-        #     edit_inner['image'] = None
-        # edit_inner['text_input'] = [self.prompt.format(s) + t for s, t in zip(src, trg)]
-        # edit_inner['labels'] = trg
-        # edit_inner['prompts_len'] = [len(self.tok.encode(self.prompt.format(s), add_special_tokens=False)) for s in src]
-        # edit_inner['labels'] = self.tok(trg, add_special_tokens=False, return_tensors="pt",)["input_ids"]
-        
-        # # edit_outer
-        # edit_outer = {}
-        # if not self.only_text:
-        #     edit_outer['image'] = torch.stack(image, dim=0)
-        # else :
-        #     edit_outer['image'] = None
-        # edit_outer['text_input'] = [self.prompt.format(r) + t for r, t in zip(rephrase, trg)]
-        # edit_outer['labels'] = trg
-        # edit_outer['prompts_len'] = [len(self.tok.encode(self.prompt.format(r), add_special_tokens=False)) for r in rephrase]
-        # edit_outer['labels'] = self.tok(trg, add_special_tokens=False, return_tensors="pt",)["input_ids"]
-
-            
-        # # edit_outer_image
-        # edit_outer_image = {}
-        # if not self.only_text:
-        #     edit_outer_image['image'] = torch.stack(image_rephrase, dim=0)
-        # else :
-        #     edit_outer_image['image'] = None
-        # edit_outer_image['text_input'] = [self.prompt.format(s) + t for s, t in zip(src, trg)]
-        # edit_outer_image['labels'] = trg
-        # edit_outer_image['prompts_len'] = [len(self.tok.encode(self.prompt.format(s), add_special_tokens=False)) for s in src]
-        # edit_outer_image['labels'] = self.tok(trg, add_special_tokens=False, return_tensors="pt",)["input_ids"]
-    
-        # # loc
-        # loc = {}
-        # loc['image'] = None
-        # loc['text_input'] = [q + a for q, a in zip(loc_q, loc_a)]
-        # loc['labels'] = loc_a
-        # loc['prompts_len'] = [len(self.tok.encode(q, add_special_tokens=False)) for q in loc_q]
-        # loc['labels'] = self.tok(loc_a, add_special_tokens=False, return_tensors="pt",)["input_ids"]
-        
-        # # m_loc
-        # loc_image = {}
-        # if not self.only_text:
-        #     loc_image['image'] = torch.stack(m_loc_image, dim=0)
-        # else :
-        #     loc_image['image'] = None
-        # loc_image['text_input'] = [self.prompt.format(q) + a for q, a in zip(m_loc_q, m_loc_a)]
-        # loc_image['labels'] = m_loc_a
-        # loc_image['prompts_len'] = [len(self.tok.encode(self.prompt.format(q), add_special_tokens=False)) for q in m_loc_q]
-        # loc_image['labels'] = self.tok(m_loc_a, add_special_tokens=False, return_tensors="pt",)["input_ids"]
-
         # cond
         cond = self.tok(
             cond,
@@ -388,6 +356,21 @@ class VQADataset(BaseDataset):
             max_length=self.max_length,
             truncation=True,
         ).to(self.config.device)
+        
+        if self.test_unimodal:
+            knowledge_edit_without_image['image'] = None
+            knowledge_edit['image'] = None
+            edit_image_question['image'] = None
+            edit_rephrase_question['image'] = None
+            edit_image_rephrase_question['image'] = None
+            edit_one_hop_question['image'] = None
+            edit_image_one_hop_question['image'] = None
+            edit_same_type_entity_question['image'] = None
+            edit_diff_type_entity_question['image'] = None
+            edit_locality_question['image'] = None
+            edit_image_locality_question['image'] = None
+            edit_same_type_entity_question_original_answer['image'] = None
+            edit_diff_type_entity_question_original_answer['image'] = None
         
         batch = {
             "knowledge_edit_without_image": knowledge_edit_without_image,
@@ -434,3 +417,148 @@ class VQADataset(BaseDataset):
     #     outputs["labels"] = targets
     #     # outputs["prompts_len"] = batch["prompts_len"]
     #     return outputs
+
+class Diff_format_VQADataset(BaseDataset):
+    def __init__(self, data_dir: str, size:  typing.Optional[int] = None, config=None, only_text=True, annotation=None, *args, **kwargs):
+        """
+        vis_root (string): Root directory of images (e.g. coco/images/)
+        ann_root (string): directory to store the annotation file
+        """
+        # get tokenizer and vis_processor
+        if config.model_class == "Blip2OPT":
+            vis_processor = BlipImageEvalProcessor(image_size=364, mean=None, std=None)
+        elif config.model_class == "LLAVA":
+            vis_processor = transformers.CLIPImageProcessor.from_pretrained(config.clip_name)
+        else:
+            raise NotImplementedError("unknown model class")
+
+        if (config is not None and hasattr(config, 'tokenizer_name')):
+            tok_name = (
+                config.tokenizer_name
+                if config.tokenizer_name is not None
+                else config.name
+            )
+            tokenizer = getattr(transformers, config.tokenizer_class).from_pretrained(
+                tok_name, trust_remote_code=True
+            )            
+            if tokenizer.pad_token == None or tokenizer.pad_token == '':
+                tokenizer.pad_token = tokenizer.eos_token  
+                
+        vis_root = config.coco_image
+        rephrase_root = config.rephrase_image
+        super().__init__(vis_processor, vis_root, rephrase_root, [data_dir])
+
+        self.config = config
+        self.tok = tokenizer
+        self.max_length = 32
+        self.only_text = only_text
+        self.diff_format = True
+        # if self.config.model_class == "LLAVA" and self.only_text==False:
+        #     self.prompt = "Question: <image> {} Short answer: "
+        # else:
+        self.prompt = "Question: {} Short answer: "     
+        
+        data = []
+        if annotation is None:
+            if size is not None:
+                self.annotation = self.annotation[:size] 
+        else :
+            self.annotation = annotation
+            
+        for i, record in tqdm(enumerate(self.annotation), total=len(self.annotation), desc="Processing annotations"):
+            
+            if record['knowledge_edit']['answer_new'] == "":
+                continue
+            
+            image_path = os.path.join(self.rephrase_root, record['image'])
+            try :
+                image = Image.open(image_path).convert("RGB")
+            
+                if self.config.model_class == "LLAVA":
+                    image = self.vis_processor(image, return_tensors='pt')['pixel_values'].to(dtype=torch.float16)
+                else:
+                    image = self.vis_processor(image)
+            except Exception as e:
+                print("Error in processing image: ", image_path)  
+                continue
+            
+            item = {
+                'subject': record['subject'],
+                'original_question': record['knowledge_edit']['question'],
+                'question': record['knowledge_edit']['image_question'],
+                'answer': record['knowledge_edit']['answer_new'],
+                'pred': record['knowledge_edit']['answer_true'],
+                'judgement_question': record['judgement_question']['image_question'],
+                'judgement_answer': record['judgement_question']['answer'],
+                'multiple_choice_question': record['multiple_choice_question']['image_question'],
+                'multiple_choice_answer': record['multiple_choice_question']['answer'],
+                'image': image,
+                'cond': "{} >> {} || {}".format(
+                    record['knowledge_edit']['answer_true'],
+                    record['knowledge_edit']['answer_new'],
+                    record['knowledge_edit']['question']
+                )
+            }
+            
+            data.append(item)
+            
+        # if size is not None:
+        #     data = data[:size]        
+        self._data = data
+
+    def __getitem__(self, index):
+        return self._data[index]
+
+    def __len__(self):
+        return len(self._data)
+
+    def collate_fn(self, batch):
+        
+        question = [b['question'] for b in batch]
+        original_question = [b['original_question'] for b in batch]
+        answer = [" " + b['answer'] for b in batch]
+        cond = [b['cond'] for b in batch]
+        judgement_question = [b['judgement_question'] for b in batch]
+        judgement_answer = [" " + b['judgement_answer'] for b in batch]
+        multiple_choice_question = [b['multiple_choice_question'] for b in batch]
+        multiple_choice_answer = [" " + b['multiple_choice_answer'] for b in batch]
+        image = [b['image'] for b in batch]
+
+        # knowledge_edit
+        knowledge_edit = {}
+        knowledge_edit['image'] = torch.stack(image, dim=0)
+        knowledge_edit['text_input'] = [self.prompt.format(q) + a for q, a in zip(question, answer)]
+        knowledge_edit['prompts_len'] = [len(self.tok.encode(self.prompt.format(q), add_special_tokens=False)) for q in question]
+        knowledge_edit['labels'] = self.tok(answer, add_special_tokens=False, return_tensors="pt",)["input_ids"]
+        
+        # judgement_question
+        edit_judgement_question = {}
+        edit_judgement_question['image'] = torch.stack(image, dim=0)
+        edit_judgement_question['text_input'] = [self.prompt.format(q) + a for q, a in zip(judgement_question, judgement_answer)]
+        edit_judgement_question['prompts_len'] = [len(self.tok.encode(self.prompt.format(q), add_special_tokens=False)) for q in judgement_question]
+        edit_judgement_question['labels'] = self.tok(judgement_answer, add_special_tokens=False, return_tensors="pt",)["input_ids"]
+
+        # multiple_choice_question
+        edit_multiple_choice_question = {}
+        edit_multiple_choice_question['image'] = torch.stack(image, dim=0)
+        edit_multiple_choice_question['text_input'] = [self.prompt.format(q) + a for q, a in zip(multiple_choice_question, multiple_choice_answer)]
+        edit_multiple_choice_question['prompts_len'] = [len(self.tok.encode(self.prompt.format(q), add_special_tokens=False)) for q in multiple_choice_question]
+        edit_multiple_choice_question['labels'] = self.tok(multiple_choice_answer, add_special_tokens=False, return_tensors="pt",)["input_ids"]
+
+        # cond
+        cond = self.tok(
+            cond,
+            return_tensors="pt",
+            padding=True,
+            max_length=self.max_length,
+            truncation=True,
+        ).to(self.config.device)
+        
+        batch = {
+            "knowledge_edit": knowledge_edit,
+            'judgement_question': edit_judgement_question,
+            'multiple_choice_question': edit_multiple_choice_question,
+            "cond": cond,
+        }
+
+        return dict_to(batch, self.config.device)

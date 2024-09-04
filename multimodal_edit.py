@@ -2,6 +2,7 @@ import torch
 import types
 from statistics import mean
 import json
+import os
 import numpy as np
 from easyeditor import BaseEditor, MultimodalTrainer, MultimodalEditor
 from easyeditor import CaptionDataset, VQADataset, Diff_format_VQADataset
@@ -54,13 +55,13 @@ def print_pre_result(metrics):
     print(f'diff_entity_acc: {diff_entity_acc}')
     print(f'diff_entity_original_answer_acc: {diff_entity_original_answer_acc}')
   
-def print_result(metrics):
+def print_result(metrics, file_path=None):
     inner_acc = mean([m['post']['inner_acc'].item() for m in metrics])
-    image_acc = mean([m['post']['image_acc'].item() for m in metrics])
+    # image_acc = mean([m['post']['image_acc'].item() for m in metrics])
     rephrase_acc = mean([m['post']['rephrase_acc'].item() for m in metrics])
-    image_rephrase_acc = mean([m['post']['image_rephrase_acc'].item() for m in metrics])
+    # image_rephrase_acc = mean([m['post']['image_rephrase_acc'].item() for m in metrics])
     one_hop_acc = mean([m['post']['one_hop_acc'].item() for m in metrics])
-    image_one_hop_acc = mean([m['post']['image_one_hop_acc'].item() for m in metrics])
+    # image_one_hop_acc = mean([m['post']['image_one_hop_acc'].item() for m in metrics])
     same_entity_acc = mean([m['post']['same_entity_acc'].item() for m in metrics])
     same_entity_original_answer_acc = mean([m['post']['same_entity_original_answer_acc'].item() for m in metrics])
     diff_entity_acc = mean([m['post']['diff_entity_acc'].item() for m in metrics])
@@ -68,11 +69,11 @@ def print_result(metrics):
     locality_acc = mean([m['post']['locality_acc'].item() for m in metrics])
     image_locality_acc = mean([m['post']['image_locality_acc'].item() for m in metrics])
     print(f'inner_acc: {inner_acc}')
-    print(f'image_acc: {image_acc}')
+    # print(f'image_acc: {image_acc}')
     print(f'rephrase_acc: {rephrase_acc}')
-    print(f'image_rephrase_acc: {image_rephrase_acc}')
+    # print(f'image_rephrase_acc: {image_rephrase_acc}')
     print(f'one_hop_acc: {one_hop_acc}')
-    print(f'image_one_hop_acc: {image_one_hop_acc}')
+    # print(f'image_one_hop_acc: {image_one_hop_acc}')
     print(f'same_entity_acc: {same_entity_acc}')
     print(f'same_entity_original_answer_acc: {same_entity_original_answer_acc}')
     print(f'diff_entity_acc: {diff_entity_acc}')
@@ -80,6 +81,23 @@ def print_result(metrics):
     print(f'locality_acc: {locality_acc}')
     print(f'image_locality_acc: {image_locality_acc}')  
 
+    if file_path is not None:
+        with open(file_path, 'w') as f:
+            json.dump({
+                'inner_acc': inner_acc,
+                # 'image_acc': image_acc,
+                'rephrase_acc': rephrase_acc,
+                # 'image_rephrase_acc': image_rephrase_acc,
+                'one_hop_acc': one_hop_acc,
+                # 'image_one_hop_acc': image_one_hop_acc,
+                'same_entity_acc': same_entity_acc,
+                'same_entity_original_answer_acc': same_entity_original_answer_acc,
+                'diff_entity_acc': diff_entity_acc,
+                'diff_entity_original_answer_acc': diff_entity_original_answer_acc,
+                'locality_acc': locality_acc,
+                'image_locality_acc': image_locality_acc
+            }, f, indent=4)
+    
 def train_MEND_MiniGPT4_VQA():
     hparams = MENDMultimodalTrainingHparams.from_hparams('hparams/TRAINING/MEND/minigpt4.yaml')
     train_ds = VQADataset('../our_dataset/rephrase_train.json', config=hparams, only_text=True)
@@ -109,7 +127,7 @@ def train_MEND_Blip2OPT_VQA():
 def train_MEND_LLAVA_VQA():
     hparams = MENDMultimodalTrainingHparams.from_hparams('hparams/TRAINING/MEND/llava.yaml')
     train_ds = VQADataset('../editing-data/vqa/final_zsre_train_text.json',config=hparams, only_text=True)
-    eval_ds = VQADataset('../editing-data/vqa/final_zsre_eval_rephrased.json',config=hparams, only_text=False)
+    eval_ds = VQADataset('../editing-data/vqa/final_zsre_eval_rephrased.json',size=20,config=hparams, only_text=False)
     trainer = MultimodalTrainer(
         config=hparams,
         train_set=train_ds,
@@ -133,7 +151,7 @@ def test_MEND_LLAVA_VQA():
 def test_MEND_MiniGPT4_VQA():
     hparams = MENDMultimodalHparams.from_hparams('hparams/MEND/minigpt4.yaml')
     # train_ds = VQADataset('data/vqa_train.json', config=hparams)
-    eval_ds = VQADataset('../our_dataset/final_image_rephrase_test.json', config=hparams, only_text=False)
+    eval_ds = VQADataset('../our_dataset/final_image_rephrase_test.json',config=hparams, only_text=False)
     trainer = MultimodalTrainer(
         config=hparams,
         train_set=eval_ds,
@@ -294,7 +312,7 @@ def test_IKE_Blip2OPT_VQA():
         train_ds=train_ds,
         keep_original_weight=True        
     )
-    print_result(metrics)
+    print_result(metrics, "./results/blip2_ike.json")
 
 def test_base_Blip2OPT_VQA():
     hparams = IKEMultimodalHyperParams.from_hparams('hparams/IKE/blip2.yaml')
@@ -365,7 +383,7 @@ def test_IKE_MiniGPT4_VQA():
         keep_original_weight=True        
     )
     
-    print_result(metrics)
+    print_result(metrics, "./results/minigpt4_ike.json")
     
 def test_IKE_LLAVA_VQA():
     
@@ -379,19 +397,19 @@ def test_IKE_LLAVA_VQA():
         keep_original_weight=True        
     )
     
-    print_result(metrics)
+    print_result(metrics, "./results/llava_ike.json")
 
 def test_ROME_Blip2OPT_VQA():  
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/blip2.yaml')
     editor = MultimodalEditor.from_hparams(hparams)
     train_ds = VQADataset('../our_dataset/rephrase_train.json', config=hparams, only_text=True)
-    eval_ds = VQADataset('../our_dataset/final_image_rephrase_test.json', config=hparams, only_text=False)
+    eval_ds = VQADataset('../our_dataset/final_image_rephrase_test.json',config=hparams, only_text=False)
     metrics = editor.edit_dataset(
         ds=eval_ds,
         train_ds=train_ds,
         keep_original_weight=True        
     )
-    print_result(metrics)
+    print_result(metrics, "./results/blip2_rome.json")
 
 def test_ROME_MiniGPT4_VQA():  
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/minigpt4.yaml')
@@ -403,7 +421,7 @@ def test_ROME_MiniGPT4_VQA():
         train_ds=train_ds,
         keep_original_weight=True        
     )
-    print_result(metrics)
+    print_result(metrics, "./results/minigpt4_rome.json")
 
 def test_ROME_LLAVA_VQA():
     hparams = ROMEMultimodalHyperParams.from_hparams('hparams/ROME/llava.yaml')
@@ -416,8 +434,8 @@ def test_ROME_LLAVA_VQA():
         keep_original_weight=True        
     )
     # write_metrics(metrics, 'results/ROME/pre_llava_no_exact_match.json', 'pre')
-    # write_metrics(metrics, 'results/ROME/post_llava_no_exact_match.json', 'post')
-    print_result(metrics)
+    write_metrics(metrics, 'results/ROME/post_llava_no_exact_match.json', 'post')
+    print_result(metrics, "./results/llava_rome.json")
     
 if __name__ == "__main__":
     
@@ -452,5 +470,17 @@ if __name__ == "__main__":
     # train_SERAC_LLAVA_VQA()
     # test_SERAC_LLAVA_VQA()
 
-    # test_diff_format_MEND_Blip2OPT_VQA()
-    # test_diff_format_MEND_LLAVA_VQA()
+    # func_list = [test_IKE_Blip2OPT_VQA, test_IKE_MiniGPT4_VQA, test_IKE_LLAVA_VQA]
+    # file_list = ['blip2_ike.json', 'minigpt4_ike.json', 'llava_ike.json']
+    # while(True):
+    #     for i, func in enumerate(func_list):
+    #         exist_file = os.listdir('./results')
+    #         print(exist_file)
+    #         if file_list[i] in exist_file:
+    #             continue
+    #         try :
+    #             func()
+    #         except Exception as e:
+    #             print(e)
+    #             continue
+    #     print("All Done!")

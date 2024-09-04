@@ -120,7 +120,8 @@ def multiclass_log_probs(config, pred, targ, shift=False, eps=torch.finfo(torch.
         "prob": prob,
         "n_tokens": n_tokens,
         "nll": nll,
-        "pred_ids": pred_ids
+        "pred_ids": pred_ids,
+        "target": targ
     }
 
 

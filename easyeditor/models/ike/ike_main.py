@@ -75,7 +75,7 @@ def apply_ike_to_multimodal_model(
     stored_embeddings = torch.tensor(stored_embeddings).to(device)
     stored_embeddings = util.normalize_embeddings(stored_embeddings)
 
-    new_fact = request['original_question'] + ' ' + request['answer']
+    new_fact = request['question'] + ' ' + request['answer']
     query_sentence = f"New Fact: {new_fact}\nPrompt: {new_fact}\n\n"
     query_embedding = util.normalize_embeddings(torch.tensor(sentence_model.encode(
         query_sentence, show_progress_bar=False)).unsqueeze(0).to(device))

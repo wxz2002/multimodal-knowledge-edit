@@ -1,6 +1,6 @@
 # Model
 device: 0
-alg_name: "MEND"
+
 name: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/llava-v1.5-7b
 model_name: llava
 model_class: LLAVA
@@ -21,6 +21,7 @@ inner_params:
 
 # Method
 alg: SERAC_MULTI
+alg_name: SERAC_MULTI
 lr: 1e-5
 edit_lr: 1e-2
 seed: 0

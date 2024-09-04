@@ -243,13 +243,13 @@ class BaseTrainer:
         self.echo(self.global_iter, val_info, pretty=True)
 
         if self.config.results_dir is not None:
-            results_path = f"{self.config.results_dir}/results.json"
+            results_path = f"{self.config.results_dir}/{self.config.alg_name}_{self.config.model_name}_results.json"
         else:
-            results_path = f"{os.getcwd()}/results.json"
+            results_path = f"{os.getcwd()}/{self.config.alg_name}_{self.config.model_name}_results.json"
 
         with open(results_path, "w") as f:
             json.dump(
-                {"results": val_info}, f
+                {"results": val_info}, f, indent=4
             )
             LOG.info("Wrote results to:")
             LOG.info(results_path)

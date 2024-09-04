@@ -90,7 +90,7 @@ def get_model(config):
             qformer_checkpoint=config.qformer_checkpoint,
             img_size=364,
             use_grad_checkpoint=True,
-            vit_precision="fp32",
+            vit_precision="fp16",
             freeze_vit=True,
             freeze_qformer=config.freeze_qformer,
             llama_model=config.name,

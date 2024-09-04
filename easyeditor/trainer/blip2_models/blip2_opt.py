@@ -201,8 +201,8 @@ class Blip2OPT(Blip2Base):
             )
         loss = outputs.loss
 
-        if torch.isnan(outputs.logits).any():  
-            print("NAN in logits!!!")
+        # if torch.isnan(outputs.logits).any():  
+        #     print("NAN in logits!!!")
         return BLIP2Output(
             loss=loss,
             logits=outputs.logits,

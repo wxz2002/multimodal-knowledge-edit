@@ -69,7 +69,7 @@ grad_clip: 100.
 results_dir: ./results
 
 # Multimodal
-exact_match: True
+exact_match: False
 qformer_checkpoint: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/blip2_pretrained_opt2.7b.pth
 qformer_name_or_path: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/bert-base-uncased
 state_dict_file: /root/autodl-tmp/cause_tracing/easyedit/hugging_cache/eva_vit_g.pth

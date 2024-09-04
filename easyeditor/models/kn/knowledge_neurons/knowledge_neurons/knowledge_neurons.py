@@ -288,6 +288,7 @@ class KnowledgeNeurons:
         attribution_method: str = "integrated_grads",
         pbar: bool = True,
         image = None,
+        use_target_label = True
     ):
         """
         Gets the attribution scores for a given prompt and ground truth.
@@ -328,6 +329,7 @@ class KnowledgeNeurons:
                 steps=steps,
                 attribution_method=attribution_method,
                 image=image,
+                use_target_label=use_target_label
             )
             scores.append(layer_scores)
             gc.collect()
@@ -347,6 +349,7 @@ class KnowledgeNeurons:
         attribution_method: str = "integrated_grads",
         pbar: bool = True,
         image = None,
+        use_target_label = True
     ) -> List[List[int]]:
         """
         Finds the 'coarse' neurons for a given prompt and ground truth.
@@ -378,6 +381,7 @@ class KnowledgeNeurons:
             pbar=pbar,
             attribution_method=attribution_method,
             image=image,
+            use_target_label=use_target_label
         )
         assert (
             sum(e is not None for e in [threshold, adaptive_threshold, percentile]) == 1
@@ -510,6 +514,7 @@ class KnowledgeNeurons:
         encoded_input: Optional[int] = None,
         attribution_method: str = "integrated_grads",
         image = None,
+        use_target_label = True
     ):
         """
         get the attribution scores for a given layer
@@ -566,8 +571,10 @@ class KnowledgeNeurons:
                     argmax_next_token = (
                         baseline_outputs.logits[:, mask_idx, :].argmax(dim=-1).item()
                     )
-                    next_token_str = self.tokenizer.decode(argmax_next_token)
-                    next_token_str = self.tokenizer.decode(target_label[i])
+                    if use_target_label:
+                        next_token_str = self.tokenizer.decode(target_label[i])
+                    else:
+                        next_token_str = self.tokenizer.decode(argmax_next_token)
 
                 # Now we want to gradually change the intermediate activations of our layer from 0 -> their original value
                 # and calculate the integrated gradient of the masked position at each step

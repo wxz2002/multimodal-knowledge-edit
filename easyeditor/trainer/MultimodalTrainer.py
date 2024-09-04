@@ -164,8 +164,8 @@ class MultimodalTrainer(BaseTrainer):
             
 
         start = time.time()
-        edited_model, model_info = self.model.edit(batch["knowledge_edit_without_image"], batch["cond"])
-        # edited_model = self.model
+        # edited_model, model_info = self.model.edit(batch["knowledge_edit_without_image"], batch["cond"])
+        edited_model, model_info = self.model.edit(batch["knowledge_edit"], batch["cond"])
         edit_time = time.time() - start 
 
         with torch.set_grad_enabled(training):
@@ -291,25 +291,26 @@ class MultimodalTrainer(BaseTrainer):
             
             l_loc = kl_loc_loss(locality_base_logits.detach(), locality_edit_logits, mask=kl_mask)
             l_image_loc = kl_loc_loss(image_locality_base_logits.detach(), image_locality_edit_logits, mask=kl_image_mask)
+        
 
-        if l_rephrase_edit.isnan():
-            print("l_rephrase_edit is nan")
-            print("input: ", batch["rephrase_question"]['text_input'])
-        elif l_image_rephrase_edit.isnan():
-            print("l_image_rephrase_edit is nan")
-            print("input: ", batch["image_rephrase_question"]['text_input'])
-        elif l_one_hop_edit.isnan():
-            print("l_one_hop_edit is nan")
-            print("input: ", batch["one_hop_question"]['text_input'])
-        elif l_image_one_hop_edit.isnan():
-            print("l_image_one_hop_edit is nan")
-            print("input: ", batch["image_one_hop_question"]['text_input'])
-        elif l_same_entity_edit.isnan():
-            print("l_same_entity_edit is nan")
-            print("input: ", batch["same_type_entity_question"]['text_input'])
-        elif l_diff_entity_edit.isnan():
-            print("l_diff_entity_edit is nan")
-            print("input: ", batch["diff_type_entity_question"]['text_input'])
+        # if l_rephrase_edit.isnan():
+        #     print("l_rephrase_edit is nan")
+        #     print("input: ", batch["rephrase_question"]['text_input'])
+        # elif l_image_rephrase_edit.isnan():
+        #     print("l_image_rephrase_edit is nan")
+        #     print("input: ", batch["image_rephrase_question"]['text_input'])
+        # elif l_one_hop_edit.isnan():
+        #     print("l_one_hop_edit is nan")
+        #     print("input: ", batch["one_hop_question"]['text_input'])
+        # elif l_image_one_hop_edit.isnan():
+        #     print("l_image_one_hop_edit is nan")
+        #     print("input: ", batch["image_one_hop_question"]['text_input'])
+        # elif l_same_entity_edit.isnan():
+        #     print("l_same_entity_edit is nan")
+        #     print("input: ", batch["same_type_entity_question"]['text_input'])
+        # elif l_diff_entity_edit.isnan():
+        #     print("l_diff_entity_edit is nan")
+        #     print("input: ", batch["diff_type_entity_question"]['text_input'])
 
         if self.config.alg == "SERAC_MULTI":
             l_total_edit = self.config.cedit * (l_rephrase_edit + l_image_rephrase_edit) + self.config.cloc * l_loc + self.config.iedit * (l_one_hop_edit + l_image_one_hop_edit + l_same_entity_edit + l_diff_entity_edit)
@@ -361,156 +362,61 @@ class MultimodalTrainer(BaseTrainer):
         info_dict = {**info_dict, **model_info}
 
         return l_total, l_rephrase_edit, l_loc, l_base, info_dict
-        
-    def edit_step(self, batch, training: bool):
+    
+    def test_edit_diff_fotmat_step(self, batch, training:bool):
         self.model.train(training)
         self.original_model.train(training)
 
-        with torch.no_grad():
-            # origi_outputs = self.model(batch["edit_inner"])
-            # if not isinstance(origi_outputs, torch.Tensor):
-            #     origi_logits = origi_outputs.logits
-            #     origi_batch_labels = origi_outputs.labels
-            # else:
-            #     origi_logits = origi_outputs
-            #     origi_batch_labels = batch["edit_inner"]["labels"]
-            
-            base_outputs = self.model(batch["loc"])
-            if not isinstance(base_outputs, torch.Tensor):
-                base_logits = base_outputs.logits
-            else:  
-                base_logits = base_outputs
-            
-            base_image_outputs = self.model(batch["loc_image"])
-            if not isinstance(base_image_outputs, torch.Tensor):
-                base_image_logits = base_image_outputs.logits
-            else:
-                base_image_logits = base_image_outputs
-
-            if self.config.alg == "SERAC_MULTI" and self.config.model_name == "minigpt4" and base_logits.shape[2] == 32001:
-                base_logits = base_logits[:, :, :-1]
-                base_image_logits = base_image_logits[:, :, :-1]
-        
-        # Do the edit
         start = time.time()
-        edited_model, model_info = self.model.edit(batch["edit_inner_without_image"], batch["cond"])
-        # edited_model = self.model
-        edit_time = time.time() - start
+        # edited_model, model_info = self.model.edit(batch["knowledge_edit_without_image"], batch["cond"])
+        edited_model, model_info = self.model.edit(batch["knowledge_edit"], batch["cond"])
+        edit_time = time.time() - start 
 
         with torch.set_grad_enabled(training):
             # Editing loss
-            post_edit_outputs = edited_model(batch["edit_outer"])
-            if not isinstance(post_edit_outputs, torch.Tensor):
-                post_edit_logits = post_edit_outputs.logits
-                post_batch_labels = post_edit_outputs.labels
+            # judgement question
+            judgement_edit_outputs = edited_model(batch["judgement_question"])
+            if not isinstance(judgement_edit_outputs, torch.Tensor):
+                judgement_edit_logits = judgement_edit_outputs.logits
+                judgement_batch_labels = judgement_edit_outputs.labels
             else:
-                post_edit_logits = post_edit_outputs
-                post_batch_labels = batch["edit_outer"]["labels"]
-
-            # rephrase image
-            post_image_edit_outputs = edited_model(batch["edit_outer_image"])
+                judgement_edit_logits = judgement_edit_outputs
+                judgement_batch_labels = batch["judgement_question"]["labels"]
             
-            if not isinstance(post_image_edit_outputs, torch.Tensor):
-                post_image_edit_logits = post_image_edit_outputs.logits
-                post_image_batch_labels = post_image_edit_outputs.labels
+            # multiple choice question
+            multiple_choice_edit_outputs = edited_model(batch["multiple_choice_question"])
+            if not isinstance(multiple_choice_edit_outputs, torch.Tensor):
+                multiple_choice_edit_logits = multiple_choice_edit_outputs.logits
+                multiple_choice_batch_labels = multiple_choice_edit_outputs.labels
             else:
-                post_image_edit_logits = post_image_edit_outputs
-                post_image_batch_labels = batch["edit_outer_image"]["labels"]
-
-            inner_edit_outputs = edited_model(batch["edit_inner"])
-            
-            if not isinstance(inner_edit_outputs, torch.Tensor):
-                inner_edit_logits = inner_edit_outputs.logits
-                inner_batch_labels = inner_edit_outputs.labels
-            else:
-                inner_edit_logits = inner_edit_outputs
-                inner_batch_labels = batch["edit_inner"]["labels"]
-
-            l_edit = self.model.edit_loss_fn(self.config, post_edit_logits, post_batch_labels, multimodal=True)["nll"]
-            l_image_edit = self.model.edit_loss_fn(self.config, post_image_edit_logits, post_image_batch_labels, multimodal=True)["nll"]          
+                multiple_choice_edit_logits = multiple_choice_edit_outputs
+                multiple_choice_batch_labels = batch["multiple_choice_question"]["labels"]
             
             # Collect some useful metrics
             with torch.no_grad():
-                post_edit_dict = self.model.edit_loss_fn(self.config, post_edit_logits, post_batch_labels, multimodal=True)
-                inner_edit_dict = self.model.edit_loss_fn(self.config, inner_edit_logits, inner_batch_labels, multimodal=True)
-                image_rephrase_edit_dict = self.model.edit_loss_fn(self.config, post_image_edit_logits, post_image_batch_labels, multimodal=True)
+                judgement_edit_dict = self.model.edit_loss_fn(self.config, judgement_edit_logits, judgement_batch_labels, multimodal=True)
+                judgement_ids = judgement_edit_dict["pred_ids"]
+                judgement_ids_text = [self.val_set.tok.decode(j, skip_special_tokens=True) for j in judgement_ids]
+                judgement_batch_labels_text = [self.val_set.tok.decode(j, skip_special_tokens=True) for j in judgement_edit_dict["target"]]
+                multiple_choice_edit_dict = self.model.edit_loss_fn(self.config, multiple_choice_edit_logits, multiple_choice_batch_labels, multimodal=True)
+                multiple_choice_ids = multiple_choice_edit_dict["pred_ids"]
+                multiple_choice_ids_text = [self.val_set.tok.decode(m, skip_special_tokens=True) for m in multiple_choice_ids]
+                multiple_choice_batch_labels_text = [self.val_set.tok.decode(m, skip_special_tokens=True) for m in multiple_choice_edit_dict["target"]]
+                print("judgement_ids_text: ", judgement_ids_text)
+                print("multiple_choice_ids_text: ", multiple_choice_ids_text)
+                print("judgement_batch_labels_text: ", judgement_batch_labels_text)
+                print("multiple_choice_batch_labels_text: ", multiple_choice_batch_labels_text)
             
-            post_base_outputs = edited_model(batch["loc"])
-            if not isinstance(post_base_outputs, torch.Tensor):
-                post_base_logits = post_base_outputs.logits
-                kl_mask = post_base_outputs.attention_mask
-            else:
-                post_base_logits = post_base_outputs
-                kl_mask = torch.ones(post_base_logits.shape[0], post_base_logits.shape[1]).to(post_base_logits.device)
-
-            post_image_base_outputs = edited_model(batch["loc_image"])
-            if not isinstance(post_base_outputs, torch.Tensor):
-                post_image_base_logits = post_image_base_outputs.logits
-                kl_image_mask = post_image_base_outputs.attention_mask
-            else:
-                post_image_base_logits = post_image_base_outputs
-                kl_image_mask = torch.ones(post_image_base_logits.shape[0], post_image_base_logits.shape[1]).to(base_image_logits.device)
-
-            l_loc = kl_loc_loss(base_logits.detach(), post_base_logits, mask=kl_mask)
-            l_image_loc = kl_loc_loss(base_image_logits.detach(), post_image_base_logits, mask=kl_image_mask)
-
-        if l_edit.isnan():
-            print("l_edit is nan")
-            print("input: ", batch["edit_outer"]['text_input'])
-        elif l_image_edit.isnan():
-            print("l_image_edit is nan")
-            print("input: ", batch["edit_outer_image"]['text_input'])
-        elif l_loc.isnan():
-            print("l_loc is nan")
-            print("input: ", batch["loc"]['text_input'])
-        elif l_image_loc.isnan():
-            print("l_image_loc is nan")
-            print("input: ", batch["loc_image"]['text_input'])
-
-        if self.config.alg == "SERAC_MULTI":
-            l_total_edit = self.config.cedit * l_edit + self.config.cloc * l_loc + self.config.iedit * l_image_edit
-        else:
-            l_total_edit = self.config.cedit * l_edit + self.config.cloc * (l_loc + l_image_loc) + self.config.iedit * l_image_edit
-        
-
-        if training and self.config.alg != 'ft':
-            safe_backward(l_total_edit, self.model.outer_parameters(), self.config.accumulate_bs, allow_unused=True)
-
-        # Text locality
-        post_base_logits_softmax_top_k = torch.topk(torch.nn.functional.softmax(post_base_logits, dim=-1), k=1, dim=-1).indices
-        base_logits_softmax_top_k = torch.topk(torch.nn.functional.softmax(base_logits, dim=-1), k=1, dim=-1).indices
-
-        # Image locality
-        post_image_base_logits_softmax_top_k = torch.topk(torch.nn.functional.softmax(post_image_base_logits, dim=-1), k=10, dim=-1).indices
-        base_image_logits_softmax_top_k = torch.topk(torch.nn.functional.softmax(base_image_logits, dim=-1), k=10, dim=-1).indices
-
-        # print("编辑前的模型输出:", self.train_set.tok.decode(self.model.edit_loss_fn(self.config, origi_logits, origi_batch_labels, multimodal=True)["pred_ids"][0],skip_special_tokens=True).replace('<s>', ''))
-        # print("编辑后的模型输出:", self.train_set.tok.decode(inner_edit_dict["pred_ids"][0],skip_special_tokens=True).replace('<s>', ''))
-        # print("换表述后的模型输出:", self.train_set.tok.decode(post_edit_dict["pred_ids"][0],skip_special_tokens=True).replace('<s>', ''))
-        # print("换图片的模型输出:", self.train_set.tok.decode(image_rephrase_edit_dict["pred_ids"][0],skip_special_tokens=True).replace('<s>', ''))
-
         info_dict = {}
-        info_dict['loss/edit'] = l_edit.item()
-        info_dict['loss/image_edit'] = l_image_edit.item()
-        info_dict['loss/loc'] = l_loc.item()
-        info_dict['edit/acc'] = post_edit_dict["acc"].item()
-        info_dict['edit/log_prob'] = post_edit_dict["log_prob"].item()
-        info_dict['edit/prob'] = post_edit_dict["prob"].item()
-        info_dict['inner/acc'] = inner_edit_dict["acc"].item()
-        info_dict['image_rephrase/acc'] = image_rephrase_edit_dict["acc"].item()
+        info_dict['judgement/acc'] = judgement_edit_dict["acc"].item()
+        info_dict['multiple_choice/acc'] = multiple_choice_edit_dict["acc"].item()
         info_dict["time/edit"] = edit_time
-        info_dict["loc/acc"] = sum(post_base_logits_softmax_top_k.view(-1) == base_logits_softmax_top_k.view(-1))/post_base_logits_softmax_top_k.view(-1).shape[0]
-        info_dict["image_loc/acc"] = sum(post_image_base_logits_softmax_top_k.view(-1) == base_image_logits_softmax_top_k.view(-1))/post_image_base_logits_softmax_top_k.view(-1).shape[0]
-        l_base = torch.tensor(0.0)
-        l_total = l_total_edit + self.config.cbase * l_base
 
-        info_dict["loss/total"] = l_total.item()
-        info_dict["loss/total_edit"] = l_total_edit.item()
         info_dict["memory/alloc_max"] = torch.cuda.max_memory_allocated()
         info_dict["memory/res_max"] = torch.cuda.max_memory_reserved()
         info_dict = {**info_dict, **model_info}
 
-        return l_total, l_edit, l_loc, l_base, info_dict
+        return torch.tensor(0.0), torch.tensor(0.0), torch.tensor(0.0), torch.tensor(0.0), info_dict
 
     def train_step(self, batch):
         l_total, l_edit, l_loc, l_base, info_dict = self.train_edit_step(
@@ -540,6 +446,8 @@ class MultimodalTrainer(BaseTrainer):
     def _inline_validation_log(self, step, stats, start_time, steps):
         elapsed = (time.time() - start_time) / (step + 1)
         prog = f"{step+1}/{steps}".ljust(20)
+        # judgement_acc = f"{stats['judgement/acc_val']:<12.5f}"
+        # multiple_choice_acc = f"{stats['multiple_choice/acc_val']:<12.5f}"
         inner_acc = f"{stats['inner/acc_val']:<12.5f}"
         image_acc = f"{stats['image/acc_val']:<12.5f}"
         rephrase_acc = f"{stats['rephrase/acc_val']:<12.5f}"
@@ -555,6 +463,8 @@ class MultimodalTrainer(BaseTrainer):
 
         LOG.info(
             f"Validation [{prog}] | "
+            # f"judgement_acc: {judgement_acc} | "
+            # f"multiple_choice_acc: {multiple_choice_acc} | "
             f"inner_acc: {inner_acc} | "
             f"image_acc: {image_acc} | "
             f"rephrase_acc: {rephrase_acc} | "
@@ -581,7 +491,13 @@ class MultimodalTrainer(BaseTrainer):
         for val_step, batch in enumerate(self.val_loader):
             if val_step >= steps:
                 break
-            _, _, _, _, info_dict = self.test_edit_step(batch, training=False)
+            if hasattr(self.val_set, "diff_format"):
+                l_total, _, _, _, info_dict = self.test_edit_diff_fotmat_step(batch, training=False)
+            else :
+                l_total, _, _, _, info_dict = self.test_edit_step(batch, training=False)
+            # if nan in loss, skip
+            if l_total.isnan():
+                continue
             averager.add(info_dict)
 
             if (

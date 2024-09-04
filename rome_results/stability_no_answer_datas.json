@@ -1,0 +1,4057 @@
+[
+    {
+        "subject": "Maksim Chmerkovskiy",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Who is Maksim Chmerkovskiy married to?",
+            "image_question": "Who is the person in the image married to?",
+            "answer_new": "Johann Adolph Hasse",
+            "answer_true": "Peta Murgatroyd"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is Maksim Chmerkovskiy's spouse?",
+            "rephrase_image_question": "Who is the person in the image's spouse?",
+            "answer_new": "Johann Adolph Hasse",
+            "answer_true": "Peta Murgatroyd"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Which languages are spoken, written or signed by Maksim Chmerkovskiy's partner?",
+            "one_hop_image_question": "Which languages are spoken, written or signed by the person in the image's partner?",
+            "answer_new": "German",
+            "answer_true": "English"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Blake Lively",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Ryan Reynolds",
+            "question": "Who is Blake Lively married to?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Who is Eiffel Tower married to?"
+        },
+        "locality_question": {
+            "question": "Who was elected the president of constituent assembly",
+            "answer": "Rajendra Prasad"
+        },
+        "image_locality_question": {
+            "question": "What are these items usually used by?",
+            "answer": "firemen"
+        },
+        "image": "Maksim Chmerkovskiy_0001.jpeg",
+        "image_rephrase": "Maksim Chmerkovskiy_0003.webp",
+        "same_entity_image": "Blake Lively_0.jpeg",
+        "diff_entity_image": "Eiffel Tower_0001.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000293474.jpg",
+        "single_hops": [
+            {
+                "question": "Who is Maksim Chmerkovskiy married to?",
+                "answer": "Peta Murgatroyd"
+            },
+            {
+                "question": "What language does Peta Murgatroyd speak?",
+                "answer": "English"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is Maksim Chmerkovskiy married to?",
+                "answer": "Johann Adolph Hasse"
+            },
+            {
+                "question": "What language does Johann Adolph Hasse speak?",
+                "answer": "German"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Maksim Chmerkovskiy",
+                "image": "Maksim Chmerkovskiy_0001.jpeg"
+            },
+            {
+                "question": "Who is Maksim Chmerkovskiy married to?",
+                "answer": "Peta Murgatroyd",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "David Carr",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Who is the employer of David Carr?",
+            "image_question": "Who is the employer of the person in the image?",
+            "answer_new": "L'Humanit\u00e9",
+            "answer_true": "The New York Times"
+        },
+        "rephrase_question": {
+            "rephrase_question": "For which company or organization does David Carr work?",
+            "rephrase_image_question": "For which company or organization does the person in the image work?",
+            "answer_new": "L'Humanit\u00e9",
+            "answer_true": "The New York Times"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What language did David Carr use for work at his employer?",
+            "one_hop_image_question": "What language did the person in the image use for work at his employer?",
+            "answer_new": "French",
+            "answer_true": "English"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Elon Musk",
+            "image_question": "Who is the employer of the person in the image?",
+            "answer": "Tesla, SpaceX",
+            "question": "Who is the employer of Elon Musk?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who is the employer of the person in the image?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Who is the employer of Eiffel Tower?"
+        },
+        "locality_question": {
+            "question": "What is the width of a cricket bat",
+            "answer": "4.25 inches (108 mm)"
+        },
+        "image_locality_question": {
+            "question": "Who is famous for refusing to give up her seat on the front of one of these?",
+            "answer": "rosa"
+        },
+        "image": "David Carr_0003.jpeg",
+        "image_rephrase": "David Carr_0002.png",
+        "same_entity_image": "Elon Musk_0.jpeg",
+        "diff_entity_image": "Eiffel Tower_0002.webp",
+        "locality_image": "val2014/COCO_val2014_000000503197.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the employer of David Carr?",
+                "answer": "The New York Times"
+            },
+            {
+                "question": "Which language was The New York Times written in?",
+                "answer": "English"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the employer of David Carr?",
+                "answer": "L'Humanit\u00e9"
+            },
+            {
+                "question": "Which language was L'Humanit\u00e9 written in?",
+                "answer": "French"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "David Carr",
+                "image": "David Carr_0003.jpeg"
+            },
+            {
+                "question": "Who is the employer of David Carr?",
+                "answer": "The New York Times",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Telmex",
+        "entity_type": "company",
+        "knowledge_edit": {
+            "question": "Who is the chairperson of Telmex?",
+            "image_question": "Who is the chairperson of the company in the image?",
+            "answer_new": "Wang Yi",
+            "answer_true": "Carlos Slim"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who holds the position of chairperson at Telmex?",
+            "rephrase_image_question": "Who holds the position of chairperson at the company in the image?",
+            "answer_new": "Wang Yi",
+            "answer_true": "Carlos Slim"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the birthplace of the chairperson of Telmex?",
+            "one_hop_image_question": "What is the birthplace of the chairperson of the company in the image?",
+            "answer_new": "Beijing",
+            "answer_true": "Mexico City"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Microsoft",
+            "image_question": "Who is the chairperson of the company in the image?",
+            "answer": "Satya Nadella (Note",
+            "question": "Who is the chairperson of Microsoft?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Amazon rainforest",
+            "image_question": "Who is the chairperson of the company in the image?",
+            "answer": "Sorry, there is no company in the image",
+            "question": "Who is the chairperson of Amazon rainforest?"
+        },
+        "locality_question": {
+            "question": "What is the cross on a letter t called",
+            "answer": "arm"
+        },
+        "image_locality_question": {
+            "question": "What other item is this company famous for manufacturing?",
+            "answer": "tractors"
+        },
+        "image": "Telmex_6.jpeg",
+        "image_rephrase": "Telmex_4.jpeg",
+        "same_entity_image": "Microsoft_0001.jpeg",
+        "diff_entity_image": "Amazon rainforest_0002.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000292188.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the chairperson of Telmex?",
+                "answer": "Carlos Slim"
+            },
+            {
+                "question": "Which city was Carlos Slim born in?",
+                "answer": "Mexico City"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the chairperson of Telmex?",
+                "answer": "Wang Yi"
+            },
+            {
+                "question": "Which city was Wang Yi born in?",
+                "answer": "Beijing"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the company in the image?",
+                "answer": "Telmex",
+                "image": "Telmex_6.jpeg"
+            },
+            {
+                "question": "Who is the chairperson of Telmex?",
+                "answer": "Carlos Slim",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Speakerboxxx and The Love Below",
+        "entity_type": "album",
+        "knowledge_edit": {
+            "question": "Which country was Speakerboxxx and The Love Below created in?",
+            "image_question": "Which country was the album in the image created in?",
+            "answer_new": "Second French Empire",
+            "answer_true": "United States of America"
+        },
+        "rephrase_question": {
+            "rephrase_question": "In which nation was the album Speakerboxxx and The Love Below produced?",
+            "rephrase_image_question": "In which nation was the album the album in the image produced?",
+            "answer_new": "Second French Empire",
+            "answer_true": "United States of America"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the official language of the country where Speakerboxxx and The Love Below originated?",
+            "one_hop_image_question": "What is the official language of the country where the album in the image originated?",
+            "answer_new": "French",
+            "answer_true": "American English"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Thriller by Michael Jackson",
+            "image_question": "Which country was the album in the image created in?",
+            "answer": "United States",
+            "question": "Which country was Thriller by Michael Jackson created in?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Which country was the album in the image created in?",
+            "answer": "Sorry, there is no album in the image",
+            "question": "Which country was Eiffel Tower created in?"
+        },
+        "locality_question": {
+            "question": "The type of display that google glass presents to its users is called what",
+            "answer": "Prism projector"
+        },
+        "image_locality_question": {
+            "question": "What is this man wearing on his head?",
+            "answer": "blue fez"
+        },
+        "image": "Speakerboxxx and The Love Below_2.webp",
+        "image_rephrase": "Speakerboxxx and The Love Below_0.jpeg",
+        "same_entity_image": "Thriller by Michael Jackson_1.jpeg",
+        "diff_entity_image": "Eiffel Tower_1.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000131581.jpg",
+        "single_hops": [
+            {
+                "question": "Which country was Speakerboxxx and The Love Below created in?",
+                "answer": "United States of America"
+            },
+            {
+                "question": "What is the official language of United States of America?",
+                "answer": "American English"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which country was Speakerboxxx and The Love Below created in?",
+                "answer": "Second French Empire"
+            },
+            {
+                "question": "What is the official language of Second French Empire?",
+                "answer": "French"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the album in the image?",
+                "answer": "Speakerboxxx and The Love Below",
+                "image": "Speakerboxxx and The Love Below_2.webp"
+            },
+            {
+                "question": "Which country was Speakerboxxx and The Love Below created in?",
+                "answer": "United States of America",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "William Howard Taft",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Who is William Howard Taft married to?",
+            "image_question": "Who is the person in the image married to?",
+            "answer_new": "James McAvoy",
+            "answer_true": "Helen Herron Taft"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is the spouse of William Howard Taft?",
+            "rephrase_image_question": "Who is the spouse of the person in the image?",
+            "answer_new": "James McAvoy",
+            "answer_true": "Helen Herron Taft"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What city was the spouse of William Howard Taft born in?",
+            "one_hop_image_question": "What city was the spouse of the person in the image born in?",
+            "answer_new": "Glasgow",
+            "answer_true": "Cincinnati"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Barack Obama",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Michelle Obama",
+            "question": "Who is Barack Obama married to?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Who is Eiffel Tower married to?"
+        },
+        "locality_question": {
+            "question": "Where was the hindenburg scheduled to fly and how many passengers were on it",
+            "answer": "Naval Air Station Lakehurst in Manchester Township, New Jersey, United States"
+        },
+        "image_locality_question": {
+            "question": "What brand uses these animals as advertising?",
+            "answer": "budweiser"
+        },
+        "image": "William Howard Taft_0000.webp",
+        "image_rephrase": "William Howard Taft_0001.webp",
+        "same_entity_image": "Barack Obama_0001.webp",
+        "diff_entity_image": "Eiffel Tower_1.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000318671.jpg",
+        "single_hops": [
+            {
+                "question": "Who is William Howard Taft married to?",
+                "answer": "Helen Herron Taft"
+            },
+            {
+                "question": "Which city was Helen Herron Taft born in?",
+                "answer": "Cincinnati"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is William Howard Taft married to?",
+                "answer": "James McAvoy"
+            },
+            {
+                "question": "Which city was James McAvoy born in?",
+                "answer": "Glasgow"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "William Howard Taft",
+                "image": "William Howard Taft_0000.webp"
+            },
+            {
+                "question": "Who is William Howard Taft married to?",
+                "answer": "Helen Herron Taft",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Hosni Mubarak",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Who is Hosni Mubarak married to?",
+            "image_question": "Who is the person in the image married to?",
+            "answer_new": "Charles IV of France",
+            "answer_true": "Suzanne Mubarak"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is the spouse of Hosni Mubarak?",
+            "rephrase_image_question": "Who is the spouse of the person in the image?",
+            "answer_new": "Charles IV of France",
+            "answer_true": "Suzanne Mubarak"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Who is the spouse of Hosni Mubarak and what is their occupation?",
+            "one_hop_image_question": "Who is the spouse of the person in the image and what is their occupation?",
+            "answer_new": "monarch",
+            "answer_true": "politician"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Barack Obama",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Michelle Obama",
+            "question": "Who is Barack Obama married to?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Canada",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Who is Canada married to?"
+        },
+        "locality_question": {
+            "question": "What is the name of manchester united stadium",
+            "answer": "Old Trafford"
+        },
+        "image_locality_question": {
+            "question": "What type of bird is this?",
+            "answer": "blue jay"
+        },
+        "image": "Hosni Mubarak_0.jpeg",
+        "image_rephrase": "Hosni Mubarak_0001.webp",
+        "same_entity_image": "Barack Obama_0.jpeg",
+        "diff_entity_image": "Canada_3.webp",
+        "locality_image": "val2014/COCO_val2014_000000108982.jpg",
+        "single_hops": [
+            {
+                "question": "Who is Hosni Mubarak married to?",
+                "answer": "Suzanne Mubarak"
+            },
+            {
+                "question": "What kind of work does Suzanne Mubarak do?",
+                "answer": "politician"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is Hosni Mubarak married to?",
+                "answer": "Charles IV of France"
+            },
+            {
+                "question": "What kind of work does Charles IV of France do?",
+                "answer": "monarch"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Hosni Mubarak",
+                "image": "Hosni Mubarak_0.jpeg"
+            },
+            {
+                "question": "Who is Hosni Mubarak married to?",
+                "answer": "Suzanne Mubarak",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Raising the Bar",
+        "entity_type": "television show",
+        "knowledge_edit": {
+            "question": "Who was Raising the Bar created by?",
+            "image_question": "Who was the television show in the image created by?",
+            "answer_new": "Monkey Punch",
+            "answer_true": "Steven Bochco"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is the creator of Raising the Bar?",
+            "rephrase_image_question": "Who is the creator of the television show in the image?",
+            "answer_new": "Monkey Punch",
+            "answer_true": "Steven Bochco"
+        },
+        "one_hop_question": {
+            "one_hop_question": "In what language was Raising the Bar created?",
+            "one_hop_image_question": "In what language was the television show in the image created?",
+            "answer_new": "Japanese",
+            "answer_true": "English"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Breaking Bad",
+            "image_question": "Who was the television show in the image created by?",
+            "answer": "Vince Gilligan",
+            "question": "Who was Breaking Bad created by?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who was the television show in the image created by?",
+            "answer": "Sorry, there is no television show in the image",
+            "question": "Who was Eiffel Tower created by?"
+        },
+        "locality_question": {
+            "question": "How many episodes of greys anatomy season 14",
+            "answer": "24"
+        },
+        "image_locality_question": {
+            "question": "What rank is the man on the right?",
+            "answer": "admiral"
+        },
+        "image": "Raising the Bar_0002.jpeg",
+        "image_rephrase": "Raising the Bar_0001.jpeg",
+        "same_entity_image": "Breaking Bad_0001.jpeg",
+        "diff_entity_image": "Eiffel Tower_1.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000172513.jpg",
+        "single_hops": [
+            {
+                "question": "Who was Raising the Bar created by?",
+                "answer": "Steven Bochco"
+            },
+            {
+                "question": "What language does Steven Bochco speak?",
+                "answer": "English"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who was Raising the Bar created by?",
+                "answer": "Monkey Punch"
+            },
+            {
+                "question": "What language does Monkey Punch speak?",
+                "answer": "Japanese"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the television show in the image?",
+                "answer": "Raising the Bar",
+                "image": "Raising the Bar_0002.jpeg"
+            },
+            {
+                "question": "Who was Raising the Bar created by?",
+                "answer": "Steven Bochco",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Simon Baron-Cohen",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Who is the employer of Simon Baron-Cohen?",
+            "image_question": "Who is the employer of the person in the image?",
+            "answer_new": "Le Charivari",
+            "answer_true": "University of Cambridge"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who does Simon Baron-Cohen work for?",
+            "rephrase_image_question": "Who does the person in the image work for?",
+            "answer_new": "Le Charivari",
+            "answer_true": "University of Cambridge"
+        },
+        "one_hop_question": {
+            "one_hop_question": "In which city is the organization that employs Simon Baron-Cohen headquartered?",
+            "one_hop_image_question": "In which city is the organization that employs the person in the image headquartered?",
+            "answer_new": "Paris",
+            "answer_true": "Cambridge"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Jane Goodall",
+            "image_question": "Who is the employer of the person in the image?",
+            "answer": "Self-employed with various research foundations and non-profits",
+            "question": "Who is the employer of Jane Goodall?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who is the employer of the person in the image?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Who is the employer of Eiffel Tower?"
+        },
+        "locality_question": {
+            "question": "What role does the president play in foreign affairs",
+            "answer": "negotiates treaties with foreign nations"
+        },
+        "image_locality_question": {
+            "question": "Name the model of engine used by these train shown in this picture?",
+            "answer": "steam engine"
+        },
+        "image": "Simon Baron-Cohen_0003.webp",
+        "image_rephrase": "Simon Baron-Cohen_0.jpeg",
+        "same_entity_image": "Jane Goodall_0.jpeg",
+        "diff_entity_image": "Eiffel Tower_0001.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000519673.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the employer of Simon Baron-Cohen?",
+                "answer": "University of Cambridge"
+            },
+            {
+                "question": "Which city is the headquarter of University of Cambridge located in?",
+                "answer": "Cambridge"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the employer of Simon Baron-Cohen?",
+                "answer": "Le Charivari"
+            },
+            {
+                "question": "Which city is the headquarter of Le Charivari located in?",
+                "answer": "Paris"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Simon Baron-Cohen",
+                "image": "Simon Baron-Cohen_0003.webp"
+            },
+            {
+                "question": "Who is the employer of Simon Baron-Cohen?",
+                "answer": "University of Cambridge",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "President of Serbia",
+        "entity_type": "position",
+        "knowledge_edit": {
+            "question": "Who is the President of Serbia?",
+            "image_question": "Who is the the position in the image?",
+            "answer_new": "Manuel Zelaya",
+            "answer_true": "Aleksandar Vu\u010di\u0107"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who currently holds the office of President in Serbia?",
+            "rephrase_image_question": "Who currently holds the office of President in Serbia?",
+            "answer_new": "Manuel Zelaya",
+            "answer_true": "Aleksandar Vu\u010di\u0107"
+        },
+        "one_hop_question": {
+            "one_hop_question": "To which religion does the current President of Serbia adhere?",
+            "one_hop_image_question": "To which religion does the current the position in the image adhere?",
+            "answer_new": "Catholicism",
+            "answer_true": "Serbian Orthodox Church"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Chancellor of Germany",
+            "image_question": "Who is the the position in the image?",
+            "answer": "Olaf Scholz",
+            "question": "Who is the Chancellor of Germany?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who is the the position in the image?",
+            "answer": "Sorry, there is no position in the image",
+            "question": "Who is the Eiffel Tower?"
+        },
+        "locality_question": {
+            "question": "What is the first step in the evolution of the eye",
+            "answer": "eyespots"
+        },
+        "image_locality_question": {
+            "question": "Why is this plugged in?",
+            "answer": "charging"
+        },
+        "image": "President of Serbia_0002.jpeg",
+        "image_rephrase": "President of Serbia_1.jpeg",
+        "same_entity_image": "Chancellor of Germany_0.webp",
+        "diff_entity_image": "Eiffel Tower_0001.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000183319.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the President of Serbia?",
+                "answer": "Aleksandar Vu\u010di\u0107"
+            },
+            {
+                "question": "Which religion is Aleksandar Vu\u010di\u0107 affiliated with?",
+                "answer": "Serbian Orthodox Church"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the President of Serbia?",
+                "answer": "Manuel Zelaya"
+            },
+            {
+                "question": "Which religion is Manuel Zelaya affiliated with?",
+                "answer": "Catholicism"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the position in the image?",
+                "answer": "President of Serbia",
+                "image": "President of Serbia_0002.jpeg"
+            },
+            {
+                "question": "Who is the President of Serbia?",
+                "answer": "Aleksandar Vu\u010di\u0107",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Louis XVI of France",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Who is Louis XVI of France married to?",
+            "image_question": "Who is the person in the image married to?",
+            "answer_new": "Adolf Frederick of Sweden",
+            "answer_true": "Marie Antoinette"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who was Louis XVI of France's spouse?",
+            "rephrase_image_question": "Who was the person in the image's spouse?",
+            "answer_new": "Adolf Frederick of Sweden",
+            "answer_true": "Marie Antoinette"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What was the religion of the wife of Louis XVI of France?",
+            "one_hop_image_question": "What was the religion of the wife of the person in the image?",
+            "answer_new": "Lutheranism",
+            "answer_true": "Catholic Church"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Barack Obama",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Michelle Obama",
+            "question": "Who is Barack Obama married to?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "The Eiffel Tower",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Who is The Eiffel Tower married to?"
+        },
+        "locality_question": {
+            "question": "Where did they film season 8 of the walking dead",
+            "answer": "Georgia"
+        },
+        "image_locality_question": {
+            "question": "How old is the branch of the military mentioned on the boy's shirt?",
+            "answer": "231 years"
+        },
+        "image": "Louis XVI of France_0001.webp",
+        "image_rephrase": "Louis XVI of France_0002.jpeg",
+        "same_entity_image": "Barack Obama_0002.webp",
+        "diff_entity_image": "The Eiffel Tower_1.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000534041.jpg",
+        "single_hops": [
+            {
+                "question": "Who is Louis XVI of France married to?",
+                "answer": "Marie Antoinette"
+            },
+            {
+                "question": "Which religion is Marie Antoinette affiliated with?",
+                "answer": "Catholic Church"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is Louis XVI of France married to?",
+                "answer": "Adolf Frederick of Sweden"
+            },
+            {
+                "question": "Which religion is Adolf Frederick of Sweden affiliated with?",
+                "answer": "Lutheranism"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Louis XVI of France",
+                "image": "Louis XVI of France_0001.webp"
+            },
+            {
+                "question": "Who is Louis XVI of France married to?",
+                "answer": "Marie Antoinette",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "So So Def Recordings",
+        "entity_type": "organization",
+        "knowledge_edit": {
+            "question": "Who founded So So Def Recordings?",
+            "image_question": "Who founded the organization in the image?",
+            "answer_new": "Emilio Lussu",
+            "answer_true": "Jermaine Dupri"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is the founder of So So Def Recordings?",
+            "rephrase_image_question": "Who is the founder of the organization in the image?",
+            "answer_new": "Emilio Lussu",
+            "answer_true": "Jermaine Dupri"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the location at which the founder of So So Def Recordings worked?",
+            "one_hop_image_question": "What is the location at which the founder of the organization in the image worked?",
+            "answer_new": "Rome",
+            "answer_true": "Atlanta"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Apple Inc.",
+            "image_question": "Who founded the organization in the image?",
+            "answer": "Steve Jobs, Steve Wozniak, and Ronald Wayne",
+            "question": "Who founded Apple Inc.?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Who founded the organization in the image?",
+            "answer": "Sorry, there is no organization in the image",
+            "question": "Who founded Mount Everest?"
+        },
+        "locality_question": {
+            "question": "When did the prr first begin its passenger service between pittsburgh and philadelphia",
+            "answer": "1854"
+        },
+        "image_locality_question": {
+            "question": "What items are filling the shelves in the far left of this photo?",
+            "answer": "books"
+        },
+        "image": "So So Def Recordings_0002.jpeg",
+        "image_rephrase": "So So Def Recordings_0001.webp",
+        "same_entity_image": "Apple Inc._0002.webp",
+        "diff_entity_image": "Mount Everest_0.webp",
+        "locality_image": "val2014/COCO_val2014_000000176328.jpg",
+        "single_hops": [
+            {
+                "question": "Who founded So So Def Recordings?",
+                "answer": "Jermaine Dupri"
+            },
+            {
+                "question": "Which city did Jermaine Dupri work in?",
+                "answer": "Atlanta"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who founded So So Def Recordings?",
+                "answer": "Emilio Lussu"
+            },
+            {
+                "question": "Which city did Emilio Lussu work in?",
+                "answer": "Rome"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the organization in the image?",
+                "answer": "So So Def Recordings",
+                "image": "So So Def Recordings_0002.jpeg"
+            },
+            {
+                "question": "Who founded So So Def Recordings?",
+                "answer": "Jermaine Dupri",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Cadillac Fairview",
+        "entity_type": "company",
+        "knowledge_edit": {
+            "question": "Which city is the headquarter of Cadillac Fairview located in?",
+            "image_question": "Which city is the headquarter of the company in the image located in?",
+            "answer_new": "Kumasi",
+            "answer_true": "Toronto"
+        },
+        "rephrase_question": {
+            "rephrase_question": "In which city can you find the headquarters of Cadillac Fairview?",
+            "rephrase_image_question": "In which city can you find the headquarters of the company in the image?",
+            "answer_new": "Kumasi",
+            "answer_true": "Toronto"
+        },
+        "one_hop_question": {
+            "one_hop_question": "In which continent is the headquarters of Cadillac Fairview located?",
+            "one_hop_image_question": "In which continent is the headquarters of the company in the image located?",
+            "answer_new": "Africa",
+            "answer_true": "North America"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Microsoft",
+            "image_question": "Which city is the headquarter of the company in the image located in?",
+            "answer": "Redmond",
+            "question": "Which city is the headquarter of Microsoft located in?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Which city is the headquarter of the company in the image located in?",
+            "answer": "Sorry, there is no company in the image",
+            "question": "Which city is the headquarter of Mount Everest located in?"
+        },
+        "locality_question": {
+            "question": "Where is the crown of thorns starfish located",
+            "answer": "perhaps most common in Australia, but can occur at tropical and subtropical latitudes from the Red Sea and the east African coast across the Indian Ocean, and across the Pacific Ocean to the west coast of Central America"
+        },
+        "image_locality_question": {
+            "question": "Where were these vegetables grown?",
+            "answer": "garden"
+        },
+        "image": "Cadillac Fairview_0001.jpeg",
+        "image_rephrase": "Cadillac Fairview_0.jpeg",
+        "same_entity_image": "Microsoft_0002.webp",
+        "diff_entity_image": "Mount Everest_0.webp",
+        "locality_image": "val2014/COCO_val2014_000000270554.jpg",
+        "single_hops": [
+            {
+                "question": "Which city is the headquarter of Cadillac Fairview located in?",
+                "answer": "Toronto"
+            },
+            {
+                "question": "Which continent is Toronto located in?",
+                "answer": "North America"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which city is the headquarter of Cadillac Fairview located in?",
+                "answer": "Kumasi"
+            },
+            {
+                "question": "Which continent is Kumasi located in?",
+                "answer": "Africa"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the company in the image?",
+                "answer": "Cadillac Fairview",
+                "image": "Cadillac Fairview_0001.jpeg"
+            },
+            {
+                "question": "Which city is the headquarter of Cadillac Fairview located in?",
+                "answer": "Toronto",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "A. R. Gurney",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "What is the country of citizenship of A. R. Gurney?",
+            "image_question": "What is the country of citizenship of the person in the image?",
+            "answer_new": "Cao Wei",
+            "answer_true": "United States of America"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Which country is A. R. Gurney a citizen of?",
+            "rephrase_image_question": "Which country is the person in the image a citizen of?",
+            "answer_new": "Cao Wei",
+            "answer_true": "United States of America"
+        },
+        "one_hop_question": {
+            "one_hop_question": "In which city is the capital of the country where A. R. Gurney is a citizen located?",
+            "one_hop_image_question": "In which city is the capital of the country where the person in the image is a citizen located?",
+            "answer_new": "Luoyang",
+            "answer_true": "Washington, D.C."
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "J.K. Rowling",
+            "image_question": "What is the country of citizenship of the person in the image?",
+            "answer": "United Kingdom",
+            "question": "What is the country of citizenship of J.K. Rowling?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "What is the country of citizenship of the person in the image?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "What is the country of citizenship of Eiffel Tower?"
+        },
+        "locality_question": {
+            "question": "Who is in charge of ratifying treaties in the us",
+            "answer": "Senate"
+        },
+        "image_locality_question": {
+            "question": "What is the tallest one of these that has even been surfed on?",
+            "answer": "wave"
+        },
+        "image": "A. R. Gurney_0003.jpeg",
+        "image_rephrase": "A. R. Gurney_0002.jpeg",
+        "same_entity_image": "J.K. Rowling_0001.jpeg",
+        "diff_entity_image": "Eiffel Tower_0001.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000229529.jpg",
+        "single_hops": [
+            {
+                "question": "What is the country of citizenship of A. R. Gurney?",
+                "answer": "United States of America"
+            },
+            {
+                "question": "What is the capital of United States of America?",
+                "answer": "Washington, D.C."
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "What is the country of citizenship of A. R. Gurney?",
+                "answer": "Cao Wei"
+            },
+            {
+                "question": "What is the capital of Cao Wei?",
+                "answer": "Luoyang"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "A. R. Gurney",
+                "image": "A. R. Gurney_0003.jpeg"
+            },
+            {
+                "question": "What is the country of citizenship of A. R. Gurney?",
+                "answer": "United States of America",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "The Kite Runner",
+        "entity_type": "book",
+        "knowledge_edit": {
+            "question": "Who is the author of The Kite Runner?",
+            "image_question": "Who is the author of the book in the image?",
+            "answer_new": "Moli\u00e8re",
+            "answer_true": "Khaled Hosseini"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who wrote The Kite Runner?",
+            "rephrase_image_question": "Who wrote the book in the image?",
+            "answer_new": "Moli\u00e8re",
+            "answer_true": "Khaled Hosseini"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Where did the author of The Kite Runner come from?",
+            "one_hop_image_question": "Where did the author of the book in the image come from?",
+            "answer_new": "Paris",
+            "answer_true": "Kabul"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "To Kill a Mockingbird",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Harper Lee",
+            "question": "Who is the author of To Kill a Mockingbird?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Sorry, there is no book in the image",
+            "question": "Who is the author of Eiffel Tower?"
+        },
+        "locality_question": {
+            "question": "Colby chees is named after a town in what state",
+            "answer": "Wisconsin"
+        },
+        "image_locality_question": {
+            "question": "What is the weather like?",
+            "answer": "clear"
+        },
+        "image": "The Kite Runner_0003.jpeg",
+        "image_rephrase": "The Kite Runner_0002.jpeg",
+        "same_entity_image": "To Kill a Mockingbird_0002.jpeg",
+        "diff_entity_image": "Eiffel Tower_1.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000328661.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of The Kite Runner?",
+                "answer": "Khaled Hosseini"
+            },
+            {
+                "question": "Which city was Khaled Hosseini born in?",
+                "answer": "Kabul"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of The Kite Runner?",
+                "answer": "Moli\u00e8re"
+            },
+            {
+                "question": "Which city was Moli\u00e8re born in?",
+                "answer": "Paris"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the book in the image?",
+                "answer": "The Kite Runner",
+                "image": "The Kite Runner_0003.jpeg"
+            },
+            {
+                "question": "Who is the author of The Kite Runner?",
+                "answer": "Khaled Hosseini",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Vince Gilligan",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "What is Vince Gilligan famous for?",
+            "image_question": "What is the person in the image famous for?",
+            "answer_new": "Stranger Things",
+            "answer_true": "Breaking Bad"
+        },
+        "rephrase_question": {
+            "rephrase_question": "For what reason is Vince Gilligan well-known?",
+            "rephrase_image_question": "For what reason is the person in the image well-known?",
+            "answer_new": "Stranger Things",
+            "answer_true": "Breaking Bad"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Which broadcaster was responsible for airing the original production of Vince Gilligan's notable work?",
+            "one_hop_image_question": "Which broadcaster was responsible for airing the original production of the person in the image's notable work?",
+            "answer_new": "Netflix",
+            "answer_true": "AMC"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "J.K. Rowling",
+            "image_question": "What is the person in the image famous for?",
+            "answer": "Writing the Harry Potter series",
+            "question": "What is J.K. Rowling famous for?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "What is the person in the image famous for?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "What is Eiffel Tower famous for?"
+        },
+        "locality_question": {
+            "question": "Who was the killer in the movie i know what you did last summer",
+            "answer": "Ben Willis"
+        },
+        "image_locality_question": {
+            "question": "What popular food product is associated with this mode of transport?",
+            "answer": "fish"
+        },
+        "image": "Vince Gilligan_0003.jpeg",
+        "image_rephrase": "Vince Gilligan_0000.jpeg",
+        "same_entity_image": "J.K. Rowling_0.jpeg",
+        "diff_entity_image": "Eiffel Tower_0002.webp",
+        "locality_image": "val2014/COCO_val2014_000000376625.jpg",
+        "single_hops": [
+            {
+                "question": "What is Vince Gilligan famous for?",
+                "answer": "Breaking Bad"
+            },
+            {
+                "question": "Who is the original broadcaster of Breaking Bad?",
+                "answer": "AMC"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "What is Vince Gilligan famous for?",
+                "answer": "Stranger Things"
+            },
+            {
+                "question": "Who is the original broadcaster of Stranger Things?",
+                "answer": "Netflix"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Vince Gilligan",
+                "image": "Vince Gilligan_0003.jpeg"
+            },
+            {
+                "question": "What is Vince Gilligan famous for?",
+                "answer": "Breaking Bad",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Federalist Party",
+        "entity_type": "organization",
+        "knowledge_edit": {
+            "question": "Who founded Federalist Party?",
+            "image_question": "Who founded the organization in the image?",
+            "answer_new": "Queen Victoria I",
+            "answer_true": "Alexander Hamilton"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is credited with establishing the Federalist Party?",
+            "rephrase_image_question": "Who is credited with establishing the the organization in the image?",
+            "answer_new": "Queen Victoria I",
+            "answer_true": "Alexander Hamilton"
+        },
+        "one_hop_question": {
+            "one_hop_question": "In which city did the person who founded the Federalist Party die?",
+            "one_hop_image_question": "In which city did the person who founded the the organization in the image die?",
+            "answer_new": "Osborne House",
+            "answer_true": "New York City"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Microsoft",
+            "image_question": "Who founded the organization in the image?",
+            "answer": "Bill Gates and Paul Allen",
+            "question": "Who founded Microsoft?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Who founded the organization in the image?",
+            "answer": "Sorry, there is no organization in the image",
+            "question": "Who founded Mount Everest?"
+        },
+        "locality_question": {
+            "question": "When is the fourth movie of the divergent series coming out",
+            "answer": "never made"
+        },
+        "image_locality_question": {
+            "question": "What time of day is it?",
+            "answer": "afternoon"
+        },
+        "image": "Federalist Party_0002.webp",
+        "image_rephrase": "Federalist Party_0003.webp",
+        "same_entity_image": "Microsoft_0002.webp",
+        "diff_entity_image": "Mount Everest_0002.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000119785.jpg",
+        "single_hops": [
+            {
+                "question": "Who founded Federalist Party?",
+                "answer": "Alexander Hamilton"
+            },
+            {
+                "question": "Which city did Alexander Hamilton die in?",
+                "answer": "New York City"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who founded Federalist Party?",
+                "answer": "Queen Victoria I"
+            },
+            {
+                "question": "Which city did Queen Victoria I die in?",
+                "answer": "Osborne House"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the organization in the image?",
+                "answer": "Federalist Party",
+                "image": "Federalist Party_0002.webp"
+            },
+            {
+                "question": "Who founded Federalist Party?",
+                "answer": "Alexander Hamilton",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Philosophical Investigations",
+        "entity_type": "book",
+        "knowledge_edit": {
+            "question": "Who is the author of Philosophical Investigations?",
+            "image_question": "Who is the author of the book in the image?",
+            "answer_new": "John Keats",
+            "answer_true": "Ludwig Wittgenstein"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who wrote Philosophical Investigations?",
+            "rephrase_image_question": "Who wrote the book in the image?",
+            "answer_new": "John Keats",
+            "answer_true": "Ludwig Wittgenstein"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Where did the person who wrote Philosophical Investigations die?",
+            "one_hop_image_question": "Where did the person who wrote the book in the image die?",
+            "answer_new": "Rome",
+            "answer_true": "Cambridge"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "To Kill a Mockingbird",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Harper Lee",
+            "question": "Who is the author of To Kill a Mockingbird?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Albert Einstein",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Sorry, there is no book in the image",
+            "question": "Who is the author of Albert Einstein?"
+        },
+        "locality_question": {
+            "question": "When did france and belgium invade the ruhr",
+            "answer": "1923"
+        },
+        "image_locality_question": {
+            "question": "What time of day is it?",
+            "answer": "afternoon"
+        },
+        "image": "Philosophical Investigations_0003.jpeg",
+        "image_rephrase": "Philosophical Investigations_0002.jpeg",
+        "same_entity_image": "To Kill a Mockingbird_0.jpeg",
+        "diff_entity_image": "Albert Einstein_0001.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000547047.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of Philosophical Investigations?",
+                "answer": "Ludwig Wittgenstein"
+            },
+            {
+                "question": "Which city did Ludwig Wittgenstein die in?",
+                "answer": "Cambridge"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of Philosophical Investigations?",
+                "answer": "John Keats"
+            },
+            {
+                "question": "Which city did John Keats die in?",
+                "answer": "Rome"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the book in the image?",
+                "answer": "Philosophical Investigations",
+                "image": "Philosophical Investigations_0003.jpeg"
+            },
+            {
+                "question": "Who is the author of Philosophical Investigations?",
+                "answer": "Ludwig Wittgenstein",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Lars Ulrich",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Who is the employer of Lars Ulrich?",
+            "image_question": "Who is the employer of the person in the image?",
+            "answer_new": "Cahiers du cin\u00e9ma",
+            "answer_true": "Metallica"
+        },
+        "rephrase_question": {
+            "rephrase_question": "For which organization does Lars Ulrich work?",
+            "rephrase_image_question": "For which organization does the person in the image work?",
+            "answer_new": "Cahiers du cin\u00e9ma",
+            "answer_true": "Metallica"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Where was the employer of Lars Ulrich founded?",
+            "one_hop_image_question": "Where was the employer of the person in the image founded?",
+            "answer_new": "Paris",
+            "answer_true": "Los Angeles"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Jeff Bezos",
+            "image_question": "Who is the employer of the person in the image?",
+            "answer": "Amazon",
+            "question": "Who is the employer of Jeff Bezos?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who is the employer of the person in the image?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Who is the employer of Eiffel Tower?"
+        },
+        "locality_question": {
+            "question": "Who plays rooster's girlfriend on the ranch",
+            "answer": "Megyn Price"
+        },
+        "image_locality_question": {
+            "question": "How cold is it?",
+            "answer": "freezing"
+        },
+        "image": "Lars Ulrich_0002.jpeg",
+        "image_rephrase": "Lars Ulrich_0.jpeg",
+        "same_entity_image": "Jeff Bezos_0002.jpeg",
+        "diff_entity_image": "Eiffel Tower_1.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000274549.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the employer of Lars Ulrich?",
+                "answer": "Metallica"
+            },
+            {
+                "question": "Where was Metallica founded?",
+                "answer": "Los Angeles"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the employer of Lars Ulrich?",
+                "answer": "Cahiers du cin\u00e9ma"
+            },
+            {
+                "question": "Where was Cahiers du cin\u00e9ma founded?",
+                "answer": "Paris"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Lars Ulrich",
+                "image": "Lars Ulrich_0002.jpeg"
+            },
+            {
+                "question": "Who is the employer of Lars Ulrich?",
+                "answer": "Metallica",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Cymbeline",
+        "entity_type": "literary work",
+        "knowledge_edit": {
+            "question": "Who is the author of Cymbeline?",
+            "image_question": "Who is the author of the literary work in the image?",
+            "answer_new": "Moli\u00e8re",
+            "answer_true": "William Shakespeare"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Which writer penned Cymbeline?",
+            "rephrase_image_question": "Which writer penned the literary work in the image?",
+            "answer_new": "Moli\u00e8re",
+            "answer_true": "William Shakespeare"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the place of death of the author of the play Cymbeline?",
+            "one_hop_image_question": "What is the place of death of the author of the play the literary work in the image?",
+            "answer_new": "Paris",
+            "answer_true": "Stratford-upon-Avon"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "The Great Gatsby",
+            "image_question": "Who is the author of the literary work in the image?",
+            "answer": "F. Scott Fitzgerald",
+            "question": "Who is the author of The Great Gatsby?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Who is the author of the literary work in the image?",
+            "answer": "Sorry, there is no literary work in the image",
+            "question": "Who is the author of Mount Everest?"
+        },
+        "locality_question": {
+            "question": "Where did the meech lake accord take place",
+            "answer": "Willson House, Meech Lake, in the Gatineau Hills"
+        },
+        "image_locality_question": {
+            "question": "What equipment are they using to ski?",
+            "answer": "snow boards"
+        },
+        "image": "Cymbeline_0001.jpeg",
+        "image_rephrase": "Cymbeline_0002.jpeg",
+        "same_entity_image": "The Great Gatsby_0001.jpeg",
+        "diff_entity_image": "Mount Everest_0002.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000302405.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of Cymbeline?",
+                "answer": "William Shakespeare"
+            },
+            {
+                "question": "Which city did William Shakespeare die in?",
+                "answer": "Stratford-upon-Avon"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of Cymbeline?",
+                "answer": "Moli\u00e8re"
+            },
+            {
+                "question": "Which city did Moli\u00e8re die in?",
+                "answer": "Paris"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the literary work in the image?",
+                "answer": "Cymbeline",
+                "image": "Cymbeline_0001.jpeg"
+            },
+            {
+                "question": "Who is the author of Cymbeline?",
+                "answer": "William Shakespeare",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Minister for Home Affairs",
+        "entity_type": "position/title",
+        "knowledge_edit": {
+            "question": "Who is the Minister for Home Affairs?",
+            "image_question": "Who is the the position/title in the image?",
+            "answer_new": "Danny Danon",
+            "answer_true": "Peter Dutton"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who currently holds the office of Minister for Home Affairs?",
+            "rephrase_image_question": "Who currently holds the office of the position/title in the image?",
+            "answer_new": "Danny Danon",
+            "answer_true": "Peter Dutton"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the work location of the Minister for Home Affairs?",
+            "one_hop_image_question": "What is the work location of the the position/title in the image?",
+            "answer_new": "Jerusalem",
+            "answer_true": "Canberra"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "President of France",
+            "image_question": "Who is the the position/title in the image?",
+            "answer": "Emmanuel Macron",
+            "question": "Who is the President of France?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Golden Retriever",
+            "image_question": "Who is the the position/title in the image?",
+            "answer": "Sorry, there is no position/title in the image",
+            "question": "Who is the Golden Retriever?"
+        },
+        "locality_question": {
+            "question": "Who is allowed to be apart of the european union",
+            "answer": "a candidate state must be a free market democracy"
+        },
+        "image_locality_question": {
+            "question": "What type of building is this?",
+            "answer": "hospital"
+        },
+        "image": "Minister for Home Affairs_4.jpeg",
+        "image_rephrase": "Minister for Home Affairs_0003.jpeg",
+        "same_entity_image": "President of France_0001.jpeg",
+        "diff_entity_image": "Golden Retriever_0002.webp",
+        "locality_image": "val2014/COCO_val2014_000000373266.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the Minister for Home Affairs?",
+                "answer": "Peter Dutton"
+            },
+            {
+                "question": "Which city did Peter Dutton work in?",
+                "answer": "Canberra"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the Minister for Home Affairs?",
+                "answer": "Danny Danon"
+            },
+            {
+                "question": "Which city did Danny Danon work in?",
+                "answer": "Jerusalem"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the position or title of the person in the image?",
+                "answer": "Minister for Home Affairs",
+                "image": "Minister for Home Affairs_4.jpeg"
+            },
+            {
+                "question": "Who is the Minister for Home Affairs?",
+                "answer": "Peter Dutton",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Neil Gaiman",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Who is Neil Gaiman married to?",
+            "image_question": "Who is the person in the image married to?",
+            "answer_new": "Empress Jingu",
+            "answer_true": "Amanda Palmer"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is Neil Gaiman's spouse?",
+            "rephrase_image_question": "Who is the person in the image's spouse?",
+            "answer_new": "Empress Jingu",
+            "answer_true": "Amanda Palmer"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What are the languages that the spouse of Neil Gaiman can speak, write or sign?",
+            "one_hop_image_question": "What are the languages that the spouse of the person in the image can speak, write or sign?",
+            "answer_new": "Japanese",
+            "answer_true": "English"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Barack Obama",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Michelle Obama",
+            "question": "Who is Barack Obama married to?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "The Golden Gate Bridge",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Who is The Golden Gate Bridge married to?"
+        },
+        "locality_question": {
+            "question": "What is the corporate tax rate in great britain",
+            "answer": "20%"
+        },
+        "image_locality_question": {
+            "question": "What is the decorative fabric on the floor called?",
+            "answer": "rug"
+        },
+        "image": "Neil Gaiman_0000.jpeg",
+        "image_rephrase": "Neil Gaiman_0003.jpeg",
+        "same_entity_image": "Barack Obama_0002.webp",
+        "diff_entity_image": "The Golden Gate Bridge_0000.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000139684.jpg",
+        "single_hops": [
+            {
+                "question": "Who is Neil Gaiman married to?",
+                "answer": "Amanda Palmer"
+            },
+            {
+                "question": "What language does Amanda Palmer speak?",
+                "answer": "English"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is Neil Gaiman married to?",
+                "answer": "Empress Jingu"
+            },
+            {
+                "question": "What language does Empress Jingu speak?",
+                "answer": "Japanese"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Neil Gaiman",
+                "image": "Neil Gaiman_0000.jpeg"
+            },
+            {
+                "question": "Who is Neil Gaiman married to?",
+                "answer": "Amanda Palmer",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Whopper",
+        "entity_type": "product",
+        "knowledge_edit": {
+            "question": "Which company is Whopper produced by?",
+            "image_question": "Which company is the product in the image produced by?",
+            "answer_new": "BYD Auto",
+            "answer_true": "Burger King"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who manufactures the Whopper?",
+            "rephrase_image_question": "Who manufactures the the product in the image?",
+            "answer_new": "BYD Auto",
+            "answer_true": "Burger King"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the name of the person who oversees the manufacturer of Whopper?",
+            "one_hop_image_question": "What is the name of the person who oversees the manufacturer of the product in the image?",
+            "answer_new": "Wang Chuanfu",
+            "answer_true": "Daniel Schwartz"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Big Mac",
+            "image_question": "Which company is the product in the image produced by?",
+            "answer": "McDonald's",
+            "question": "Which company is Big Mac produced by?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Which company is the product in the image produced by?",
+            "answer": "Sorry, there is no product in the image",
+            "question": "Which company is Eiffel Tower produced by?"
+        },
+        "locality_question": {
+            "question": "Where do they put the tomb vampires in order to burn them during founders day",
+            "answer": "the Gilbert building"
+        },
+        "image_locality_question": {
+            "question": "What is a company that makes these?",
+            "answer": "meissen"
+        },
+        "image": "Whopper_0.png",
+        "image_rephrase": "Whopper_1.png",
+        "same_entity_image": "Big Mac_0.jpeg",
+        "diff_entity_image": "Eiffel Tower_0002.webp",
+        "locality_image": "val2014/COCO_val2014_000000336937.jpg",
+        "single_hops": [
+            {
+                "question": "Which company is Whopper produced by?",
+                "answer": "Burger King"
+            },
+            {
+                "question": "Who is the director of Burger King?",
+                "answer": "Daniel Schwartz"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which company is Whopper produced by?",
+                "answer": "BYD Auto"
+            },
+            {
+                "question": "Who is the director of BYD Auto?",
+                "answer": "Wang Chuanfu"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the product in the image?",
+                "answer": "Whopper",
+                "image": "Whopper_0.png"
+            },
+            {
+                "question": "Which company is Whopper produced by?",
+                "answer": "Burger King",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Crime and Punishment",
+        "entity_type": "book",
+        "knowledge_edit": {
+            "question": "Who is the author of Crime and Punishment?",
+            "image_question": "Who is the author of the book in the image?",
+            "answer_new": "Johann Joseph Fux",
+            "answer_true": "Fyodor Dostoyevsky"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who wrote the novel Crime and Punishment?",
+            "rephrase_image_question": "Who wrote the novel the book in the image?",
+            "answer_new": "Johann Joseph Fux",
+            "answer_true": "Fyodor Dostoyevsky"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Where did the author of Crime and Punishment pass away?",
+            "one_hop_image_question": "Where did the author of the book in the image pass away?",
+            "answer_new": "Vienna",
+            "answer_true": "Saint Petersburg"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "To Kill a Mockingbird",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Harper Lee",
+            "question": "Who is the author of To Kill a Mockingbird?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Amazon River",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Sorry, there is no book in the image",
+            "question": "Who is the author of Amazon River?"
+        },
+        "locality_question": {
+            "question": "When was hitchhiker's guide to the galaxy made",
+            "answer": "1978"
+        },
+        "image_locality_question": {
+            "question": "What vegetable is in the casserole dish?",
+            "answer": "tomato"
+        },
+        "image": "Crime and Punishment_0.jpeg",
+        "image_rephrase": "Crime and Punishment_1.png",
+        "same_entity_image": "To Kill a Mockingbird_0002.jpeg",
+        "diff_entity_image": "Amazon River_0.png",
+        "locality_image": "val2014/COCO_val2014_000000043261.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of Crime and Punishment?",
+                "answer": "Fyodor Dostoyevsky"
+            },
+            {
+                "question": "Which city did Fyodor Dostoyevsky die in?",
+                "answer": "Saint Petersburg"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of Crime and Punishment?",
+                "answer": "Johann Joseph Fux"
+            },
+            {
+                "question": "Which city did Johann Joseph Fux die in?",
+                "answer": "Vienna"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the book in the image?",
+                "answer": "Crime and Punishment",
+                "image": "Crime and Punishment_0.jpeg"
+            },
+            {
+                "question": "Who is the author of Crime and Punishment?",
+                "answer": "Fyodor Dostoyevsky",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Critique of Judgment",
+        "entity_type": "book",
+        "knowledge_edit": {
+            "question": "Who is the author of Critique of Judgment?",
+            "image_question": "Who is the author of the book in the image?",
+            "answer_new": "Thomas Morley",
+            "answer_true": "Immanuel Kant"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who wrote Critique of Judgment?",
+            "rephrase_image_question": "Who wrote the book in the image?",
+            "answer_new": "Thomas Morley",
+            "answer_true": "Immanuel Kant"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Where did the author of Critique of Judgment pass away?",
+            "one_hop_image_question": "Where did the author of the book in the image pass away?",
+            "answer_new": "London",
+            "answer_true": "K\u00f6nigsberg"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Moby-Dick",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Herman Melville",
+            "question": "Who is the author of Moby-Dick?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Sorry, there is no book in the image",
+            "question": "Who is the author of Eiffel Tower?"
+        },
+        "locality_question": {
+            "question": "Where does the last name orozco originate from",
+            "answer": "Spanish/Basque origin"
+        },
+        "image_locality_question": {
+            "question": "Is this photograph taken from eye level with the furniture above it or below it?",
+            "answer": "above"
+        },
+        "image": "Critique of Judgment_2.jpeg",
+        "image_rephrase": "Critique of Judgment_3.jpeg",
+        "same_entity_image": "Moby-Dick_0000.jpeg",
+        "diff_entity_image": "Eiffel Tower_0001.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000392642.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of Critique of Judgment?",
+                "answer": "Immanuel Kant"
+            },
+            {
+                "question": "Which city did Immanuel Kant die in?",
+                "answer": "K\u00f6nigsberg"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of Critique of Judgment?",
+                "answer": "Thomas Morley"
+            },
+            {
+                "question": "Which city did Thomas Morley die in?",
+                "answer": "London"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the book in the image?",
+                "answer": "Critique of Judgment",
+                "image": "Critique of Judgment_2.jpeg"
+            },
+            {
+                "question": "Who is the author of Critique of Judgment?",
+                "answer": "Immanuel Kant",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "The Dresden Files",
+        "entity_type": "book series",
+        "knowledge_edit": {
+            "question": "Who is the author of The Dresden Files?",
+            "image_question": "Who is the author of the book series in the image?",
+            "answer_new": "Justinian I",
+            "answer_true": "Jim Butcher"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who penned The Dresden Files?",
+            "rephrase_image_question": "Who penned the book series in the image?",
+            "answer_new": "Justinian I",
+            "answer_true": "Jim Butcher"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Which country was The Dresden Files author a citizen of?",
+            "one_hop_image_question": "Which country was the book series in the image author a citizen of?",
+            "answer_new": "Byzantine Empire",
+            "answer_true": "United States of America"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Harry Potter series",
+            "image_question": "Who is the author of the book series in the image?",
+            "answer": "J.K. Rowling",
+            "question": "Who is the author of Harry Potter series?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Central Park",
+            "image_question": "Who is the author of the book series in the image?",
+            "answer": "Sorry, there is no book series in the image",
+            "question": "Who is the author of Central Park?"
+        },
+        "locality_question": {
+            "question": "How many episodes are there in dragon ball z",
+            "answer": "291"
+        },
+        "image_locality_question": {
+            "question": "In what year was this desert first introduced?",
+            "answer": "1934"
+        },
+        "image": "The Dresden Files_1.jpeg",
+        "image_rephrase": "The Dresden Files_2.jpeg",
+        "same_entity_image": "Harry Potter series_0001.jpeg",
+        "diff_entity_image": "Central Park_0.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000457584.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of The Dresden Files?",
+                "answer": "Jim Butcher"
+            },
+            {
+                "question": "What is the country of citizenship of Jim Butcher?",
+                "answer": "United States of America"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of The Dresden Files?",
+                "answer": "Justinian I"
+            },
+            {
+                "question": "What is the country of citizenship of Justinian I?",
+                "answer": "Byzantine Empire"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the book series in the image?",
+                "answer": "The Dresden Files",
+                "image": "The Dresden Files_1.jpeg"
+            },
+            {
+                "question": "Who is the author of The Dresden Files?",
+                "answer": "Jim Butcher",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Goldfinger",
+        "entity_type": "book",
+        "knowledge_edit": {
+            "question": "Who is the author of Goldfinger?",
+            "image_question": "Who is the author of the book in the image?",
+            "answer_new": "Jim Starlin",
+            "answer_true": "Ian Fleming"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who wrote Goldfinger?",
+            "rephrase_image_question": "Who wrote the book in the image?",
+            "answer_new": "Jim Starlin",
+            "answer_true": "Ian Fleming"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Which country does the author of Goldfinger belong to?",
+            "one_hop_image_question": "Which country does the author of the book in the image belong to?",
+            "answer_new": "United States of America",
+            "answer_true": "United Kingdom"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "The Great Gatsby",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "F. Scott Fitzgerald",
+            "question": "Who is the author of The Great Gatsby?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Sorry, there is no book in the image",
+            "question": "Who is the author of Mount Everest?"
+        },
+        "locality_question": {
+            "question": "Who wrote the theme song for the winter olympics",
+            "answer": "Leo Arnaud"
+        },
+        "image_locality_question": {
+            "question": "What kind of hat is the man wearing?",
+            "answer": "brim hat"
+        },
+        "image": "Goldfinger_0.jpeg",
+        "image_rephrase": "Goldfinger_1.jpeg",
+        "same_entity_image": "The Great Gatsby_0000.jpeg",
+        "diff_entity_image": "Mount Everest_0002.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000343852.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of Goldfinger?",
+                "answer": "Ian Fleming"
+            },
+            {
+                "question": "What is the country of citizenship of Ian Fleming?",
+                "answer": "United Kingdom"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of Goldfinger?",
+                "answer": "Jim Starlin"
+            },
+            {
+                "question": "What is the country of citizenship of Jim Starlin?",
+                "answer": "United States of America"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the book in the image?",
+                "answer": "Goldfinger",
+                "image": "Goldfinger_0.jpeg"
+            },
+            {
+                "question": "Who is the author of Goldfinger?",
+                "answer": "Ian Fleming",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Ivanka Trump",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Who is Ivanka Trump married to?",
+            "image_question": "Who is the person in the image married to?",
+            "answer_new": "Christa Ludwig",
+            "answer_true": "Jared Kushner"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is Ivanka Trump's spouse?",
+            "rephrase_image_question": "Who is the person in the image's spouse?",
+            "answer_new": "Christa Ludwig",
+            "answer_true": "Jared Kushner"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the birthplace of the husband of Ivanka Trump?",
+            "one_hop_image_question": "What is the birthplace of the husband of the person in the image?",
+            "answer_new": "Berlin",
+            "answer_true": "Livingston"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Barack Obama",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Michelle Obama",
+            "question": "Who is Barack Obama married to?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who is the person in the image married to?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Who is Eiffel Tower married to?"
+        },
+        "locality_question": {
+            "question": "Who was the first lady nominated member of the rajya sabha",
+            "answer": "Mary Kom"
+        },
+        "image_locality_question": {
+            "question": "What type of bike is on the ground?",
+            "answer": "bicycle"
+        },
+        "image": "Ivanka Trump_0.jpeg",
+        "image_rephrase": "Ivanka Trump_1.webp",
+        "same_entity_image": "Barack Obama_0001.webp",
+        "diff_entity_image": "Eiffel Tower_0001.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000021711.jpg",
+        "single_hops": [
+            {
+                "question": "Who is Ivanka Trump married to?",
+                "answer": "Jared Kushner"
+            },
+            {
+                "question": "Which city was Jared Kushner born in?",
+                "answer": "Livingston"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is Ivanka Trump married to?",
+                "answer": "Christa Ludwig"
+            },
+            {
+                "question": "Which city was Christa Ludwig born in?",
+                "answer": "Berlin"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Ivanka Trump",
+                "image": "Ivanka Trump_0.jpeg"
+            },
+            {
+                "question": "Who is Ivanka Trump married to?",
+                "answer": "Jared Kushner",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Missionaries of Charity",
+        "entity_type": "organization",
+        "knowledge_edit": {
+            "question": "Who founded Missionaries of Charity?",
+            "image_question": "Who founded the organization in the image?",
+            "answer_new": "John Rutter",
+            "answer_true": "Mother Teresa"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is the founder of the Missionaries of Charity?",
+            "rephrase_image_question": "Who is the founder of the the organization in the image?",
+            "answer_new": "John Rutter",
+            "answer_true": "Mother Teresa"
+        },
+        "one_hop_question": {
+            "one_hop_question": "In which city was the founder of Missionaries of Charity born?",
+            "one_hop_image_question": "In which city was the founder of the organization in the image born?",
+            "answer_new": "London",
+            "answer_true": "Skopje"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Red Cross",
+            "image_question": "Who founded the organization in the image?",
+            "answer": "Henry Dunant",
+            "question": "Who founded Red Cross?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Who founded the organization in the image?",
+            "answer": "Sorry, there is no organization in the image",
+            "question": "Who founded Mount Everest?"
+        },
+        "locality_question": {
+            "question": "What is the source of information for account receivables",
+            "answer": "invoices"
+        },
+        "image_locality_question": {
+            "question": "What princess famously suggested that peasants eat this type of food?",
+            "answer": "marie antoinette"
+        },
+        "image": "Missionaries of Charity_1.png",
+        "image_rephrase": "Missionaries of Charity_0.jpeg",
+        "same_entity_image": "Red Cross_2.png",
+        "diff_entity_image": "Mount Everest_0000.webp",
+        "locality_image": "val2014/COCO_val2014_000000106338.jpg",
+        "single_hops": [
+            {
+                "question": "Who founded Missionaries of Charity?",
+                "answer": "Mother Teresa"
+            },
+            {
+                "question": "Which city was Mother Teresa born in?",
+                "answer": "Skopje"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who founded Missionaries of Charity?",
+                "answer": "John Rutter"
+            },
+            {
+                "question": "Which city was John Rutter born in?",
+                "answer": "London"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the organization in the image?",
+                "answer": "Missionaries of Charity",
+                "image": "Missionaries of Charity_1.png"
+            },
+            {
+                "question": "Who founded Missionaries of Charity?",
+                "answer": "Mother Teresa",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "B-50 Superfortress",
+        "entity_type": "aircraft",
+        "knowledge_edit": {
+            "question": "Who is the developer of B-50 Superfortress?",
+            "image_question": "Who is the developer of the aircraft in the image?",
+            "answer_new": "Firaxis Games",
+            "answer_true": "Boeing"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who was responsible for developing the B-50 Superfortress?",
+            "rephrase_image_question": "Who was responsible for developing the the aircraft in the image?",
+            "answer_new": "Firaxis Games",
+            "answer_true": "Boeing"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Who founded the developer of B-50 Superfortress?",
+            "one_hop_image_question": "Who founded the developer of the aircraft in the image?",
+            "answer_new": "Sid Meier",
+            "answer_true": "William Boeing"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Boeing 747",
+            "image_question": "Who is the developer of the aircraft in the image?",
+            "answer": "Boeing",
+            "question": "Who is the developer of Boeing 747?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Golden Retriever",
+            "image_question": "Who is the developer of the aircraft in the image?",
+            "answer": "Sorry, there is no aircraft in the image",
+            "question": "Who is the developer of Golden Retriever?"
+        },
+        "locality_question": {
+            "question": "What is the cash option for the mega millions",
+            "answer": "whether they wish to collect a jackpot prize in cash or annuity"
+        },
+        "image_locality_question": {
+            "question": "What gas station is pictured?",
+            "answer": "shell"
+        },
+        "image": "B-50 Superfortress_2.jpeg",
+        "image_rephrase": "B-50 Superfortress_1.webp",
+        "same_entity_image": "Boeing 747_0002.jpeg",
+        "diff_entity_image": "Golden Retriever_0.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000524216.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the developer of B-50 Superfortress?",
+                "answer": "Boeing"
+            },
+            {
+                "question": "Who founded Boeing?",
+                "answer": "William Boeing"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the developer of B-50 Superfortress?",
+                "answer": "Firaxis Games"
+            },
+            {
+                "question": "Who founded Firaxis Games?",
+                "answer": "Sid Meier"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the aircraft in the image?",
+                "answer": "B-50 Superfortress",
+                "image": "B-50 Superfortress_2.jpeg"
+            },
+            {
+                "question": "Who is the developer of B-50 Superfortress?",
+                "answer": "Boeing",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Cymbeline",
+        "entity_type": "literary work",
+        "knowledge_edit": {
+            "question": "Who is the author of Cymbeline?",
+            "image_question": "Who is the author of the literary work in the image?",
+            "answer_new": "Moli\u00e8re",
+            "answer_true": "William Shakespeare"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Which writer penned Cymbeline?",
+            "rephrase_image_question": "Which writer penned the literary work in the image?",
+            "answer_new": "Moli\u00e8re",
+            "answer_true": "William Shakespeare"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the place of death of the author of the play Cymbeline?",
+            "one_hop_image_question": "What is the place of death of the author of the play the literary work in the image?",
+            "answer_new": "Paris",
+            "answer_true": "Stratford-upon-Avon"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "The Great Gatsby",
+            "image_question": "Who is the author of the literary work in the image?",
+            "answer": "F. Scott Fitzgerald",
+            "question": "Who is the author of The Great Gatsby?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Who is the author of the literary work in the image?",
+            "answer": "Sorry, there is no literary work in the image",
+            "question": "Who is the author of Mount Everest?"
+        },
+        "locality_question": {
+            "question": "Where did the meech lake accord take place",
+            "answer": "Willson House, Meech Lake, in the Gatineau Hills"
+        },
+        "image_locality_question": {
+            "question": "What equipment are they using to ski?",
+            "answer": "snow boards"
+        },
+        "image": "Cymbeline_0001.jpeg",
+        "image_rephrase": "Cymbeline_0002.jpeg",
+        "same_entity_image": "The Great Gatsby_0001.jpeg",
+        "diff_entity_image": "Mount Everest_0002.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000302405.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of Cymbeline?",
+                "answer": "William Shakespeare"
+            },
+            {
+                "question": "Which city did William Shakespeare die in?",
+                "answer": "Stratford-upon-Avon"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of Cymbeline?",
+                "answer": "Moli\u00e8re"
+            },
+            {
+                "question": "Which city did Moli\u00e8re die in?",
+                "answer": "Paris"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the literary work in the image?",
+                "answer": "Cymbeline",
+                "image": "Cymbeline_0001.jpeg"
+            },
+            {
+                "question": "Who is the author of Cymbeline?",
+                "answer": "William Shakespeare",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Greg Cohen",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "What type of music does Greg Cohen play?",
+            "image_question": "What type of music does the person in the image play?",
+            "answer_new": "music of Ireland",
+            "answer_true": "jazz"
+        },
+        "rephrase_question": {
+            "rephrase_question": "What genre of music is Greg Cohen known for performing?",
+            "rephrase_image_question": "What genre of music is the person in the image known for performing?",
+            "answer_new": "music of Ireland",
+            "answer_true": "jazz"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Who is the head of state of the country where the genre of Greg Cohen originated from? ",
+            "one_hop_image_question": "Who is the head of state of the country where the genre of the person in the image originated from? ",
+            "answer_new": "Michael D. Higgins",
+            "answer_true": "Donald Trump"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "John Williams",
+            "image_question": "What type of music does the person in the image play?",
+            "answer": "Classical and film score composer",
+            "question": "What type of music does John Williams play?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Apple",
+            "image_question": "What type of music does the person in the image play?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "What type of music does Apple play?"
+        },
+        "locality_question": {
+            "question": "Who is the coach of university of kentucky basketball",
+            "answer": "John Calipari"
+        },
+        "image_locality_question": {
+            "question": "What is stuffed inside that furniture?",
+            "answer": "cotton"
+        },
+        "image": "Greg Cohen_0.jpeg",
+        "image_rephrase": "Greg Cohen_3.jpeg",
+        "same_entity_image": "John Williams_4.webp",
+        "diff_entity_image": "Apple_0002.png",
+        "locality_image": "val2014/COCO_val2014_000000268229.jpg",
+        "single_hops": [
+            {
+                "question": "What type of music does Greg Cohen play?",
+                "answer": "jazz"
+            },
+            {
+                "question": "Which country was jazz created in?",
+                "answer": "United States of America"
+            },
+            {
+                "question": "What is the name of the current head of state in United States of America?",
+                "answer": "Donald Trump"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "What type of music does Greg Cohen play?",
+                "answer": "music of Ireland"
+            },
+            {
+                "question": "Which country was music of Ireland created in?",
+                "answer": "Ireland"
+            },
+            {
+                "question": "What is the name of the current head of state in Ireland?",
+                "answer": "Michael D. Higgins"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Greg Cohen",
+                "image": "Greg Cohen_0.jpeg"
+            },
+            {
+                "question": "What type of music does Greg Cohen play?",
+                "answer": "jazz",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Dennis Weaver",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "What type of music does Dennis Weaver play?",
+            "image_question": "What type of music does the person in the image play?",
+            "answer_new": "music of Japan",
+            "answer_true": "country music"
+        },
+        "rephrase_question": {
+            "rephrase_question": "What genre of music does Dennis Weaver perform?",
+            "rephrase_image_question": "What genre of music does the person in the image perform?",
+            "answer_new": "music of Japan",
+            "answer_true": "country music"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Which head of government was in power in the country where the genre of Dennis Weaver's work was created?",
+            "one_hop_image_question": "Which head of government was in power in the country where the genre of the person in the image's work was created?",
+            "answer_new": "Shinz\u014d Abe",
+            "answer_true": "Donald Trump"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Taylor Swift",
+            "image_question": "What type of music does the person in the image play?",
+            "answer": "Pop and country",
+            "question": "What type of music does Taylor Swift play?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Toyota Camry",
+            "image_question": "What type of music does the person in the image play?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "What type of music does Toyota Camry play?"
+        },
+        "locality_question": {
+            "question": "When was the first star wars film released",
+            "answer": "1977"
+        },
+        "image_locality_question": {
+            "question": "What are the individuals inside of this vehicle called?",
+            "answer": "passengers"
+        },
+        "image": "Dennis Weaver_0.jpeg",
+        "image_rephrase": "Dennis Weaver_1.jpeg",
+        "same_entity_image": "Taylor Swift_0000.webp",
+        "diff_entity_image": "Toyota Camry_0002.webp",
+        "locality_image": "val2014/COCO_val2014_000000340036.jpg",
+        "single_hops": [
+            {
+                "question": "What type of music does Dennis Weaver play?",
+                "answer": "country music"
+            },
+            {
+                "question": "Which country was country music created in?",
+                "answer": "United States of America"
+            },
+            {
+                "question": "What is the name of the current head of the United States of America government?",
+                "answer": "Donald Trump"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "What type of music does Dennis Weaver play?",
+                "answer": "music of Japan"
+            },
+            {
+                "question": "Which country was music of Japan created in?",
+                "answer": "Japan"
+            },
+            {
+                "question": "What is the name of the current head of the Japan government?",
+                "answer": "Shinz\u014d Abe"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Dennis Weaver",
+                "image": "Dennis Weaver_0.jpeg"
+            },
+            {
+                "question": "What type of music does Dennis Weaver play?",
+                "answer": "country music",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Thomas de Cantilupe",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Which religion is Thomas de Cantilupe affiliated with?",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "rephrase_question": {
+            "rephrase_question": "To which religious faith does Thomas de Cantilupe belong?",
+            "rephrase_image_question": "To which religious faith does the person in the image belong?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Which place was the workplace of the founder of the religion that Thomas de Cantilupe followed located in?",
+            "one_hop_image_question": "Which place was the workplace of the founder of the religion that the person in the image followed located in?",
+            "answer_new": "Edinburgh",
+            "answer_true": "Galilee"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Mother Teresa",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Roman Catholicism",
+            "question": "Which religion is Mother Teresa affiliated with?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Which religion is Mount Everest affiliated with?"
+        },
+        "locality_question": {
+            "question": "Panic at the disco song about a wedding",
+            "answer": "I Write Sins Not Tragedies"
+        },
+        "image_locality_question": {
+            "question": "What is this workspace called?",
+            "answer": "workstation"
+        },
+        "image": "Thomas de Cantilupe_0.jpeg",
+        "image_rephrase": "Thomas de Cantilupe_2.webp",
+        "same_entity_image": "Mother Teresa_0.webp",
+        "diff_entity_image": "Mount Everest_0.webp",
+        "locality_image": "val2014/COCO_val2014_000000528311.jpg",
+        "single_hops": [
+            {
+                "question": "Which religion is Thomas de Cantilupe affiliated with?",
+                "answer": "Catholic Church"
+            },
+            {
+                "question": "Who founded Catholic Church?",
+                "answer": "Jesus Christ"
+            },
+            {
+                "question": "Which city did Jesus Christ work in?",
+                "answer": "Galilee"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which religion is Thomas de Cantilupe affiliated with?",
+                "answer": "Church of Scotland"
+            },
+            {
+                "question": "Who founded Church of Scotland?",
+                "answer": "John Knox"
+            },
+            {
+                "question": "Which city did John Knox work in?",
+                "answer": "Edinburgh"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Thomas de Cantilupe",
+                "image": "Thomas de Cantilupe_0.jpeg"
+            },
+            {
+                "question": "Which religion is Thomas de Cantilupe affiliated with?",
+                "answer": "Catholic Church",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Miss Havisham",
+        "entity_type": "fictional character",
+        "knowledge_edit": {
+            "question": "Who was Miss Havisham created by?",
+            "image_question": "Who was the fictional character in the image created by?",
+            "answer_new": "Gerald Ford",
+            "answer_true": "Charles Dickens"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is the author that created Miss Havisham?",
+            "rephrase_image_question": "Who is the author that created the fictional character in the image?",
+            "answer_new": "Gerald Ford",
+            "answer_true": "Charles Dickens"
+        },
+        "one_hop_question": {
+            "one_hop_question": "From which country does the spouse of the creator of Miss Havisham come?",
+            "one_hop_image_question": "From which country does the spouse of the creator of the fictional character in the image come?",
+            "answer_new": "United States of America",
+            "answer_true": "United Kingdom"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Sherlock Holmes",
+            "image_question": "Who was the fictional character in the image created by?",
+            "answer": "Arthur Conan Doyle",
+            "question": "Who was Sherlock Holmes created by?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Who was the fictional character in the image created by?",
+            "answer": "Sorry, there is no fictional character in the image",
+            "question": "Who was Eiffel Tower created by?"
+        },
+        "locality_question": {
+            "question": "Who sings song at the end of beauty and the beast",
+            "answer": "Josh Groban"
+        },
+        "image_locality_question": {
+            "question": "What activity is taking place?",
+            "answer": "wind surfing"
+        },
+        "image": "Miss Havisham_0.jpeg",
+        "image_rephrase": "Miss Havisham_1.jpeg",
+        "same_entity_image": "Sherlock Holmes_0000.jpeg",
+        "diff_entity_image": "Eiffel Tower_0001.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000098048.jpg",
+        "single_hops": [
+            {
+                "question": "Who was Miss Havisham created by?",
+                "answer": "Charles Dickens"
+            },
+            {
+                "question": "Who is Charles Dickens married to?",
+                "answer": "Catherine Dickens"
+            },
+            {
+                "question": "What is the country of citizenship of Catherine Dickens?",
+                "answer": "United Kingdom"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who was Miss Havisham created by?",
+                "answer": "Gerald Ford"
+            },
+            {
+                "question": "Who is Gerald Ford married to?",
+                "answer": "Betty Ford"
+            },
+            {
+                "question": "What is the country of citizenship of Betty Ford?",
+                "answer": "United States of America"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the fictional character in the image?",
+                "answer": "Miss Havisham",
+                "image": "Miss Havisham_0.jpeg"
+            },
+            {
+                "question": "Who was Miss Havisham created by?",
+                "answer": "Charles Dickens",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Holy Cross Cemetery",
+        "entity_type": "place",
+        "knowledge_edit": {
+            "question": "Which religion is Holy Cross Cemetery affiliated with?",
+            "image_question": "Which religion is the place in the image affiliated with?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "rephrase_question": {
+            "rephrase_question": "With which religion is Holy Cross Cemetery associated?",
+            "rephrase_image_question": "With which religion is the place in the image associated?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the work location of the founder of the Holy Cross Cemetery?",
+            "one_hop_image_question": "What is the work location of the founder of the the place in the image?",
+            "answer_new": "Edinburgh",
+            "answer_true": "Galilee"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Westminster Abbey",
+            "image_question": "Which religion is the place in the image affiliated with?",
+            "answer": "Christianity (specifically Anglican)",
+            "question": "Which religion is Westminster Abbey affiliated with?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "William Shakespeare",
+            "image_question": "Which religion is the place in the image affiliated with?",
+            "answer": "Sorry, there is no place in the image",
+            "question": "Which religion is William Shakespeare affiliated with?"
+        },
+        "locality_question": {
+            "question": "Where can you find blue bell ice cream",
+            "answer": "primarily concentrated in the Southern United States"
+        },
+        "image_locality_question": {
+            "question": "Name the bird?",
+            "answer": "pigeon"
+        },
+        "image": "Holy Cross Cemetery_0.jpeg",
+        "image_rephrase": "Holy Cross Cemetery_1.jpeg",
+        "same_entity_image": "Westminster Abbey_2.webp",
+        "diff_entity_image": "William Shakespeare_2.webp",
+        "locality_image": "val2014/COCO_val2014_000000333808.jpg",
+        "single_hops": [
+            {
+                "question": "Which religion is Holy Cross Cemetery affiliated with?",
+                "answer": "Catholic Church"
+            },
+            {
+                "question": "Who founded Catholic Church?",
+                "answer": "Jesus Christ"
+            },
+            {
+                "question": "Which city did Jesus Christ work in?",
+                "answer": "Galilee"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which religion is Holy Cross Cemetery affiliated with?",
+                "answer": "Church of Scotland"
+            },
+            {
+                "question": "Who founded Church of Scotland?",
+                "answer": "John Knox"
+            },
+            {
+                "question": "Which city did John Knox work in?",
+                "answer": "Edinburgh"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the place in the image?",
+                "answer": "Holy Cross Cemetery",
+                "image": "Holy Cross Cemetery_0.jpeg"
+            },
+            {
+                "question": "Which religion is Holy Cross Cemetery affiliated with?",
+                "answer": "Catholic Church",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Cymbeline",
+        "entity_type": "literary work",
+        "knowledge_edit": {
+            "question": "Who is the author of Cymbeline?",
+            "image_question": "Who is the author of the literary work in the image?",
+            "answer_new": "Moli\u00e8re",
+            "answer_true": "William Shakespeare"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Which writer penned Cymbeline?",
+            "rephrase_image_question": "Which writer penned the literary work in the image?",
+            "answer_new": "Moli\u00e8re",
+            "answer_true": "William Shakespeare"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the place of death of the author of the play Cymbeline?",
+            "one_hop_image_question": "What is the place of death of the author of the play the literary work in the image?",
+            "answer_new": "Paris",
+            "answer_true": "Stratford-upon-Avon"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "The Great Gatsby",
+            "image_question": "Who is the author of the literary work in the image?",
+            "answer": "F. Scott Fitzgerald",
+            "question": "Who is the author of The Great Gatsby?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Who is the author of the literary work in the image?",
+            "answer": "Sorry, there is no literary work in the image",
+            "question": "Who is the author of Mount Everest?"
+        },
+        "locality_question": {
+            "question": "Where did the meech lake accord take place",
+            "answer": "Willson House, Meech Lake, in the Gatineau Hills"
+        },
+        "image_locality_question": {
+            "question": "What equipment are they using to ski?",
+            "answer": "snow boards"
+        },
+        "image": "Cymbeline_0001.jpeg",
+        "image_rephrase": "Cymbeline_0002.jpeg",
+        "same_entity_image": "The Great Gatsby_0001.jpeg",
+        "diff_entity_image": "Mount Everest_0002.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000302405.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of Cymbeline?",
+                "answer": "William Shakespeare"
+            },
+            {
+                "question": "Which city did William Shakespeare die in?",
+                "answer": "Stratford-upon-Avon"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of Cymbeline?",
+                "answer": "Moli\u00e8re"
+            },
+            {
+                "question": "Which city did Moli\u00e8re die in?",
+                "answer": "Paris"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the literary work in the image?",
+                "answer": "Cymbeline",
+                "image": "Cymbeline_0001.jpeg"
+            },
+            {
+                "question": "Who is the author of Cymbeline?",
+                "answer": "William Shakespeare",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Eddie Rabbitt",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "What type of music does Eddie Rabbitt play?",
+            "image_question": "What type of music does the person in the image play?",
+            "answer_new": "soca music",
+            "answer_true": "country music"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Which genre of music is Eddie Rabbitt known for?",
+            "rephrase_image_question": "Which genre of music is the person in the image known for?",
+            "answer_new": "soca music",
+            "answer_true": "country music"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the capital of the country where the genre of Eddie Rabbitt originated?",
+            "one_hop_image_question": "What is the capital of the country where the genre of the person in the image originated?",
+            "answer_new": "Port of Spain",
+            "answer_true": "Washington, D.C."
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Taylor Swift",
+            "image_question": "What type of music does the person in the image play?",
+            "answer": "Pop and Country",
+            "question": "What type of music does Taylor Swift play?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Guitar",
+            "image_question": "What type of music does the person in the image play?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "What type of music does Guitar play?"
+        },
+        "locality_question": {
+            "question": "Who is command sergeant major of the army",
+            "answer": "Daniel A. Dailey"
+        },
+        "image_locality_question": {
+            "question": "What type of sandwich is this?",
+            "answer": "turkey clun"
+        },
+        "image": "Eddie Rabbitt_0.jpeg",
+        "image_rephrase": "Eddie Rabbitt_1.jpeg",
+        "same_entity_image": "Taylor Swift_0000.webp",
+        "diff_entity_image": "Guitar_0.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000430056.jpg",
+        "single_hops": [
+            {
+                "question": "What type of music does Eddie Rabbitt play?",
+                "answer": "country music"
+            },
+            {
+                "question": "Which country was country music created in?",
+                "answer": "United States of America"
+            },
+            {
+                "question": "What is the capital of United States of America?",
+                "answer": "Washington, D.C."
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "What type of music does Eddie Rabbitt play?",
+                "answer": "soca music"
+            },
+            {
+                "question": "Which country was soca music created in?",
+                "answer": "Trinidad and Tobago"
+            },
+            {
+                "question": "What is the capital of Trinidad and Tobago?",
+                "answer": "Port of Spain"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Eddie Rabbitt",
+                "image": "Eddie Rabbitt_0.jpeg"
+            },
+            {
+                "question": "What type of music does Eddie Rabbitt play?",
+                "answer": "country music",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Otto of Freising",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Which religion is Otto of Freising affiliated with?",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "rephrase_question": {
+            "rephrase_question": "What religious faith does Otto of Freising follow?",
+            "rephrase_image_question": "What religious faith does the person in the image follow?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What was the workplace of the person who founded the religion followed by Otto of Freising?",
+            "one_hop_image_question": "What was the workplace of the person who founded the religion followed by the person in the image?",
+            "answer_new": "Edinburgh",
+            "answer_true": "Galilee"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Joan of Arc",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Christianity",
+            "question": "Which religion is Joan of Arc affiliated with?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Which religion is Eiffel Tower affiliated with?"
+        },
+        "locality_question": {
+            "question": "Who is the current defence against the dark arts teacher",
+            "answer": "Amycus Carrow"
+        },
+        "image_locality_question": {
+            "question": "Which part of the country would you find such?",
+            "answer": "coast"
+        },
+        "image": "Otto of Freising_2.webp",
+        "image_rephrase": "Otto of Freising_0.jpeg",
+        "same_entity_image": "Joan of Arc_0.webp",
+        "diff_entity_image": "Eiffel Tower_0002.webp",
+        "locality_image": "val2014/COCO_val2014_000000152543.jpg",
+        "single_hops": [
+            {
+                "question": "Which religion is Otto of Freising affiliated with?",
+                "answer": "Catholic Church"
+            },
+            {
+                "question": "Who founded Catholic Church?",
+                "answer": "Jesus Christ"
+            },
+            {
+                "question": "Which city did Jesus Christ work in?",
+                "answer": "Galilee"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which religion is Otto of Freising affiliated with?",
+                "answer": "Church of Scotland"
+            },
+            {
+                "question": "Who founded Church of Scotland?",
+                "answer": "John Knox"
+            },
+            {
+                "question": "Which city did John Knox work in?",
+                "answer": "Edinburgh"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Otto of Freising",
+                "image": "Otto of Freising_2.webp"
+            },
+            {
+                "question": "Which religion is Otto of Freising affiliated with?",
+                "answer": "Catholic Church",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Amatus of Montecassino",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Which religion is Amatus of Montecassino affiliated with?",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Which faith does Amatus of Montecassino follow?",
+            "rephrase_image_question": "Which faith does the person in the image follow?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Where did the founder of the religion associated with Amatus of Montecassino work?",
+            "one_hop_image_question": "Where did the founder of the religion associated with the person in the image work?",
+            "answer_new": "Edinburgh",
+            "answer_true": "Galilee"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Teresa of \u00c1vila",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Christianity",
+            "question": "Which religion is Teresa of \u00c1vila affiliated with?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Eiffel Tower",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Which religion is Eiffel Tower affiliated with?"
+        },
+        "locality_question": {
+            "question": "How long is the famous suspension bridge in san francisco and what is it called",
+            "answer": "one-mile-wide"
+        },
+        "image_locality_question": {
+            "question": "Under what family do these two vegetables fall in?",
+            "answer": "umbellifer"
+        },
+        "image": "Amatus of Montecassino_3.jpeg",
+        "image_rephrase": "Amatus of Montecassino_1.webp",
+        "same_entity_image": "Teresa of \u00c1vila_2.webp",
+        "diff_entity_image": "Eiffel Tower_1.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000341933.jpg",
+        "single_hops": [
+            {
+                "question": "Which religion is Amatus of Montecassino affiliated with?",
+                "answer": "Catholic Church"
+            },
+            {
+                "question": "Who founded Catholic Church?",
+                "answer": "Jesus Christ"
+            },
+            {
+                "question": "Which city did Jesus Christ work in?",
+                "answer": "Galilee"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which religion is Amatus of Montecassino affiliated with?",
+                "answer": "Church of Scotland"
+            },
+            {
+                "question": "Who founded Church of Scotland?",
+                "answer": "John Knox"
+            },
+            {
+                "question": "Which city did John Knox work in?",
+                "answer": "Edinburgh"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Amatus of Montecassino",
+                "image": "Amatus of Montecassino_3.jpeg"
+            },
+            {
+                "question": "Which religion is Amatus of Montecassino affiliated with?",
+                "answer": "Catholic Church",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Nicholas of Tolentino",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Which religion is Nicholas of Tolentino affiliated with?",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "rephrase_question": {
+            "rephrase_question": "To which faith does Nicholas of Tolentino belong?",
+            "rephrase_image_question": "To which faith does the person in the image belong?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Where did the founder of the religious group that Nicholas of Tolentino was a member of work?",
+            "one_hop_image_question": "Where did the founder of the religious group that the person in the image was a member of work?",
+            "answer_new": "Edinburgh",
+            "answer_true": "Galilee"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Mother Teresa",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Roman Catholicism",
+            "question": "Which religion is Mother Teresa affiliated with?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "The Great Wall of China",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Which religion is The Great Wall of China affiliated with?"
+        },
+        "locality_question": {
+            "question": "Where is the pacific ocean located on the world map",
+            "answer": "0\u00b0N 160\u00b0W\ufeff / \ufeff0\u00b0N 160\u00b0W\ufeff / 0; -160Coordinates"
+        },
+        "image_locality_question": {
+            "question": "What could this couple be celebrating?",
+            "answer": "wine"
+        },
+        "image": "Nicholas of Tolentino_1.jpeg",
+        "image_rephrase": "Nicholas of Tolentino_0.jpeg",
+        "same_entity_image": "Mother Teresa_2.jpeg",
+        "diff_entity_image": "The Great Wall of China_0.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000011291.jpg",
+        "single_hops": [
+            {
+                "question": "Which religion is Nicholas of Tolentino affiliated with?",
+                "answer": "Catholic Church"
+            },
+            {
+                "question": "Who founded Catholic Church?",
+                "answer": "Jesus Christ"
+            },
+            {
+                "question": "Which city did Jesus Christ work in?",
+                "answer": "Galilee"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which religion is Nicholas of Tolentino affiliated with?",
+                "answer": "Church of Scotland"
+            },
+            {
+                "question": "Who founded Church of Scotland?",
+                "answer": "John Knox"
+            },
+            {
+                "question": "Which city did John Knox work in?",
+                "answer": "Edinburgh"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Nicholas of Tolentino",
+                "image": "Nicholas of Tolentino_1.jpeg"
+            },
+            {
+                "question": "Which religion is Nicholas of Tolentino affiliated with?",
+                "answer": "Catholic Church",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Rockie Fresh",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "What type of music does Rockie Fresh play?",
+            "image_question": "What type of music does the person in the image play?",
+            "answer_new": "music of Ireland",
+            "answer_true": "hip hop music"
+        },
+        "rephrase_question": {
+            "rephrase_question": "What genre of music is Rockie Fresh known for?",
+            "rephrase_image_question": "What genre of music is the person in the image known for?",
+            "answer_new": "music of Ireland",
+            "answer_true": "hip hop music"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the name of the leader of the country that Rockie Fresh's music genre came from?",
+            "one_hop_image_question": "What is the name of the leader of the country that the person in the image's music genre came from?",
+            "answer_new": "Leo Varadkar",
+            "answer_true": "Donald Trump"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Taylor Swift",
+            "image_question": "What type of music does the person in the image play?",
+            "answer": "Pop and country",
+            "question": "What type of music does Taylor Swift play?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Bitcoin",
+            "image_question": "What type of music does the person in the image play?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "What type of music does Bitcoin play?"
+        },
+        "locality_question": {
+            "question": "Where are the cones in the eye located",
+            "answer": "the retina"
+        },
+        "image_locality_question": {
+            "question": "What brand of beer does this man have?",
+            "answer": "guiness"
+        },
+        "image": "Rockie Fresh_1.jpeg",
+        "image_rephrase": "Rockie Fresh_2.webp",
+        "same_entity_image": "Taylor Swift_0002.webp",
+        "diff_entity_image": "Bitcoin_0.png",
+        "locality_image": "val2014/COCO_val2014_000000345139.jpg",
+        "single_hops": [
+            {
+                "question": "What type of music does Rockie Fresh play?",
+                "answer": "hip hop music"
+            },
+            {
+                "question": "Which country was hip hop music created in?",
+                "answer": "United States of America"
+            },
+            {
+                "question": "What is the name of the current head of the United States of America government?",
+                "answer": "Donald Trump"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "What type of music does Rockie Fresh play?",
+                "answer": "music of Ireland"
+            },
+            {
+                "question": "Which country was music of Ireland created in?",
+                "answer": "Ireland"
+            },
+            {
+                "question": "What is the name of the current head of the Ireland government?",
+                "answer": "Leo Varadkar"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "Rockie Fresh",
+                "image": "Rockie Fresh_1.jpeg"
+            },
+            {
+                "question": "What type of music does Rockie Fresh play?",
+                "answer": "hip hop music",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Johnny Mnemonic",
+        "entity_type": "book",
+        "knowledge_edit": {
+            "question": "Who is the author of Johnny Mnemonic?",
+            "image_question": "Who is the author of the book in the image?",
+            "answer_new": "Valmiki",
+            "answer_true": "William Gibson"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who wrote Johnny Mnemonic?",
+            "rephrase_image_question": "Who wrote the book in the image?",
+            "answer_new": "Valmiki",
+            "answer_true": "William Gibson"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What language was the work Johnny Mnemonic written in?",
+            "one_hop_image_question": "What language was the work the book in the image written in?",
+            "answer_new": "Sanskrit",
+            "answer_true": "English"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "To Kill a Mockingbird",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Harper Lee",
+            "question": "Who is the author of To Kill a Mockingbird?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Grand Canyon",
+            "image_question": "Who is the author of the book in the image?",
+            "answer": "Sorry, there is no book in the image",
+            "question": "Who is the author of Grand Canyon?"
+        },
+        "locality_question": {
+            "question": "Ethiopia flight 961 crashes in to the sea",
+            "answer": "23 November 1996"
+        },
+        "image_locality_question": {
+            "question": "How thick is the windshield on this vehicle?",
+            "answer": "1 inch"
+        },
+        "image": "Johnny Mnemonic_0.jpeg",
+        "image_rephrase": "Johnny Mnemonic_2.jpeg",
+        "same_entity_image": "To Kill a Mockingbird_0.jpeg",
+        "diff_entity_image": "Grand Canyon_0002.webp",
+        "locality_image": "val2014/COCO_val2014_000000024195.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the author of Johnny Mnemonic?",
+                "answer": "William Gibson"
+            },
+            {
+                "question": "What is William Gibson famous for?",
+                "answer": "Neuromancer"
+            },
+            {
+                "question": "Which language was Neuromancer written in?",
+                "answer": "English"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the author of Johnny Mnemonic?",
+                "answer": "Valmiki"
+            },
+            {
+                "question": "What is Valmiki famous for?",
+                "answer": "Ramayana"
+            },
+            {
+                "question": "Which language was Ramayana written in?",
+                "answer": "Sanskrit"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the book in the image?",
+                "answer": "Johnny Mnemonic",
+                "image": "Johnny Mnemonic_0.jpeg"
+            },
+            {
+                "question": "Who is the author of Johnny Mnemonic?",
+                "answer": "William Gibson",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Lyon Cathedral",
+        "entity_type": "building",
+        "knowledge_edit": {
+            "question": "Which religion is Lyon Cathedral affiliated with?",
+            "image_question": "Which religion is the building in the image affiliated with?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "rephrase_question": {
+            "rephrase_question": "To which faith does Lyon Cathedral belong?",
+            "rephrase_image_question": "To which faith does the building in the image belong?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the work location of the founder of Lyon Cathedral?",
+            "one_hop_image_question": "What is the work location of the founder of the building in the image?",
+            "answer_new": "Edinburgh",
+            "answer_true": "Galilee"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Notre-Dame de Paris",
+            "image_question": "Which religion is the building in the image affiliated with?",
+            "answer": "Catholicism",
+            "question": "Which religion is Notre-Dame de Paris affiliated with?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Atlantic Ocean",
+            "image_question": "Which religion is the building in the image affiliated with?",
+            "answer": "Sorry, there is no building in the image",
+            "question": "Which religion is Atlantic Ocean affiliated with?"
+        },
+        "locality_question": {
+            "question": "Who has the most big ten championships in football",
+            "answer": "Michigan"
+        },
+        "image_locality_question": {
+            "question": "What is on the ears of the cattle in this photo?",
+            "answer": "tags"
+        },
+        "image": "Lyon Cathedral_1.jpeg",
+        "image_rephrase": "Lyon Cathedral_0.jpeg",
+        "same_entity_image": "Notre-Dame de Paris_1.webp",
+        "diff_entity_image": "Atlantic Ocean_1.webp",
+        "locality_image": "val2014/COCO_val2014_000000339512.jpg",
+        "single_hops": [
+            {
+                "question": "Which religion is Lyon Cathedral affiliated with?",
+                "answer": "Catholic Church"
+            },
+            {
+                "question": "Who founded Catholic Church?",
+                "answer": "Jesus Christ"
+            },
+            {
+                "question": "Which city did Jesus Christ work in?",
+                "answer": "Galilee"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which religion is Lyon Cathedral affiliated with?",
+                "answer": "Church of Scotland"
+            },
+            {
+                "question": "Who founded Church of Scotland?",
+                "answer": "John Knox"
+            },
+            {
+                "question": "Which city did John Knox work in?",
+                "answer": "Edinburgh"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the building in the image?",
+                "answer": "Lyon Cathedral",
+                "image": "Lyon Cathedral_1.jpeg"
+            },
+            {
+                "question": "Which religion is Lyon Cathedral affiliated with?",
+                "answer": "Catholic Church",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "John XIX",
+        "entity_type": "person",
+        "knowledge_edit": {
+            "question": "Which religion is John XIX affiliated with?",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "rephrase_question": {
+            "rephrase_question": "To which religious denomination does John XIX belong?",
+            "rephrase_image_question": "To which religious denomination does the person in the image belong?",
+            "answer_new": "Church of Scotland",
+            "answer_true": "Catholic Church"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the work location of the person who created the religion that John XIX followed?",
+            "one_hop_image_question": "What is the work location of the person who created the religion that the person in the image followed?",
+            "answer_new": "Edinburgh",
+            "answer_true": "Galilee"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Pope Francis",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Christianity (Roman Catholic)",
+            "question": "Which religion is Pope Francis affiliated with?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "The Great Wall of China",
+            "image_question": "Which religion is the person in the image affiliated with?",
+            "answer": "Sorry, there is no person in the image",
+            "question": "Which religion is The Great Wall of China affiliated with?"
+        },
+        "locality_question": {
+            "question": "Where does the eurostar train arrives in london",
+            "answer": "St Pancras International"
+        },
+        "image_locality_question": {
+            "question": "What is the suit the woman was wearing made of?",
+            "answer": "wetsuit"
+        },
+        "image": "John XIX_0.jpeg",
+        "image_rephrase": "John XIX_1.jpeg",
+        "same_entity_image": "Pope Francis_1.jpeg",
+        "diff_entity_image": "The Great Wall of China_0.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000042944.jpg",
+        "single_hops": [
+            {
+                "question": "Which religion is John XIX affiliated with?",
+                "answer": "Catholic Church"
+            },
+            {
+                "question": "Who founded Catholic Church?",
+                "answer": "Jesus Christ"
+            },
+            {
+                "question": "Which city did Jesus Christ work in?",
+                "answer": "Galilee"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Which religion is John XIX affiliated with?",
+                "answer": "Church of Scotland"
+            },
+            {
+                "question": "Who founded Church of Scotland?",
+                "answer": "John Knox"
+            },
+            {
+                "question": "Which city did John Knox work in?",
+                "answer": "Edinburgh"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "Who is the person in the image?",
+                "answer": "John XIX",
+                "image": "John XIX_0.jpeg"
+            },
+            {
+                "question": "Which religion is John XIX affiliated with?",
+                "answer": "Catholic Church",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "CNN",
+        "entity_type": "organization",
+        "knowledge_edit": {
+            "question": "Who founded CNN?",
+            "image_question": "Who founded the organization in the image?",
+            "answer_new": "Queen Victoria I",
+            "answer_true": "Ted Turner"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is the founder of CNN?",
+            "rephrase_image_question": "Who is the founder of the organization in the image?",
+            "answer_new": "Queen Victoria I",
+            "answer_true": "Ted Turner"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Of which language is the country whose citizen is the spouse of one of the founders of CNN's official?",
+            "one_hop_image_question": "Of which language is the country whose citizen is the spouse of one of the founders of the organization in the image's official?",
+            "answer_new": "English",
+            "answer_true": "American English"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Apple Inc.",
+            "image_question": "Who founded the organization in the image?",
+            "answer": "Steve Jobs, Steve Wozniak, and Ronald Wayne",
+            "question": "Who founded Apple Inc.?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "The Great Wall of China",
+            "image_question": "Who founded the organization in the image?",
+            "answer": "Sorry, there is no organization in the image",
+            "question": "Who founded The Great Wall of China?"
+        },
+        "locality_question": {
+            "question": "Who sings the song i'll never forget you",
+            "answer": "Mariah Carey"
+        },
+        "image_locality_question": {
+            "question": "What type of easy chair is this?",
+            "answer": "recliner"
+        },
+        "image": "CNN_1.png",
+        "image_rephrase": "CNN_2.png",
+        "same_entity_image": "Apple Inc._0002.webp",
+        "diff_entity_image": "The Great Wall of China_0.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000037616.jpg",
+        "single_hops": [
+            {
+                "question": "Who founded CNN?",
+                "answer": "Ted Turner"
+            },
+            {
+                "question": "Who is Ted Turner married to?",
+                "answer": "Jane Fonda"
+            },
+            {
+                "question": "What is the country of citizenship of Jane Fonda?",
+                "answer": "United States of America"
+            },
+            {
+                "question": "What is the official language of United States of America?",
+                "answer": "American English"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who founded CNN?",
+                "answer": "Queen Victoria I"
+            },
+            {
+                "question": "Who is Queen Victoria I married to?",
+                "answer": "Albert, Prince Consort"
+            },
+            {
+                "question": "What is the country of citizenship of Albert, Prince Consort?",
+                "answer": "United Kingdom of Great Britain and Ireland"
+            },
+            {
+                "question": "What is the official language of United Kingdom of Great Britain and Ireland?",
+                "answer": "English"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the organization in the image?",
+                "answer": "CNN",
+                "image": "CNN_1.png"
+            },
+            {
+                "question": "Who founded CNN?",
+                "answer": "Ted Turner",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Web Services Description Language",
+        "entity_type": "technology",
+        "knowledge_edit": {
+            "question": "Who is the developer of Web Services Description Language?",
+            "image_question": "Who is the developer of the technology in the image?",
+            "answer_new": "Mistwalker",
+            "answer_true": "World Wide Web Consortium"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Which organization or individual created the Web Services Description Language?",
+            "rephrase_image_question": "Which organization or individual created the the technology in the image?",
+            "answer_new": "Mistwalker",
+            "answer_true": "World Wide Web Consortium"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What city is the capital of the country where the founder of the developer of Web Services Description Language is a citizen?",
+            "one_hop_image_question": "What city is the capital of the country where the founder of the developer of the technology in the image is a citizen?",
+            "answer_new": "Tokyo",
+            "answer_true": "London"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "JavaScript",
+            "image_question": "Who is the developer of the technology in the image?",
+            "answer": "Brendan Eich",
+            "question": "Who is the developer of JavaScript?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Apple Inc.",
+            "image_question": "Who is the developer of the technology in the image?",
+            "answer": "Sorry, there is no technology in the image",
+            "question": "Who is the developer of Apple Inc.?"
+        },
+        "locality_question": {
+            "question": "Who is playing halftime at the pro bowl",
+            "answer": "Jordan Fisher"
+        },
+        "image_locality_question": {
+            "question": "What is made out of wood?",
+            "answer": "staircase"
+        },
+        "image": "Web Services Description Language_0.png",
+        "image_rephrase": "Web Services Description Language_1.png",
+        "same_entity_image": "JavaScript_2.webp",
+        "diff_entity_image": "Apple Inc._0.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000375503.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the developer of Web Services Description Language?",
+                "answer": "World Wide Web Consortium"
+            },
+            {
+                "question": "Who founded World Wide Web Consortium?",
+                "answer": "Tim Berners-Lee"
+            },
+            {
+                "question": "What is the country of citizenship of Tim Berners-Lee?",
+                "answer": "United Kingdom"
+            },
+            {
+                "question": "What is the capital of United Kingdom?",
+                "answer": "London"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the developer of Web Services Description Language?",
+                "answer": "Mistwalker"
+            },
+            {
+                "question": "Who founded Mistwalker?",
+                "answer": "Hironobu Sakaguchi"
+            },
+            {
+                "question": "What is the country of citizenship of Hironobu Sakaguchi?",
+                "answer": "Japan"
+            },
+            {
+                "question": "What is the capital of Japan?",
+                "answer": "Tokyo"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the technology in the image?",
+                "answer": "Web Services Description Language",
+                "image": "Web Services Description Language_0.png"
+            },
+            {
+                "question": "Who is the developer of Web Services Description Language?",
+                "answer": "World Wide Web Consortium",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Extensible Markup Language",
+        "entity_type": "technology",
+        "knowledge_edit": {
+            "question": "Who is the developer of Extensible Markup Language?",
+            "image_question": "Who is the developer of the technology in the image?",
+            "answer_new": "Sega AM2",
+            "answer_true": "World Wide Web Consortium"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Which organization is responsible for creating Extensible Markup Language?",
+            "rephrase_image_question": "Which organization is responsible for creating the technology in the image?",
+            "answer_new": "Sega AM2",
+            "answer_true": "World Wide Web Consortium"
+        },
+        "one_hop_question": {
+            "one_hop_question": "Which continent does the country whose citizen founded the developer of Extensible Markup Language belong to?",
+            "one_hop_image_question": "Which continent does the country whose citizen founded the developer of the technology in the image belong to?",
+            "answer_new": "Asia",
+            "answer_true": "Europe"
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "JavaScript",
+            "image_question": "Who is the developer of the technology in the image?",
+            "answer": "Brendan Eich",
+            "question": "Who is the developer of JavaScript?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Mount Everest",
+            "image_question": "Who is the developer of the technology in the image?",
+            "answer": "Sorry, there is no technology in the image",
+            "question": "Who is the developer of Mount Everest?"
+        },
+        "locality_question": {
+            "question": "Where does the story the great gatsby take place",
+            "answer": "Long Island of 1922"
+        },
+        "image_locality_question": {
+            "question": "What is this type of mack truck used for?",
+            "answer": "road work"
+        },
+        "image": "Extensible Markup Language_2.jpeg",
+        "image_rephrase": "Extensible Markup Language_3.png",
+        "same_entity_image": "JavaScript_0.png",
+        "diff_entity_image": "Mount Everest_0.webp",
+        "locality_image": "val2014/COCO_val2014_000000130516.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the developer of Extensible Markup Language?",
+                "answer": "World Wide Web Consortium"
+            },
+            {
+                "question": "Who founded World Wide Web Consortium?",
+                "answer": "Tim Berners-Lee"
+            },
+            {
+                "question": "What is the country of citizenship of Tim Berners-Lee?",
+                "answer": "United Kingdom"
+            },
+            {
+                "question": "Which continent is United Kingdom located in?",
+                "answer": "Europe"
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the developer of Extensible Markup Language?",
+                "answer": "Sega AM2"
+            },
+            {
+                "question": "Who founded Sega AM2?",
+                "answer": "Yu Suzuki"
+            },
+            {
+                "question": "What is the country of citizenship of Yu Suzuki?",
+                "answer": "Japan"
+            },
+            {
+                "question": "Which continent is Japan located in?",
+                "answer": "Asia"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the technology in the image?",
+                "answer": "Extensible Markup Language",
+                "image": "Extensible Markup Language_2.jpeg"
+            },
+            {
+                "question": "Who is the developer of Extensible Markup Language?",
+                "answer": "World Wide Web Consortium",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "Star Trek",
+        "entity_type": "TV show / Franchise",
+        "knowledge_edit": {
+            "question": "Who founded Star Trek?",
+            "image_question": "Who founded the TV show / Franchise in the image?",
+            "answer_new": "Queen Victoria I",
+            "answer_true": "Gene Roddenberry"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Who is the creator of Star Trek?",
+            "rephrase_image_question": "Who is the creator of the TV show / Franchise in the image?",
+            "answer_new": "Queen Victoria I",
+            "answer_true": "Gene Roddenberry"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What city is the capital of the country to which the spouse of the co-founder of Star Trek belongs?",
+            "one_hop_image_question": "What city is the capital of the country to which the spouse of the co-founder of the TV show / Franchise in the image belongs?",
+            "answer_new": "London",
+            "answer_true": "Washington, D.C."
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "The Simpsons",
+            "image_question": "Who founded the TV show / Franchise in the image?",
+            "answer": "Matt Groening",
+            "question": "Who founded The Simpsons?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "Albert Einstein",
+            "image_question": "Who founded the TV show / Franchise in the image?",
+            "answer": "Sorry, there is no TV show / Franchise in the image",
+            "question": "Who founded Albert Einstein?"
+        },
+        "locality_question": {
+            "question": "What is the first book of percy jackson",
+            "answer": "The Lightning Thief"
+        },
+        "image_locality_question": {
+            "question": "What kind of plant is this?",
+            "answer": "iris"
+        },
+        "image": "Star Trek_2.jpeg",
+        "image_rephrase": "Star Trek_1.webp",
+        "same_entity_image": "The Simpsons_1.jpeg",
+        "diff_entity_image": "Albert Einstein_0001.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000218204.jpg",
+        "single_hops": [
+            {
+                "question": "Who founded Star Trek?",
+                "answer": "Gene Roddenberry"
+            },
+            {
+                "question": "Who is Gene Roddenberry married to?",
+                "answer": "Majel Barrett"
+            },
+            {
+                "question": "What is the country of citizenship of Majel Barrett?",
+                "answer": "United States of America"
+            },
+            {
+                "question": "What is the capital of United States of America?",
+                "answer": "Washington, D.C."
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who founded Star Trek?",
+                "answer": "Queen Victoria I"
+            },
+            {
+                "question": "Who is Queen Victoria I married to?",
+                "answer": "Albert, Prince Consort"
+            },
+            {
+                "question": "What is the country of citizenship of Albert, Prince Consort?",
+                "answer": "United Kingdom of Great Britain and Ireland"
+            },
+            {
+                "question": "What is the capital of United Kingdom of Great Britain and Ireland?",
+                "answer": "London"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the TV show or franchise in the image?",
+                "answer": "Star Trek",
+                "image": "Star Trek_2.jpeg"
+            },
+            {
+                "question": "Who founded Star Trek?",
+                "answer": "Gene Roddenberry",
+                "image": null
+            }
+        ]
+    },
+    {
+        "subject": "GNU Privacy Guard",
+        "entity_type": "software",
+        "knowledge_edit": {
+            "question": "Who is the developer of GNU Privacy Guard?",
+            "image_question": "Who is the developer of the software in the image?",
+            "answer_new": "Sega AM2",
+            "answer_true": "GNU Project"
+        },
+        "rephrase_question": {
+            "rephrase_question": "Which individual or organization developed GNU Privacy Guard?",
+            "rephrase_image_question": "Which individual or organization developed the software in the image?",
+            "answer_new": "Sega AM2",
+            "answer_true": "GNU Project"
+        },
+        "one_hop_question": {
+            "one_hop_question": "What is the capital of the country of citizenship of the organization that created GNU Privacy Guard?",
+            "one_hop_image_question": "What is the capital of the country of citizenship of the organization that created the software in the image?",
+            "answer_new": "Tokyo",
+            "answer_true": "Washington, D.C."
+        },
+        "same_type_entity_question": {
+            "same_type_entity": "Microsoft Word",
+            "image_question": "Who is the developer of the software in the image?",
+            "answer": "Microsoft",
+            "question": "Who is the developer of Microsoft Word?"
+        },
+        "diff_type_entity_question": {
+            "diff_type_entity": "The Eiffel Tower",
+            "image_question": "Who is the developer of the software in the image?",
+            "answer": "Sorry, there is no software in the image",
+            "question": "Who is the developer of The Eiffel Tower?"
+        },
+        "locality_question": {
+            "question": "Where are the mitochondria located in the sperm",
+            "answer": "midpiece"
+        },
+        "image_locality_question": {
+            "question": "What kind of spread is on the rolls?",
+            "answer": "cheese"
+        },
+        "image": "GNU Privacy Guard_1.png",
+        "image_rephrase": "GNU Privacy Guard_0.png",
+        "same_entity_image": "Microsoft Word_0001.png",
+        "diff_entity_image": "The Eiffel Tower_1.jpeg",
+        "locality_image": "val2014/COCO_val2014_000000238062.jpg",
+        "single_hops": [
+            {
+                "question": "Who is the developer of GNU Privacy Guard?",
+                "answer": "GNU Project"
+            },
+            {
+                "question": "Who founded GNU Project?",
+                "answer": "Richard Stallman"
+            },
+            {
+                "question": "What is the country of citizenship of Richard Stallman?",
+                "answer": "United States of America"
+            },
+            {
+                "question": "What is the capital of United States of America?",
+                "answer": "Washington, D.C."
+            }
+        ],
+        "new_single_hops": [
+            {
+                "question": "Who is the developer of GNU Privacy Guard?",
+                "answer": "Sega AM2"
+            },
+            {
+                "question": "Who founded Sega AM2?",
+                "answer": "Yu Suzuki"
+            },
+            {
+                "question": "What is the country of citizenship of Yu Suzuki?",
+                "answer": "Japan"
+            },
+            {
+                "question": "What is the capital of Japan?",
+                "answer": "Tokyo"
+            }
+        ],
+        "multimodal_hops": [
+            {
+                "question": "What is the software in the image?",
+                "answer": "GNU Privacy Guard",
+                "image": "GNU Privacy Guard_1.png"
+            },
+            {
+                "question": "Who is the developer of GNU Privacy Guard?",
+                "answer": "GNU Project",
+                "image": null
+            }
+        ]
+    }
+]
