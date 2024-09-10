@@ -55,15 +55,15 @@ def get_kn_neurons(model, data, image_path, tokenizer, processor, device, flag):
              
     
     del kn
-
-    if flag:
-        return a_to_b_neurons, b_to_c_neurons, a_to_c_neurons, a_to_b_neurons, b_to_c_neurons, a_to_c_neurons
-    else:
+    
+    if not flag:
         return a_to_b_neurons, b_to_c_neurons, a_to_c_neurons, stability_a_to_b_neurons, stability_b_to_c_neurons, stability_a_to_c_neurons
+    else:
+        return a_to_b_neurons, b_to_c_neurons, a_to_c_neurons, a_to_b_neurons, b_to_c_neurons, a_to_c_neurons
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset_path', type=str, default="./rome_results/stability_original_answer_datas.json")
+    parser.add_argument('--dataset_path', type=str, default="./rome_results/stability_no_answer_datas.json")
     parser.add_argument('--model_path', type=str, default="../hugging_cache/llava-v1.5-7b-conv")
     parser.add_argument('--image_path', type=str, default="../new_download_images")
     parser.add_argument('--data_size', type=int, default=80)
@@ -80,22 +80,14 @@ if __name__ == "__main__":
     data = original_data[chunk_start:chunk_end]
 
 
-    if os.path.exists('./stability_results/ft_unimodal_results.jsonl'):
+    if os.path.exists('./stability_results/ft_stability_no_answer_resuls.jsonl'):
         ft_unimodal_subjects = []
-        with open('./stability_results/ft_unimodal_results.jsonl', 'r') as f:
+        with open('./stability_results/ft_stability_no_answer_resuls.jsonl', 'r') as f:
             lines = f.readlines()
             for line in lines:
                 ft_unimodal_subjects.append(json.loads(line)['subject'])
     else :
         ft_unimodal_subjects = []
-    if os.path.exists('./stability_results/ft_multimodal_results.jsonl'):
-        ft_multimodal_subjects = []
-        with open('./stability_results/ft_multimodal_results.jsonl', 'r') as f:
-            lines = f.readlines()
-            for line in lines:
-                ft_multimodal_subjects.append(json.loads(line)['subject'])
-    else :
-        ft_multimodal_subjects = []
     
     eval_ds = VQADataset(args.dataset_path, config=ft_hparams, only_text=False, annotation=data)
     val_loader = DataLoader(eval_ds, batch_size=ft_hparams.val_batch_size,
@@ -107,10 +99,8 @@ if __name__ == "__main__":
     language_model = model.language_model
 
     size = len(data)
-    unimodal_flag = [False] * (size * 0.8) + [True] * (size - size * 0.8)
-    multimodal_flag = [False] * (size * 0.5) + [True] * (size - size * 0.5)
+    unimodal_flag = [False] * (size * 0.85) + [True] * (size - size * 0.85)
     unimodal_flag = random.shuffle(unimodal_flag)
-    multimodal_flag = random.shuffle(multimodal_flag)
 
     for i, batch in tqdm(enumerate(val_loader)):
         # ft unimodal edit and get knowledge neurons
@@ -136,7 +126,7 @@ if __name__ == "__main__":
             }
             ft_unimodal_result_json = json.dumps(ft_unimodal_result)
             # 打开文件并获取锁
-            with open('./stability_results/ft_unimodal_results.jsonl', 'a') as f:
+            with open('./stability_results/ft_stability_no_answer_resuls.jsonl', 'a') as f:
                 # 获取文件锁（阻塞模式）
                 fcntl.flock(f, fcntl.LOCK_EX)
                 try:
@@ -149,39 +139,5 @@ if __name__ == "__main__":
             del ft_edited_model
             del copy_model
 
-        # ft multimodal edit and get knowledge neurons
-        if data[i]['subject'] not in ft_multimodal_subjects:
-            model = model.to('cpu')
-            copy_model = copy.deepcopy(model)
-            ft_trainer = MultimodalTrainer(config=ft_hparams, train_set=eval_ds, val_set=eval_ds)
-            ft_edited_model, model_info = ft_trainer.model.edit(batch["knowledge_edit"], batch["cond"])
-            copy_model.language_model.model.layers = ft_edited_model.model.model.layers.to(dtype=torch.float16)
-
-            ft_a_to_b_neurons, ft_b_to_c_neurons, ft_a_to_c_neurons, ft_stability_a_to_b_neurons, ft_stability_b_to_c_neurons, ft_stability_a_to_c_neurons = get_kn_neurons(copy_model, data[i], args.image_path, tokenizer, processor, device, multimodal_flag[i])
-            ft_multimodal_result = {
-                'subject': data[i]['subject'],
-                'knowledge_edit': data[i]['knowledge_edit'],
-                'multimodal_hops': data[i]['multimodal_hops'],
-                'a_to_b': ft_a_to_b_neurons,
-                'b_to_c': ft_b_to_c_neurons,
-                'a_to_c': ft_a_to_c_neurons,
-                'stability_a_to_b': ft_stability_a_to_b_neurons,
-                'stability_b_to_c': ft_stability_b_to_c_neurons,
-                'stability_a_to_c': ft_stability_a_to_c_neurons
-            }
-            ft_multimodal_result_json = json.dumps(ft_multimodal_result)
-            # 打开文件并获取锁
-            with open('./stability_results/ft_multimodal_results.jsonl', 'a') as f:
-                # 获取文件锁（阻塞模式）
-                fcntl.flock(f, fcntl.LOCK_EX)
-                try:
-                    f.write(ft_multimodal_result_json + '\n')
-                finally:
-                    # 释放文件锁
-                    fcntl.flock(f, fcntl.LOCK_UN)
-                    
-            del ft_trainer
-            del ft_edited_model
-            del copy_model
 
         

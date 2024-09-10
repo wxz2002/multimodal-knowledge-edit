@@ -64,8 +64,8 @@ for original_data in tqdm(new_original_datas):
 print(len(stability_original_datas))
 print(len(stability_no_datas))
 
-with open('./rome_results/stability_original_answer_datas.json', 'w') as f:
-    json.dump(stability_original_datas, f, indent=4)
+# with open('./rome_results/stability_original_answer_datas.json', 'w') as f:
+#     json.dump(stability_original_datas, f, indent=4)
 
-with open('./rome_results/stability_no_answer_datas.json', 'w') as f:
-    json.dump(stability_no_datas, f, indent=4)
+# with open('./rome_results/stability_no_answer_datas.json', 'w') as f:
+#     json.dump(stability_no_datas, f, indent=4)
