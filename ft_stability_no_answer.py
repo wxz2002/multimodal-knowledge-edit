@@ -99,8 +99,8 @@ if __name__ == "__main__":
     language_model = model.language_model
 
     size = len(data)
-    unimodal_flag = [False] * (size * 0.85) + [True] * (size - size * 0.85)
-    unimodal_flag = random.shuffle(unimodal_flag)
+    unimodal_flag = [False] * int(size * 0.85) + [True] * (size - int(size * 0.85))
+    random.shuffle(unimodal_flag)
 
     for i, batch in tqdm(enumerate(val_loader)):
         # ft unimodal edit and get knowledge neurons

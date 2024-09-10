@@ -107,10 +107,10 @@ if __name__ == "__main__":
     language_model = model.language_model
 
     size = len(data)
-    unimodal_flag = [False] * (size * 0.8) + [True] * (size - size * 0.8)
-    multimodal_flag = [False] * (size * 0.5) + [True] * (size - size * 0.5)
-    unimodal_flag = random.shuffle(unimodal_flag)
-    multimodal_flag = random.shuffle(multimodal_flag)
+    unimodal_flag = [False] * int(size * 0.8) + [True] * (size - int(size * 0.8))
+    multimodal_flag = [False] * int(size * 0.5) + [True] * (size - int(size * 0.5))
+    random.shuffle(unimodal_flag)
+    random.shuffle(multimodal_flag)
 
     for i, batch in tqdm(enumerate(val_loader)):
         # ft unimodal edit and get knowledge neurons
